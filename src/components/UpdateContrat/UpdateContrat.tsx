@@ -20,7 +20,7 @@ interface UpdateDQEProps {
     refresh:()=>void,
 
 }
-const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
+const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
      const [validated, setValidated] = useState(false);
     const { showEditForm } = useSelector((state: RootState) => state.editDataModalReducer);
 
@@ -71,7 +71,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
         if (form.checkValidity()) {
             setValidated(false)
 
-                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updatedqe/`,Transform(formDataObject),{
+                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updatemarche/`,Transform(formDataObject),{
                 headers: {
 
                   Authorization: `Token ${Cookies.get("token")}`,
@@ -97,7 +97,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
 
     }
     const handleClose = () => {
-
+        console.log(formData)
         dispatch(hideEdit())
 
     }
@@ -124,7 +124,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Modifier le DQE {showEditForm.id}</Modal.Title>
+          <Modal.Title>Modifier le Contrat N° {showEditForm.id}</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">
@@ -139,19 +139,17 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                                                   <label className="form-label" htmlFor="username">
                                                       <strong>
                                                           {field.label + " "}
-
-
                                                       </strong>
                                                   </label>
                                                   {
                                                       field.type === "PrimaryKeyRelatedField" ?
                                                           <>
-                                                              <Typeahead
-                                                                  multiple={false}
+                                                          <Typeahead
+                                                              disabled={field.readOnly}
+                                                              multiple={false}
                                                                   labelKey={"label"}
                                                                   onChange={(o) => handleChange(field.name, o)}
                                                                   id={field.name}
-                                                                  disabled={field.readOnly}
                                                                   inputProps={{required: field.required}}
                                                                   selected={formData[field.name] || [] }
                                                                   options={field.queryset}
@@ -243,4 +241,4 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
   );
 };
 
-export default UpdateDQE;
+export default UpdateContrat;

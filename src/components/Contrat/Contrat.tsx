@@ -18,6 +18,9 @@ import SearchContrat from "../SearchContrat/SearchContrat";
 import Cookies from "js-cookie";
 import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
 import EditContrat from "../ActionRenderer/EditContrat/EditContrat";
+import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
+import UpdateDQE from "../UpdateDQE/UpdateDQE";
+import UpdateContrat from "../UpdateContrat/UpdateContrat";
 
 
 
@@ -121,7 +124,15 @@ const Contrat: React.FC<any> = () => {
             .then((response:any) => {
 
                          const updatedCols:any[] = [
+                                {
+                    headerName:' ',
+                    cellRenderer:ContratOption,
+                         minWidth: 50,
+                         cellRendererParams:{
+                                refresh:getData,
 
+                              }
+                    },
 
                              ...response.data.fields
 
@@ -176,6 +187,7 @@ const Contrat: React.FC<any> = () => {
       <>
           <>
             <AddContrat refresh={()=>{getData('')}}/>
+               <UpdateContrat refresh={()=>{getData('')}}/>
             <SearchContrat/>
           </>
           <div id="wrapper">

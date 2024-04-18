@@ -5,101 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/FAVICON.ICO" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/LOGO192.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/LOGO512.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ROBOTS.TXT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/Attacher/Attacher.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/DQEOption/DQEOption.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/DetailInvoice/DetailInvoice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/EditContrat/EditContrat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/Encaissement/Encaissement.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoicePrinter/InvoicePrinter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoicePrinter/InvoicePrinter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/OptionInvoice.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/OptionInvoice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/Recup/Recup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddAttachement/AddAttachement.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddAvance/AddAvance.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddCaution/AddCaution.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddClient/AddClient.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddDQE/AddDQE.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddEncaissement/AddEncaissement.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddFacture/AddFacture.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddNT/AddNT.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddSite/AddSite.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AlertMessage/AlertMessage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AlertMessage/AlertMessage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Attachements/AttachementsParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Avances/Avances.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Avances/AvancesParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Cautions/Cautions.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Cautions/CautionsParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Client/Client.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Context/AuthContext/AuthContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Context/PermissionContext/PermissionContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DQE/DQEParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DetailFacture/DetailFacture.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Encaissements/EncaissementsParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EtatCreance/CreancePrinter/CreancePrinter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EtatCreance/CreancePrinter/CreancePrinter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EtatCreance/EtatCreance.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Flash/FlashParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceParams.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NT/NT.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchClient/SearchClient.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchContrat/SearchContrat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchCreance/SearchCreance.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchDQE/SearchDQE.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchNT/SearchNT.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Signup/Signup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Sites/Sites.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slices/AddModalSlices.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slices/AlertMessageSlices.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slices/DetailModalSlices.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slices/EditModalSlices.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slices/SearchModalSlices.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Store/Store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TaskState/TaskState.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UpdateDQE/UpdateDQE.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Utils/Utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logo.SVG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reportWebVitals.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/ContratOption/ContratOption.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UpdateContrat/UpdateContrat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchDQE/SearchDQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchDQE/SearchDQE.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpdateDQE/UpdateDQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateDQE/UpdateDQE.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,35 +20,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2fGJLfYoBaJpxjzWwVUbTtaYTPT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/PC/Desktop/GestM/frontend_sm/src/components/ActionRenderer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2023.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external"
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\GestM\\frontend_sm\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\GestM\frontend_sm\src\components\ActionRenderer" />
+      <recent name="C:\Users\PC\Desktop\GestM\frontend_sm\src\components" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="DjangoTestsConfigurationType">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,9 +152,52 @@
       <option name="docutils_open_in_browser" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-67fca87a943a-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.259" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1713356450431</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713356450431</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <option name="closed" value="true" />
+      <created>1713356544501</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713356544501</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init" />
+      <created>1713421453040</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713421453040</updated>
+      <workItem from="1713421454394" duration="7566000" />
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
