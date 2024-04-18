@@ -20,6 +20,7 @@ import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
 import UpdateDQE from "../UpdateDQE/UpdateDQE";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {Dropdown} from "react-bootstrap";
+import * as XLSX from "xlsx";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -187,6 +188,19 @@ const DQE: React.FC<any> = () => {
         dispatch(showSearchDQE())
 
     }
+    const download = () => {
+          if (data.length > 0 ) {
+              const currentDate = new Date();
+              const yearString = currentDate.getFullYear().toString();
+              const monthString = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+              const dayString = currentDate.getDate().toString().padStart(2, '0');
+
+              const ws = XLSX.utils.json_to_sheet(data);
+              const wb = XLSX.utils.book_new();
+              XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+              XLSX.writeFile(wb, `DQE_${yearString}-${monthString}-${dayString}.xlsx`);
+          }
+    }
 
 
   return (
@@ -278,14 +292,19 @@ const DQE: React.FC<any> = () => {
                                 <Dropdown.Toggle  className="btn btn-primary btn-sm"  style={{ height: 40 , background: "#df162c", borderWidth: 0
                                   ,borderTopLeftRadius:0,borderBottomLeftRadius:0}} id="dropdown-basic"
                                 >
-                                  <i className="fas fa-print" />
-                                  &nbsp;Imprimer
+                                  <i className="fas fa-share" />
+                                  &nbsp;Transfert
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
                                   <Dropdown.Item >
-                                    <i className="bi bi-filetype-xlsx"></i>
-                                    &nbsp;xlsx</Dropdown.Item>
+                                    <i className="fas fa-upload"></i>
+                                    &nbsp;Charger</Dropdown.Item>
+
+                                     <Dropdown.Item onClick={download} >
+                                    <i className="fas fa-download"></i>
+                                    &nbsp;Télécharger</Dropdown.Item>
+
                                 </Dropdown.Menu>
                               </Dropdown>
 
