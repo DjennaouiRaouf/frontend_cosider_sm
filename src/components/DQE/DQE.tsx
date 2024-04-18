@@ -201,6 +201,9 @@ const DQE: React.FC<any> = () => {
               XLSX.writeFile(wb, `DQE_${yearString}-${monthString}-${dayString}.xlsx`);
           }
     }
+    const upload = () => {
+      
+    }
 
 
   return (
@@ -298,7 +301,7 @@ const DQE: React.FC<any> = () => {
 
                                 <Dropdown.Menu>
                                   <Dropdown.Item >
-                                    <i className="fas fa-upload"></i>
+                                    <i className="fas fa-upload" onClick={upload}></i>
                                     &nbsp;Charger</Dropdown.Item>
 
                                      <Dropdown.Item onClick={download} >
