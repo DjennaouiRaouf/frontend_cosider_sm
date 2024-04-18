@@ -21,6 +21,7 @@ import UpdateDQE from "../UpdateDQE/UpdateDQE";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {Dropdown} from "react-bootstrap";
 import * as XLSX from "xlsx";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -48,7 +49,7 @@ const DQE: React.FC<any> = () => {
 
   const gridRef = useRef(null);
   const { cid } = useParams();
-
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const defaultColDefs: ColDef = {
     sortable: true,
     resizable: true,
@@ -189,29 +190,94 @@ const DQE: React.FC<any> = () => {
 
     }
     const download = () => {
-          if (data.length > 0 ) {
+            if (data.length > 0 ) {
+                const dataset: any[] = data.map(obj => ({...obj, annule: 0}))
               const currentDate = new Date();
               const yearString = currentDate.getFullYear().toString();
               const monthString = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
               const dayString = currentDate.getDate().toString().padStart(2, '0');
 
-              const ws = XLSX.utils.json_to_sheet(data);
+              const ws = XLSX.utils.json_to_sheet(dataset);
               const wb = XLSX.utils.book_new();
               XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
               XLSX.writeFile(wb, `DQE_${yearString}-${monthString}-${dayString}.xlsx`);
           }
     }
-    const upload = () => {
-      
-    }
+
+     const handleAddMulitpleDQE = () => {
+
+          if (fileInputRef.current) {
+            fileInputRef.current.click();
+          }
+
+  };
+
+    const handleFileChange = async(event: React.ChangeEvent<HTMLInputElement>) => {
+
+    const file = event.target.files?.[0];
+      const formData = new FormData();
+      if (file) {
+        formData.append('file', file);
+        if(cid){
+            formData.append("marche", cid);
+        }
+        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/importdqe/`, formData, {
+          headers: {
+            Authorization: `Token ${Cookies.get("token")}`,
+            'Content-Type': 'multipart/form-data',
+          },
+
+        })
+            .then((response: any) => {
+            dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Fichier Chargé"}))
+              if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+              }
+                 const paramsArray = Array.from(searchParams.entries());
+                // Build the query string
+                const queryString = paramsArray.reduce((acc, [key, value], index) => {
+                  if (index === 0) {
+                    return `?${key}=${encodeURIComponent(value)}`;
+                  } else {
+                    return `${acc}&${key}=${encodeURIComponent(value)}`;
+                  }
+                }, '');
+
+                getData(queryString);
+
+            })
+            .catch((error: any) => {
+                dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
+
+              if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+              }
+
+            });
+      }
+
+  };
 
 
   return (
       <>
+
+          <input
+              type="file"
+              accept=".xlsx"
+              onChange={handleFileChange}
+              hidden={true}
+              style={{display: 'none'}}
+              ref={(input) => (fileInputRef.current = input)}
+          />
           <AlertMessage/>
-          <AddDQE refresh={()=>{getData('')}}/>
+          <AddDQE refresh={() => {
+              getData('')
+          }}/>
           <SearchDQE/>
-          <UpdateDQE refresh={()=>{getData('')}}/>
+          <UpdateDQE refresh={() => {
+              getData('')
+          }}/>
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
                   <div id="content">
@@ -232,7 +298,7 @@ const DQE: React.FC<any> = () => {
                                                               <span>Montant </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.mt) +"DA"}</span>
+                                                              <span>{Humanize(resume.mt) + "DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -256,7 +322,7 @@ const DQE: React.FC<any> = () => {
                                                               <span>Quantité </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.qt) +"T"}</span>
+                                                              <span>{Humanize(resume.qt) + "T"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -284,32 +350,34 @@ const DQE: React.FC<any> = () => {
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={graph}>
                                                   <i className="fas fa-bar-chart" style={{marginRight: 5}}/>
 
-                                                   Avancement
+                                                  Avancement
                                               </button>
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchD}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
                                                   Rechercher
                                               </button>
-                                                 <Dropdown>
-                                <Dropdown.Toggle  className="btn btn-primary btn-sm"  style={{ height: 40 , background: "#df162c", borderWidth: 0
-                                  ,borderTopLeftRadius:0,borderBottomLeftRadius:0}} id="dropdown-basic"
-                                >
-                                  <i className="fas fa-share" />
-                                  &nbsp;Transfert
-                                </Dropdown.Toggle>
+                                              <Dropdown>
+                                                  <Dropdown.Toggle className="btn btn-primary btn-sm" style={{
+                                                      height: 40, background: "#df162c", borderWidth: 0
+                                                      , borderTopLeftRadius: 0, borderBottomLeftRadius: 0
+                                                  }} id="dropdown-basic"
+                                                  >
+                                                      <i className="fas fa-share"/>
+                                                      &nbsp;Transfert
+                                                  </Dropdown.Toggle>
 
-                                <Dropdown.Menu>
-                                  <Dropdown.Item >
-                                    <i className="fas fa-upload" onClick={upload}></i>
-                                    &nbsp;Charger</Dropdown.Item>
+                                                  <Dropdown.Menu>
+                                                      <Dropdown.Item onClick={handleAddMulitpleDQE}>
+                                                          <i className="fas fa-upload"></i>
+                                                          &nbsp;Charger</Dropdown.Item>
 
-                                     <Dropdown.Item onClick={download} >
-                                    <i className="fas fa-download"></i>
-                                    &nbsp;Télécharger</Dropdown.Item>
+                                                      <Dropdown.Item onClick={download}>
+                                                          <i className="fas fa-download"></i>
+                                                          &nbsp;Télécharger</Dropdown.Item>
 
-                                </Dropdown.Menu>
-                              </Dropdown>
+                                                  </Dropdown.Menu>
+                                              </Dropdown>
 
                                           </div>
                                       </div>
@@ -321,11 +389,11 @@ const DQE: React.FC<any> = () => {
                                   >
                                       <AgGridReact ref={gridRef}
                                                    rowData={data} columnDefs={fields}
-                                           gridOptions={gridOptions}
-                                           onRowClicked={handleRowClick}
+                                                   gridOptions={gridOptions}
+                                                   onRowClicked={handleRowClick}
 
 
-                                    />
+                                      />
 
                                   </div>
                                   <div className="row">
