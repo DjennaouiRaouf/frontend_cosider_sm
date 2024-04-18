@@ -19,6 +19,7 @@ import Attacher from "../ActionRenderer/Attacher/Attacher";
 import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
 import UpdateDQE from "../UpdateDQE/UpdateDQE";
 import AlertMessage from "../AlertMessage/AlertMessage";
+import {Dropdown} from "react-bootstrap";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -273,6 +274,20 @@ const DQE: React.FC<any> = () => {
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
                                                   Rechercher
                                               </button>
+                                                 <Dropdown>
+                                <Dropdown.Toggle  className="btn btn-primary btn-sm"  style={{ height: 40 , background: "#df162c", borderWidth: 0
+                                  ,borderTopLeftRadius:0,borderBottomLeftRadius:0}} id="dropdown-basic"
+                                >
+                                  <i className="fas fa-print" />
+                                  &nbsp;Imprimer
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                  <Dropdown.Item >
+                                    <i className="bi bi-filetype-xlsx"></i>
+                                    &nbsp;xlsx</Dropdown.Item>
+                                </Dropdown.Menu>
+                              </Dropdown>
 
                                           </div>
                                       </div>
