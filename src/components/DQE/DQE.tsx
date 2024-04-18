@@ -275,7 +275,6 @@ const DQE: React.FC<any> = () => {
                                                   Rechercher
                                               </button>
                                                  <Dropdown>
-
                                 <Dropdown.Toggle  className="btn btn-primary btn-sm"  style={{ height: 40 , background: "#df162c", borderWidth: 0
                                   ,borderTopLeftRadius:0,borderBottomLeftRadius:0}} id="dropdown-basic"
                                 >
