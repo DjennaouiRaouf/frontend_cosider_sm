@@ -311,6 +311,7 @@ const DQE: React.FC<any> = () => {
                                                   </div>
                                               </div>
                                           </div>
+
                                       </div>
                                       <div className="col-md-6 col-xxl-3">
                                           <div className="card shadow border-start-success py-2">
