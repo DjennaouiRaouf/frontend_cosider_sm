@@ -96,12 +96,13 @@ const AddNT: React.FC<AddNTProps> = ({refresh}) => {
         e.preventDefault();
         const form = e.currentTarget;
         console.log(formData)
+        const formDataObject:any=Object.assign({}, formData)
 
 
         if (form.checkValidity()) {
             setValidated(false)
 
-            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addnt/`,Transform(formData),{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addnt/`,Transform(formDataObject),{
                 headers: {
                     Authorization: `Token ${Cookies.get("token")}`,
                     'Content-Type': 'application/json',
@@ -131,7 +132,6 @@ const AddNT: React.FC<AddNTProps> = ({refresh}) => {
 
             setValidated(true)
         }
-
 
     }
     useEffect(() => {

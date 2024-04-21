@@ -253,6 +253,17 @@ const AddDQE: React.FC<AddDQEProps> = ({refresh}) => {
                                                                           step={0.01}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />
+                                                                     : field.textarea === true ?
+                                                                            <Form.Control
+                                                                            name={field.name}
+                                                                            as="textarea"
+                                                                            required={field.required}
+                                                                            className="w-100"
+                                                                            style={{resize:"none",height: '150px'}}
+                                                                            type="text"
+                                                                            value={formData[field.name]|| ''}
+                                                                            onChange={(e)=>handleInputChange(e)}
+                                                                            />
 
                                                                       :
                                                                       <Form.Control

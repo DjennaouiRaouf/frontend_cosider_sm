@@ -295,7 +295,7 @@ const DQE: React.FC<any> = () => {
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant </span>
+                                                              <span>Montant en HT </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.mt) + "DA"}</span>
@@ -312,7 +312,7 @@ const DQE: React.FC<any> = () => {
                                               </div>
                                           </div>
                                       </div>
-                                      <div className="col-md-6 col-xxl-2">
+                                      <div className="col-md-6 col-xxl-3">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
@@ -322,7 +322,7 @@ const DQE: React.FC<any> = () => {
                                                               <span>Quantité </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.qt) + "T"}</span>
+                                                              <span>{Humanize(resume.qt) }</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
