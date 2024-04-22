@@ -80,11 +80,11 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
         formData['contrat']=cid
 
         const formDataObject:any=Object.assign({}, formData)
-
+        console.log(formData)
         if (form.checkValidity()) {
             setValidated(false)
-            
-            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api_gc/AddAttachement/`,Transform(formDataObject),{
+            /*
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,Transform(formDataObject),{
                 headers: {
                     Authorization: `Token ${Cookies.get("token")}`,
                     'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
 
                 });
 
-
+        */
 
         }
         else {

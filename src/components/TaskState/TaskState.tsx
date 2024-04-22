@@ -59,10 +59,6 @@ const marche_id:string=encodeURIComponent(String(cid));
 
   return (
       <>
-
-
-        {
-            (x.length >= 1 && y1.length >= 1 && y2.length >= 1) &&
             <div className="card">
               <div className="card-body">
                 <div className="plot-container">
@@ -107,9 +103,6 @@ const marche_id:string=encodeURIComponent(String(cid));
 
               </div>
             </div>
-
-        }
-
 
       </>
   );
