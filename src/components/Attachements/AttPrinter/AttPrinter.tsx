@@ -73,7 +73,7 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
                                               </td>
                                               <td>
                                                   <p className="text-break" style={{width: 300}}>
-                                                      {item.libelle_tache + "sdfdsgjhgqkcjvbfjhqjlqjshgfzmieufhdskjqvnhjkbqkdfsjbvjdf"}
+                                                      {item.libelle_tache}
                                                   </p>
                                               </td>
                                               <td><p className="text-break" style={{width: 100}}>
