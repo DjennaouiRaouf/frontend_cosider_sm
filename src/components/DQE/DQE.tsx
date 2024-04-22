@@ -219,7 +219,7 @@ const DQE: React.FC<any> = () => {
       if (file) {
         formData.append('file', file);
         if(cid){
-            formData.append("marche", cid);
+            formData.append("id", cid);
         }
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/importdqe/`, formData, {
           headers: {

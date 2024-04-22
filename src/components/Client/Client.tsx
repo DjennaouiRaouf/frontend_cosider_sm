@@ -178,48 +178,7 @@ const Client: React.FC<any> = () => {
                                   <p className="text-primary m-0 fw-bold">Nos Clients</p>
                               </div>
                               <div className="card-body">
-                                  <div className="row d-xxl-flex justify-content-xxl-center mb-4">
-                                      <div className="col-md-6 col-xxl-3">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
-                                                      <div className="col me-2">
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Earnings (annual)</span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>$215,000</span>
-                                                          </div>
-                                                      </div>
-                                                      <div className="col-auto">
-                                                          <i className="fas fa-dollar-sign fa-2x text-gray-300"/>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div className="col-md-6 col-xxl-2">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
-                                                      <div className="col me-2">
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Earnings (annual)</span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>$215,000</span>
-                                                          </div>
-                                                      </div>
-                                                      <div className="col-auto">
-                                                          <i className="fas fa-dollar-sign fa-2x text-gray-300"/>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">
                                           <div className="btn-group" role="group">
