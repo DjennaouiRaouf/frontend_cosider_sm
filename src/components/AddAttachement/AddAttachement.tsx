@@ -64,7 +64,6 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
         const form = e.currentTarget;
         const formDataObject:any=Object.assign({}, formData);
         formDataObject['marche']=cid;
-        console.log(formDataObject)
         if (form.checkValidity()) {
             setValidated(false)
                 await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,formDataObject,{
