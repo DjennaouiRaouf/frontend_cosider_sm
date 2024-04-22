@@ -64,11 +64,11 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
         const form = e.currentTarget;
         const formDataObject:any=Object.assign({}, formData);
         formDataObject['contrat']=cid;
-
+        console.log(formData)
 
         if (form.checkValidity()) {
             setValidated(false)
-
+/*
                 await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,Transform(formDataObject),{
                 headers: {
 
@@ -85,6 +85,8 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
 
                 });
 
+
+ */
             }
         else {
 
@@ -231,7 +233,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                   <Modal.Footer>
 
                       <Button variant="primary" style={{background: "#df162c", borderWidth: 0}} type={"submit"}>
-                          Modifier
+                          Attacher
                       </Button>
                   </Modal.Footer>
               </Form>
