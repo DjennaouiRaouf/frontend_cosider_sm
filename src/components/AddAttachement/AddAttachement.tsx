@@ -1,18 +1,20 @@
 import * as React from "react";
-import {useEffect, useState} from "react";
 import {Button, Form, Modal} from "react-bootstrap";
 import {Typeahead} from "react-bootstrap-typeahead";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Store/Store";
-import {hideAddAttachement} from "../Slices/AddModalSlices";
+import {hideEdit} from "../Slices/EditModalSlices";
 import Cookies from "js-cookie";
 import axios from "axios";
 import {Transform} from "../Utils/Utils";
+import {AgGridReact} from "ag-grid-react";
+import numeral from "numeral";
 import 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import {ColDef} from "ag-grid-community";
 import {useParams} from "react-router-dom";
-import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 interface AddAttachementProps {
     refresh:()=>void,
@@ -20,13 +22,14 @@ interface AddAttachementProps {
 }
 const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
      const [validated, setValidated] = useState(false);
-    const { showAddAttachementForm } = useSelector((state: RootState) => state.addDataModalReducer);
+    const { showEditForm } = useSelector((state: RootState) => state.editDataModalReducer);
 
     const dispatch = useDispatch();
-    const [fields,setFields]=useState<any[]>([]);
-    const [defaultState,setDefaultState]=useState<any>({});
-    const [formData, setFormData] = useState<any>({});
-    const { cid } = useParams();
+    const [formData, setFormData] = useState<any>(showEditForm.state);
+      useEffect(() => {
+        setFormData(showEditForm.state);
+      }, [showEditForm]);
+
     const opt:any[] = [
             {
                 value: false,
@@ -53,78 +56,46 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
 
 
 
-    const getFields = async() => {
-
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/attfields/?flag=f`,{
-
-            headers: {
-                Authorization: `Token ${Cookies.get("token")}`,
-                'Content-Type': 'application/json',
-
-            },
-        })
-            .then((response:any) => {
-                setFields(response.data.fields);
 
 
-            })
-            .catch((error:any) => {
-
-            });
-
-    }
-
+    const { cid } = useParams();
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        formData['contrat']=cid
+        const formDataObject:any=Object.assign({}, formData);
+        formDataObject['contrat']=cid;
 
-        const formDataObject:any=Object.assign({}, formData)
-        console.log(formData)
+
         if (form.checkValidity()) {
             setValidated(false)
-            /*
-            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,Transform(formDataObject),{
+
+                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,Transform(formDataObject),{
                 headers: {
-                    Authorization: `Token ${Cookies.get("token")}`,
-                    'Content-Type': 'application/json',
+
+                  Authorization: `Token ${Cookies.get("token")}`,
+                  'Content-Type': 'application/json',
 
                 },
-
-            })
+                })
                 .then((response:any) => {
-                    refresh();
-                    setFormData(defaultState);
                     handleClose();
-                    dispatch(displayAlertMessage({variant:Variant.SUCCESS,message:'Bon de livraison ajouté'}))
 
                 })
                 .catch((error:any) => {
-                    dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
 
                 });
 
-        */
-
-        }
+            }
         else {
 
             setValidated(true)
         }
 
 
-
     }
-    useEffect(() => {
-
-        getFields();
-
-
-
-    },[]);
     const handleClose = () => {
 
-        dispatch(hideAddAttachement())
+        dispatch(hideEdit())
 
     }
     const handleChange = (ref:any, op:any) => {
@@ -146,11 +117,11 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
 
   return (
       <>
-         <Modal show={showAddAttachementForm} onHide={handleClose} size={"xl"}>
+         <Modal show={showEditForm.shown} onHide={handleClose} size={"xl"}>
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter un Bon de livraison</Modal.Title>
+          <Modal.Title>Attachement de la Tache</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">
@@ -159,28 +130,14 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
 
 
                                   <div className="row" style={{marginBottom: 25, textAlign: "left"}}>
-                                      {fields.map((field: any, index: any) => (
+                                      {showEditForm.fields.map((field: any, index: any) => (
                                           <div className="col-md-6 text-start" key={index}>
                                               <div className="mb-3">
                                                   <label className="form-label" htmlFor="username">
                                                       <strong>
                                                           {field.label + " "}
-                                                          {field.required ?
-                                                              <span style={{
-                                                                  color: "rgb(255,0,0)",
-                                                                  fontSize: 18,
-                                                                  fontWeight: "bold"
-                                                              }}>
-                                                                  *
-                                                            </span> :
-                                                              <span style={{
-                                                                  color: "rgb(255,0,0)",
-                                                                  fontSize: 18,
-                                                                  fontWeight: "bold"
-                                                              }}>
 
-                                                                </span>
-                                                          }
+
                                                       </strong>
                                                   </label>
                                                   {
@@ -191,6 +148,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                                                                   labelKey={"label"}
                                                                   onChange={(o) => handleChange(field.name, o)}
                                                                   id={field.name}
+                                                                  disabled={field.readOnly}
                                                                   inputProps={{required: field.required}}
                                                                   selected={formData[field.name] || [] }
                                                                   options={field.queryset}
@@ -205,7 +163,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                                                               <Form.Control
                                                                   as="select"
                                                                   name={field.name}
-                                                                  required={field.required}
+                                                                  disabled={field.readOnly}
                                                                   className="w-100"
                                                                   value={formData[field.name]}
                                                                   onChange={(e) => handleSelectChange(e)}>
@@ -224,6 +182,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                                                                       required={field.required}
                                                                       className="w-100"
                                                                       type="date"
+                                                                      disabled={field.readOnly}
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
@@ -233,9 +192,9 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                                                                           required={field.required}
                                                                           className="w-100"
                                                                           type="number"
+                                                                          disabled={field.readOnly}
                                                                           value={formData[field.name] || 0}
                                                                           step={0.01}
-                                                                          readOnly={field.readOnly}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />
 
@@ -245,6 +204,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                                                                           required={field.required}
                                                                           className="w-100"
                                                                           type="text"
+                                                                          disabled={field.readOnly}
                                                                           value={formData[field.name] || ''}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />
@@ -271,7 +231,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                   <Modal.Footer>
 
                       <Button variant="primary" style={{background: "#df162c", borderWidth: 0}} type={"submit"}>
-                          Ajouter
+                          Modifier
                       </Button>
                   </Modal.Footer>
               </Form>
@@ -279,5 +239,6 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
       </>
   );
 };
+
 
 export default AddAttachement;

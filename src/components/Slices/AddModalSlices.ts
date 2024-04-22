@@ -7,7 +7,7 @@ export interface AddDataModalState {
     showAddContratForm:boolean;
     showAddClientForm:boolean;
     showAddDQEForm:boolean;
-    showAddAttachementForm:boolean;
+    showAddAttachementForm:any;
     showAddNTForm:boolean;
     showAddFactureForm:boolean;
     showAddAvanceForm:boolean;
@@ -22,7 +22,10 @@ const initialState: AddDataModalState = {
     showAddDQEForm:false,
 
     showAddCautionForm:false,
-    showAddAttachementForm:false,
+    showAddAttachementForm: {
+        shown:false,
+        default:{},
+    },
     showAddNTForm:false,
     showAddFactureForm:false,
     showAddAvanceForm:false,
@@ -88,13 +91,19 @@ export const AddDataModal = createSlice({
 
 
 
-        showAddAttachement: (state) => {
+        showAddAttachement: (state,action) => {
 
-            state.showAddAttachementForm=true
+            state.showAddAttachementForm={
+                shown:true,
+                default:action.payload,
+            }
 
         },
         hideAddAttachement: (state) => {
-            state.showAddAttachementForm=false
+            state.showAddAttachementForm={
+                shown:false,
+                default:{}
+            }
         },
 
         showAddNT: (state) => {
