@@ -118,6 +118,7 @@ const AddNT: React.FC<AddNTProps> = ({refresh}) => {
                     dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "NT ajouté"}))
                 })
                 .catch((error:any) => {
+
                     dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
 
                 });

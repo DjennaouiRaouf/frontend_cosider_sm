@@ -8,6 +8,7 @@ import {hideAddContrat} from "../Slices/AddModalSlices";
 import Cookies from "js-cookie";
 import axios from "axios";
 import {Transform} from "../Utils/Utils";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 type AddContratProps = {
   refresh:()=>void,
@@ -106,8 +107,14 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
                     handleClose();
                     refresh();
 
+                      dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Marché ajouté"}))
+
+
                 })
                 .catch((error:any) => {
+
+                    dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
+
                 });
 
 

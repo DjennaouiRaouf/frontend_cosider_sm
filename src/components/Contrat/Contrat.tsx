@@ -21,6 +21,7 @@ import EditContrat from "../ActionRenderer/EditContrat/EditContrat";
 import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
 import UpdateDQE from "../UpdateDQE/UpdateDQE";
 import UpdateContrat from "../UpdateContrat/UpdateContrat";
+import AlertMessage from "../AlertMessage/AlertMessage";
 
 
 
@@ -189,6 +190,7 @@ const Contrat: React.FC<any> = () => {
             <AddContrat refresh={()=>{getData('')}}/>
                <UpdateContrat refresh={()=>{getData('')}}/>
             <SearchContrat/>
+              <AlertMessage/>
           </>
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
