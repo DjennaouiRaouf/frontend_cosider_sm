@@ -63,13 +63,11 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
         e.preventDefault();
         const form = e.currentTarget;
         const formDataObject:any=Object.assign({}, formData);
-        formDataObject['contrat']=cid;
-        console.log(formData)
-
+        formDataObject['marche']=cid;
+        console.log(formDataObject)
         if (form.checkValidity()) {
             setValidated(false)
-/*
-                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,Transform(formDataObject),{
+                await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,formDataObject,{
                 headers: {
 
                   Authorization: `Token ${Cookies.get("token")}`,
@@ -86,7 +84,7 @@ const AddAttachement: React.FC<AddAttachementProps> = ({refresh}) => {
                 });
 
 
- */
+
             }
         else {
 
