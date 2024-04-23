@@ -247,6 +247,7 @@ const DQE: React.FC<any> = () => {
 
             })
             .catch((error: any) => {
+                console.log(error)
                 dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
 
               if (fileInputRef.current) {

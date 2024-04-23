@@ -33,10 +33,9 @@ const marche_id:string=encodeURIComponent(String(cid));
     })
         .then((response:any) => {
 
-
-          setX(response.data.X)
-          setY1(response.data.Y1)
-          setY2(response.data.Y2)
+          setX(response.data.x)
+          setY1(response.data.y1)
+          setY2(response.data.y2)
 
 
 
