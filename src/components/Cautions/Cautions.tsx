@@ -197,7 +197,7 @@ const Cautions: React.FC<any> = () => {
                                                               <span>Montant global recupéré</span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.recup) +"DA"}</span>
+                                                              <span>{Humanize(resume.qr) +"DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -221,7 +221,7 @@ const Cautions: React.FC<any> = () => {
                                                               <span>Montant global déposé </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.no_recup) +"DA"}</span>
+                                                              <span>{Humanize(resume.qd) +"DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
