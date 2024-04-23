@@ -35,14 +35,20 @@ const InfoRenderer: React.FC<any> = (props) => {
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     case 'montant_cumule' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'montant_ht' :
+    case 'montant_factureHT' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'montant_ttc' :
+    case 'montant_factureTTC' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     case 'montant_rb' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     case 'montant_rg' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+case 'ava' :
+      return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+case 'avf' :
+      return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
+
 
     default:
       return <span>{value}</span>
