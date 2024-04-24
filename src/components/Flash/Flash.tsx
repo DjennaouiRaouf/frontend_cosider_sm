@@ -124,8 +124,6 @@ const Flash: React.FC<any> = () => {
 
   }
 
-
-
   const getFields = async() => {
         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/flashfields/?flag=l`,{
             headers: {
