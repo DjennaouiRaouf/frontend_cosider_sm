@@ -15,19 +15,33 @@ const CreancePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                   <tr>
                       <th>Marché</th>
                       <th>NT</th>
-                      <th>Site</th>
-                      <th>Créance</th>
+                      <th>Client</th>
+                      <th>M.G.Factures</th>
+                      <th>M.G.Payé</th>
+                      <th>M.G.Créance</th>
                   </tr>
                   </thead>
                   <tbody>
                   {props.data.map((item:any, index:any) => (
-                  <tr key={index}>
-                      <td>{item.id}</td>
-                      <td>{item.nt}</td>
-                      <td>{item.code_site}</td>
-                      <td>{item.creance}</td>
-                  </tr>
-                      ))}
+                      <tr key={index}>
+                          <td>
+                              <p>{item.id}</p>
+                          </td>
+                          <td>
+                              <p>{item.nt}</p>
+                          </td>
+                          <td>
+                              <p>{item.client}</p>
+                          </td>
+                          <td>
+                              <p>{Humanize(item.mgf)}</p>
+                          </td>
+                          <td><p>{Humanize(item.mgp)}</p></td>
+                          <td>
+                              <p>{Humanize(item.mgc)}</p>
+                          </td>
+                      </tr>
+                  ))}
                   </tbody>
               </table>
           </div>
