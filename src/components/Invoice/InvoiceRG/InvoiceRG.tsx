@@ -64,13 +64,12 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
                           <tr key={index}>
                               <td>{item.numero_facture}</td>
                               <td>{item.num_situation}</td>
-                              <td>{Humanize(item.montant_rg)}</td>
+                              <td>{Humanize(item.montant_rg)} DA</td>
                           </tr>
                       ))}
                       <tr>
-                          <td></td>
-                          <td className={"text-end"}>Total :</td>
-                          <td className={"text-center"}>{Humanize(props.extra.rg_total)}</td>
+                          <td className={"text-start"}>Total :</td>
+                          <td className={"text-start"}>{Humanize(props.extra.rg_total)} DA</td>
                       </tr>
                       </tbody>
                   </table>

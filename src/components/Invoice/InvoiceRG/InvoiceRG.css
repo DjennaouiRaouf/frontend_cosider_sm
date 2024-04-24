@@ -5,6 +5,9 @@
 @media print {
     .print-only {
         display: block;
+            width: 21cm;
+            height: 29.7cm;
+            margin: 20mm;
     }
 }
 
