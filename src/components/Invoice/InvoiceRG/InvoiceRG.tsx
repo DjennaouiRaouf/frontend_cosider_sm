@@ -34,7 +34,7 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
           <div>
 
               <label className="form-label" style={{fontSize: '12px'}}>
-                  <strong>Marché:</strong> {props.extra.marche} du {props.extra.signature} <br/>
+                  <strong>Marché:</strong> {props.extra.contrat} du {props.extra.signature} <br/>
                   <strong>Objet:</strong> {props.extra.projet} <br/>d'un montant
                   de {Humanize(props.extra.montant_marche)} DA <br/>
                   <span style={{textDecoration: "underline", fontSize: '12px'}}><strong>REF:</strong> </span>
