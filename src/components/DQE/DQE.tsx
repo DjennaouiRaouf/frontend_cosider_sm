@@ -33,7 +33,9 @@ const InfoRenderer: React.FC<any> = (props) => {
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     case 'prix_q' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    default:
+
+
+      default:
       return <span>{value}</span>
   }
 
