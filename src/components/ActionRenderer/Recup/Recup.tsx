@@ -15,6 +15,8 @@ const Recup: React.FC<RecupProps> = (props) => {
        const rowData:any =  props.data  ;
       rowData["est_recupere"]=true
 
+
+
       await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/recupcaution/`,rowData,{
         headers: {
 

@@ -31,7 +31,7 @@ const Attacher: React.FC<AttacherProps> = (props) => {
           onClick={attache}
           
         >
-          <i className="fa fa-print" style={{fontSize: 16, marginRight: 9}}/>
+          <i className="fas fa-plus" style={{fontSize: 16, marginRight: 9}}/>
           Attacher
       </button>
 
