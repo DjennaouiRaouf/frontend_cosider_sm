@@ -80,8 +80,8 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                 },
                 })
                 .then((response:any) => {
-                    refresh();
                     handleClose();
+                    refresh();
 
                 })
                 .catch((error:any) => {
