@@ -30,11 +30,11 @@ const InfoRenderer: React.FC<any> = (props) => {
 
   switch (props.column.colId) {
 
-    case 'gf' :
+    case 'mgf' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'ge' :
+    case 'mgp' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'cr' :
+    case 'mgc' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
       case 'rg':
