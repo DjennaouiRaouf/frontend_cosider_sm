@@ -15,7 +15,8 @@ import AlertMessage from "../AlertMessage/AlertMessage";
 import {formatDate, Humanize} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
 import SearchAttachements from "../SearchAttachements/SearchAttachements";
-import {showSearchBL} from "../Slices/SearchModalSlices";
+import {showSearchBL, showSearchContrat, showSearchFlash} from "../Slices/SearchModalSlices";
+import SearchFlash from "../SearchFlash/SearchFlash";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -98,7 +99,7 @@ const Flash: React.FC<any> = () => {
         })
             .then(async(response:any) => {
 
-                await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sch/getprod/?code_site=${response.data.cs}&nt=${response.data.nt}&prevu_realiser=R&code_type_production=01&mm=${month?.split('-')[1]}&aa=${month?.split('-')[0]}`,{
+                await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sch/getprod/?code_site=${response.data.cs}&nt=${response.data.nt}&prevu_realiser=R&code_type_production=01&mm=${month?.split('-')[1]}&aa=${month?.split('-')[0]}${url.replace('?',"&")}`,{
                     headers: {
                         Authorization: `Token ${Cookies.get('token')}`,
                         'Content-Type': 'application/json',
@@ -183,13 +184,16 @@ const Flash: React.FC<any> = () => {
 
     const dispatch=useDispatch();
 
+    const searchFlash = () => {
+      dispatch(showSearchFlash())
+    }
 
 
   return (
       <>
           <AlertMessage/>
             <AddAttachement refresh={()=>{getData('')}}/>
-          {/*<SearchAttachements/>*/}
+          <SearchFlash/>
 
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
@@ -215,16 +219,22 @@ const Flash: React.FC<any> = () => {
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
                                                   Rechercher
                                               </button>*/}
+                                              <button className="btn btn-primary" type="button"
+                                                      style={{background: "#df162c", borderWidth: 0}}
+                                                      onClick={searchFlash}>
+                                                  <i className="fas fa-search" style={{marginRight: 5}}/>
+                                                  Rechercher
+                                              </button>
                                           </div>
                                       </div>
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                      style={{ height: 500,width:"100%" }}
+                                      style={{height: 500, width: "100%"}}
 
                                   >
-                                    <AgGridReact ref={gridRef}
-                                           rowData={data} columnDefs={fields}
+                                      <AgGridReact ref={gridRef}
+                                                   rowData={data} columnDefs={fields}
                                            gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
 

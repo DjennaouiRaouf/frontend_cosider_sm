@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/components/SearchFlash/SearchFlash.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slices/SearchModalSlices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slices/SearchModalSlices.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,24 +30,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/GestM/Cosider_Project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\GestM\\frontend_sm\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/PC/Desktop/GestM/frontend_sm/src/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\GestM\\frontend_sm\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\PC\Desktop\GestM\frontend_sm\src\components\ActionRenderer" />
       <recent name="C:\Users\PC\Desktop\GestM\frontend_sm\src\components" />
+      <recent name="C:\Users\PC\Desktop\GestM\frontend_sm\src\components\ActionRenderer" />
     </key>
   </component>
   <component name="RunManager">
@@ -192,7 +195,8 @@
       <workItem from="1713766915236" duration="12533000" />
       <workItem from="1713853386081" duration="11094000" />
       <workItem from="1713874618842" duration="2195000" />
-      <workItem from="1713939288717" duration="13483000" />
+      <workItem from="1713939288717" duration="14888000" />
+      <workItem from="1714043985874" duration="2706000" />
     </task>
     <task id="LOCAL-00003" summary="init">
       <option name="closed" value="true" />
@@ -450,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713965081045</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="init">
+      <option name="closed" value="true" />
+      <created>1713965135637</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1713965135637</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
