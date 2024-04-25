@@ -285,6 +285,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
           <AddEncaissement refresh={()=>{getData('')}}/>
           <InvoiceRG ref={componentRef} facture={data} extra={resume}/>
   {
+
             avances.length !== 0 &&
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
