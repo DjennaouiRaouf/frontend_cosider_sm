@@ -181,7 +181,7 @@ const Attachements: React.FC<any> = () => {
     }
   };
       const searchAtt = () => {
-
+        dispatch(showSearchAtt());
     }
 
     const print_dec = () => {
@@ -247,7 +247,7 @@ const Attachements: React.FC<any> = () => {
   return (
       <>
           <AlertMessage/>
-
+          <SearchAttachements/>
           <div id="wrapper">
                 <AttPrinter ref={componentRef} data={data} extra={resume}/>
                 <DecomptePPrinter ref={componentRef2} data={data} extra={resume}/>
@@ -351,7 +351,7 @@ const Attachements: React.FC<any> = () => {
                                                   <button className="btn btn-primary " type="button"
                                                           style={{background: "#df162c", borderWidth: 0}}
                                                           onClick={cancel}>
-                                                      <i className="fas fa-search" style={{marginRight: 5}}/>
+                                                      <i className="fas fa-trash" style={{marginRight: 5}}/>
                                                       Annuler
                                                   </button>
                                               </ButtonGroup>

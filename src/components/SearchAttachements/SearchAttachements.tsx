@@ -52,7 +52,7 @@ const SearchAttachements: React.FC<any> = () => {
 
     const getFields = async() => {
          const contrat_id:string=encodeURIComponent(String(cid));
-         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/blfilterform/?contrat=${contrat_id}`,{
+         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms//?contrat=${contrat_id}`,{
 
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
@@ -134,7 +134,7 @@ const SearchAttachements: React.FC<any> = () => {
                <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Rechercher un Bon de livraison</Modal.Title>
+          <Modal.Title>Rechercher un Attachement</Modal.Title>
         </Modal.Header>
           <Modal.Body>
               <div className="container-fluid">
