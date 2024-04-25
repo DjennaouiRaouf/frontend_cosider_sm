@@ -9,9 +9,11 @@ export interface SearchDataModalState {
     showSearchClientForm:boolean;
     showSearchDQEForm:boolean;
     showSearchCreanceForm:boolean;
-    showSearchBLForm:boolean;
     showSearchNTForm:boolean;
     showSearchFlashForm:boolean;
+    showSearchInvoiceForm:boolean;
+    showSearchAttForm:boolean;
+
 }
 
 const initialState: SearchDataModalState = {
@@ -19,9 +21,10 @@ const initialState: SearchDataModalState = {
     showSearchClientForm:false,
     showSearchDQEForm:false,
     showSearchCreanceForm:false,
-    showSearchBLForm:false,
+    showSearchAttForm:false,
     showSearchNTForm:false,
     showSearchFlashForm:false,
+    showSearchInvoiceForm:false,
 };
 
 export const SearchDataModal = createSlice({
@@ -53,12 +56,22 @@ export const SearchDataModal = createSlice({
             state.showSearchDQEForm=false
         },
 
+     showSearchAtt: (state) => {
 
-        showSearchBL: (state) => {
-            state.showSearchBLForm=true
+            state.showSearchAttForm=true
+
         },
-        hideSearchBL: (state) => {
-            state.showSearchBLForm=false
+        hideSearchAtt: (state) => {
+            state.showSearchAttForm=false
+        },
+
+
+
+        showSearchInvoice: (state) => {
+            state.showSearchInvoiceForm=true
+        },
+        hideSearchInvoice: (state) => {
+            state.showSearchInvoiceForm=false
         },
 
         showSearchFlash: (state) => {
@@ -97,9 +110,10 @@ export const SearchDataModal = createSlice({
 export const { showSearchContrat,hideSearchContrat,
 showSearchClient,hideSearchClient,
 showSearchDQE,hideSearchDQE,
-showSearchBL,hideSearchBL,
+showSearchInvoice,hideSearchInvoice,
 showSearchCreance,hideSearchCreance,
 showSearchNT,hideSearchNT,
+    showSearchAtt,hideSearchAtt,
 showSearchFlash,hideSearchFlash} = SearchDataModal.actions;
 
 export default SearchDataModal.reducer;

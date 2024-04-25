@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/components/SearchInvoice/SearchInvoice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slices/SearchModalSlices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slices/SearchModalSlices.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +199,7 @@
       <workItem from="1713853386081" duration="11094000" />
       <workItem from="1713874618842" duration="2195000" />
       <workItem from="1713939288717" duration="14888000" />
-      <workItem from="1714043985874" duration="5519000" />
+      <workItem from="1714043985874" duration="6498000" />
     </task>
     <task id="LOCAL-00003" summary="init">
       <option name="closed" value="true" />
@@ -483,7 +489,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714050298027</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="init">
+      <option name="closed" value="true" />
+      <created>1714050420897</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1714050420897</updated>
+    </task>
+    <task id="LOCAL-00040" summary="init">
+      <option name="closed" value="true" />
+      <created>1714050466437</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1714050466437</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

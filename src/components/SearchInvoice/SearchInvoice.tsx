@@ -4,22 +4,21 @@ import {Typeahead} from "react-bootstrap-typeahead";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Store/Store";
-import {hideSearchAtt} from "../Slices/SearchModalSlices";
+import {hideSearchInvoice} from "../Slices/SearchModalSlices";
 import Cookies from "js-cookie";
 import axios from "axios";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {Transform} from "../Utils/Utils";
 
 
-const SearchAttachements: React.FC<any> = () => {
+const SearchInvoice: React.FC<any> = () => {
      const [validated, setValidated] = useState(false);
-    const { showSearchAttForm } = useSelector((state: RootState) => state.searchDataModalReducer);
+    const { showSearchInvoiceForm } = useSelector((state: RootState) => state.searchDataModalReducer);
     const navigate=useNavigate();
     const [searchParams] = useSearchParams();
     const dispatch = useDispatch();
     const [fields,setFields]=useState<any[]>([]);
     const [formData, setFormData] = useState<any>({});
-    const { cid } = useParams();
  const opt:any[] = [
         {
           value:'',
@@ -51,8 +50,7 @@ const SearchAttachements: React.FC<any> = () => {
     // submit
 
     const getFields = async() => {
-         const contrat_id:string=encodeURIComponent(String(cid));
-         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/blfilterform/?contrat=${contrat_id}`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/Invoicefilterfields/`,{
 
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
@@ -80,7 +78,7 @@ const SearchAttachements: React.FC<any> = () => {
 
     },[]);
     const handleClose = () => {
-            dispatch(hideSearchAtt());
+            dispatch(hideSearchInvoice());
     }
     const handleChange = (ref:any, op:any) => {
         if(op.length ===1 ){
@@ -122,7 +120,7 @@ const SearchAttachements: React.FC<any> = () => {
 
         navigate(newLocation);
         navigate(`?${url_tmp.join('')}`);
-        dispatch(hideSearchAtt());
+        dispatch(hideSearchInvoice());
         setFormData({})
 
 
@@ -130,13 +128,13 @@ const SearchAttachements: React.FC<any> = () => {
 
   return (
       <>
-         <Modal show={showSearchAttForm} onHide={handleClose} size={"xl"}>
+         <Modal show={showSearchInvoiceForm} onHide={handleClose} size={"xl"}>
                <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Rechercher un Bon de livraison</Modal.Title>
+          <Modal.Title>Rechercher une Facture </Modal.Title>
         </Modal.Header>
-          <Modal.Body>
+           <Modal.Body>
               <div className="container-fluid">
                   <div className="card shadow mb-3">
                       <div className="card-body">
@@ -151,7 +149,7 @@ const SearchAttachements: React.FC<any> = () => {
                                               </strong>
                                           </label>
  {
-                                                            field.type === "ModelChoiceFilter"?
+                                                            field.type === "ModelChoiceFilter" || field.type === "PrimaryKeyRelatedField"?
                                                                 <>
                                                                     <Typeahead
 
@@ -166,12 +164,12 @@ const SearchAttachements: React.FC<any> = () => {
 
 
                                                                 :
-                                                                field.type === 'BooleanFilter' ?
+                                                                field.type === 'BooleanFilter' ||  field.type === 'BooleanField' ?
 
                                                                     <Form.Control
                                                                         as="select"
                                                                         name={field.name}
-                                                                        
+
                                                                         className="w-100"
 
                                                                         onChange={(e)=>handleSelectChange(e)}>
@@ -183,23 +181,23 @@ const SearchAttachements: React.FC<any> = () => {
                                                                     </Form.Control>
 
 
-                                                                    : field.type === 'DateFilter'  || field.type === 'DateTimeFilter'?
+                                                                    : field.type === 'DateFilter' || field.type === 'DateField' ?
                                                                         <Form.Control
                                                                             name={field.name}
-                                                                            
+
                                                                             className="w-100"
                                                                             type="date"
                                                                             value={formData[field.name]}
                                                                             onChange={(e)=>handleInputChange(e)}
                                                                         />
-                                                                        : field.type === 'NumberFilter'  ?
+                                                                        : field.type === 'NumberFilter' || field.type === 'IntegerField'  ?
                                                                             <Form.Control
                                                                                 name={field.name}
-                                                                                
+
                                                                                 className="w-100"
                                                                                 type="number"
                                                                                 value={formData[field.name] || 0}
-                                                                                
+
 
                                                                                 onChange={(e)=>handleInputChange(e)}
                                                                             />
@@ -207,7 +205,7 @@ const SearchAttachements: React.FC<any> = () => {
                                                                             :
                                                                             <Form.Control
                                                                                 name={field.name}
-                                                                                
+
                                                                                 className="w-100"
                                                                                 type="text"
                                                                                 value={formData[field.name]}
@@ -230,6 +228,7 @@ const SearchAttachements: React.FC<any> = () => {
 
 
                                       </Modal.Body>
+
                                       <Modal.Footer>
 
                                       <Button variant="primary" style={{background: "#df162c", borderWidth: 0}} type={"submit"}>
@@ -242,6 +241,6 @@ const SearchAttachements: React.FC<any> = () => {
   );
 };
 
-export default SearchAttachements;
+export default SearchInvoice;
 
 

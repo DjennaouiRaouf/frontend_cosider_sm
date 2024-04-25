@@ -15,7 +15,6 @@ import AlertMessage from "../AlertMessage/AlertMessage";
 import {formatDate, Humanize} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
 import SearchAttachements from "../SearchAttachements/SearchAttachements";
-import {showSearchBL} from "../Slices/SearchModalSlices";
 
 import {ButtonGroup, Dropdown} from "react-bootstrap";
 

@@ -25,6 +25,7 @@ import CreancePrinter from "../EtatCreance/CreancePrinter/CreancePrinter";
 import {useReactToPrint} from "react-to-print";
 import InvoiceRG from "./InvoiceRG/InvoiceRG";
 import {Button, Form, Modal} from "react-bootstrap";
+import SearchInvoice from "../SearchInvoice/SearchInvoice";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -281,6 +282,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
   return (
       <>
           <AlertMessage/>
+          <SearchInvoice/>
           <AddFacture refresh={()=>{getData('')}}/>
           <AddEncaissement refresh={()=>{getData('')}}/>
           <InvoiceRG ref={componentRef} facture={data} extra={resume}/>

@@ -15,7 +15,7 @@ import AlertMessage from "../AlertMessage/AlertMessage";
 import {formatDate, Humanize} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
 import SearchAttachements from "../SearchAttachements/SearchAttachements";
-import {showSearchBL} from "../Slices/SearchModalSlices";
+import {showSearchAtt} from "../Slices/SearchModalSlices";
 
 import {ButtonGroup, Dropdown} from "react-bootstrap";
 import CreancePrinter from "../EtatCreance/CreancePrinter/CreancePrinter";
@@ -180,7 +180,7 @@ const Attachements: React.FC<any> = () => {
       setSelectedRows(selectedData);
     }
   };
-      const searchBL = () => {
+      const searchAtt = () => {
 
     }
 
@@ -344,7 +344,7 @@ const Attachements: React.FC<any> = () => {
                                                   </Dropdown>
                                                   <button className="btn btn-primary " type="button"
                                                           style={{background: "#df162c", borderWidth: 0}}
-                                                          onClick={searchBL}>
+                                                          onClick={searchAtt}>
                                                       <i className="fas fa-search" style={{marginRight: 5}}/>
                                                       Rechercher
                                                   </button>
