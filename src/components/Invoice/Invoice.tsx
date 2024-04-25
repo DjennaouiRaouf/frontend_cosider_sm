@@ -6,7 +6,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {ColDef} from "ag-grid-community";
+import {ColDef, GridApi} from "ag-grid-community";
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
@@ -24,6 +24,7 @@ import AddEncaissement from "../AddEncaissement/AddEncaissement";
 import CreancePrinter from "../EtatCreance/CreancePrinter/CreancePrinter";
 import {useReactToPrint} from "react-to-print";
 import InvoiceRG from "./InvoiceRG/InvoiceRG";
+import {Button, Form, Modal} from "react-bootstrap";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -63,7 +64,7 @@ const Invoice: React.FC<any> = () => {
   const [searchParams] = useSearchParams();
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
    const[resume,setResume]=useState<any>({});
-
+const [gridApi, setGridApi] = useState<GridApi | null>(null);
   const gridRef = useRef(null);
   const { cid } = useParams();
 
@@ -79,8 +80,9 @@ const Invoice: React.FC<any> = () => {
         const gridOptions:any = {
     pagination: true,
     defaultColDef:defaultColDefs,
-    multiSortKey:'ctrl',
-    animateRows:true,
+     multiSortKey:'ctrl',
+        animateRows:true,
+        rowSelection:'multiple',
   components: {
       InfoRenderer: InfoRenderer,
     },
@@ -197,11 +199,83 @@ const Invoice: React.FC<any> = () => {
 
     }
 
+      const onGridReady = (params: { api: GridApi }) => {
+        setGridApi(params.api);
+    };
+     const onSelectionChanged = () => {
+        if (gridApi) {
+            const selectedNodes: any[] = gridApi.getSelectedNodes();
+            const selectedData: any[] = selectedNodes.map((node) => node.data);
+            setSelectedRows(selectedData);
+        }
+    };
+
      const componentRef = useRef<any>();
      const handlePrint = useReactToPrint({
         content: () => componentRef.current,
 
       });
+
+
+      const [checkedItems, setCheckedItems] = useState<number[]>([]);
+    const [items, setItems] = useState<any[]>([]);
+
+
+    const handleCheckboxChange = (item: any) => {
+        const isChecked = checkedItems.includes(item['id']);
+        if (isChecked) {
+            // Remove item if already checked
+            setCheckedItems(checkedItems.filter(id => id !== item['id']));
+            setItems(items.filter(item => item.id !== item['id']));
+        } else {
+            // Append item to the list if checked
+            setCheckedItems([...checkedItems, item['id']]);
+            setItems([...items, item['id']]);
+        }
+    };
+
+
+
+     const[avances,setAvances]=useState([])
+     const[show,setShow]=useState(false)
+     const handleClose = () => {
+        setShow(false)
+     }
+
+    const openModal = () => {
+        setShow(true)
+    }
+
+       const getAvances = async() => {
+        const contrat_id:string=encodeURIComponent(String(cid));
+        console.log(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}&remboursee=False`)
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}&remboursee=False`,{
+            headers: {
+                Authorization: `Token ${Cookies.get('token')}`,
+                'Content-Type': 'application/json',
+
+            },
+        })
+            .then((response:any) => {
+
+                setAvances(response.data.av);
+
+
+
+            })
+            .catch((error:any) => {
+
+            });
+    }
+
+    useEffect(() => {
+        getAvances();
+    },[]);
+    
+     const Remb = () => {
+
+
+     }
 
 
   return (
@@ -210,6 +284,34 @@ const Invoice: React.FC<any> = () => {
           <AddFacture refresh={()=>{getData('')}}/>
           <AddEncaissement refresh={()=>{getData('')}}/>
           <InvoiceRG ref={componentRef} facture={data} extra={resume}/>
+  {
+
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Selectionner l'avance</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {avances.map(item => (
+                                <Form.Check
+                                    key={item['id']}
+                                    type="checkbox"
+                                    id={`checkbox-${item['id']}`}
+                                    label={`${item['type']} ${item['num_avance']}`}
+                                    checked={checkedItems.includes(item['id'])}
+                                    onChange={() => handleCheckboxChange(item)}
+                                />
+                            ))}
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary btn-sm" style={{ borderWidth: 0, background: "#d7142a" }}
+                                    onClick={Remb}>
+                                <i className="fa fa-send" style={{marginRight:5 }} ></i>
+                                Rebmourser
+                            </Button>
+
+                        </Modal.Footer>
+                    </Modal>
+                }
 
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
@@ -261,7 +363,7 @@ const Invoice: React.FC<any> = () => {
                                                       </div>
                                                       <div className="col-auto">
                                                           <i
-                                                              className="fas fa-balance-scale-right fa-2x text-gray-300"
+                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
                                                               style={{color: "rgb(221, 223, 235)"}}
                                                           />
 
@@ -287,6 +389,11 @@ const Invoice: React.FC<any> = () => {
                                                                                style={{marginRight: 5}}/>
                                                   Facture RG
                                               </button>
+                                               <button className="btn btn-primary" type="button" style={{ height: 40 , background: "#df162c", borderWidth: 0  }}
+                                                                onClick={openModal}>
+                                                            <i className="fa fa-send" />
+                                                            &nbsp;Rembourser
+                                                        </button>
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchD}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
@@ -303,8 +410,12 @@ const Invoice: React.FC<any> = () => {
                                   >
                                       <AgGridReact ref={gridRef}
                                                    rowData={data} columnDefs={fields}
+                                                     onGridReady={onGridReady}
+
                                                    gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
+                                                      onSelectionChanged={onSelectionChanged}
+
 
 
                                     />
