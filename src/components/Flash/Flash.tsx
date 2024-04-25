@@ -14,8 +14,7 @@ import AddAttachement from "../AddAttachement/AddAttachement";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {formatDate, Humanize} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
-import SearchAttachements from "../SearchAttachements/SearchAttachements";
-import {showSearchBL, showSearchContrat, showSearchFlash} from "../Slices/SearchModalSlices";
+import {showSearchFlash} from "../Slices/SearchModalSlices";
 import SearchFlash from "../SearchFlash/SearchFlash";
 
 
