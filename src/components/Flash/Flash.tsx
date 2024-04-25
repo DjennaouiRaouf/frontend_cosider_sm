@@ -105,6 +105,7 @@ const Flash: React.FC<any> = () => {
                         'Content-Type': 'application/json',
 
                     },
+
                 })
                     .then((response:any) => {
                         setData(response.data);
