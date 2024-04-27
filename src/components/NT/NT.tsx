@@ -133,7 +133,7 @@ const NT: React.FC<any> = () => {
       dispatch(showAddNT())
     }
       const searchC = () => {
-        //dispatch(showSearchNT())
+        dispatch(showSearchNT())
 
     }
 
@@ -142,6 +142,7 @@ const NT: React.FC<any> = () => {
       <>
           <>
                 <AlertMessage/>
+              <SearchNT/>
                 <AddNT refresh={()=>getData('')}/>
 
           </>

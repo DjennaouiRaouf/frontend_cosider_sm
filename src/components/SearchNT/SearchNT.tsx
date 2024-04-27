@@ -50,7 +50,7 @@ const SearchNT: React.FC<any> = () => {
     // submit
 
     const getFields = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/camionfilterform/`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/ntfilterfields/`,{
 
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
@@ -132,7 +132,7 @@ const SearchNT: React.FC<any> = () => {
                <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Rechercher un camion</Modal.Title>
+          <Modal.Title>Rechercher un NT</Modal.Title>
         </Modal.Header>
           <Modal.Body>
               <div className="container-fluid">
