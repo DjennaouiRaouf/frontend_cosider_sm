@@ -24,9 +24,7 @@ const InfoRenderer: React.FC<any> = (props) => {
   switch (props.column.colId) {
 
 
-    case 'montant' :
-        return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'montant_cumule' :
+    case 'montant_encaisse' :
         return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
     case 'date' :
@@ -207,7 +205,7 @@ const Encaissements: React.FC<any> = () => {
                                               </div>
                                           </div>
                                       </div>
-                                      <div className="col-md-6 col-xxl-2">
+                                      <div className="col-md-6 col-xxl-3">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
@@ -222,8 +220,8 @@ const Encaissements: React.FC<any> = () => {
                                                       </div>
                                                       <div className="col-auto">
                                                           <i
-                                                              className="fas fa-balance-scale-right fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
+                                                                className="fas fa-money-bill-wave fa-2x text-gray-300"
+                                                                style={{color: "rgb(221, 223, 235)"}}
                                                           />
                                                       </div>
                                                   </div>
