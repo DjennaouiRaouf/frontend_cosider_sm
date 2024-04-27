@@ -283,7 +283,7 @@ const Attachements: React.FC<any> = () => {
                                               </div>
                                           </div>
                                       </div>
-                                      <div className="col-md-6 col-xxl-2">
+                                      <div className="col-md-6 col-xxl-3">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
