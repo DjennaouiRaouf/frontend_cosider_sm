@@ -26,6 +26,7 @@ import {useReactToPrint} from "react-to-print";
 import InvoiceRG from "./InvoiceRG/InvoiceRG";
 import {Button, Form, Modal} from "react-bootstrap";
 import SearchInvoice from "../SearchInvoice/SearchInvoice";
+import {showSearchInvoice} from "../Slices/SearchModalSlices";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -197,7 +198,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
     }
 
     const searchD = () => {
-
+        dispatch(showSearchInvoice())
     }
 
       const onGridReady = (params: { api: GridApi }) => {

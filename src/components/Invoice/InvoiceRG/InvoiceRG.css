@@ -5,17 +5,7 @@
 @media print {
     .print-only {
         display: block;
-            width: 21cm;
-            height: 29.7cm;
-            margin: 20mm;
+
     }
 }
 
- tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-
-  /* Style for even rows */
-  tr:nth-child(even) {
-    background-color: #ffffff;
-  }

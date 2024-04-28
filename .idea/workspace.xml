@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/frontend_cosider_sm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frontend_cosider_sm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchInvoice/SearchInvoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchInvoice/SearchInvoice.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
     "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
-    "ts.external.directory.path": "C:\\Users\\Djennaoui-Raouf\\PycharmProjects\\frontend_cosider_sm\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -70,14 +71,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00002" summary="init">
-      <option name="closed" value="true" />
-      <created>1713356544501</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1713356544501</updated>
-    </task>
     <task active="true" id="Default" summary="Default task">
       <changelist id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init" />
       <created>1713421453040</created>
@@ -96,7 +89,7 @@
       <workItem from="1714160303721" duration="1602000" />
       <workItem from="1714202839338" duration="3345000" />
       <workItem from="1714211893898" duration="701000" />
-      <workItem from="1714289196766" duration="1089000" />
+      <workItem from="1714289196766" duration="3134000" />
     </task>
     <task id="LOCAL-00003" summary="init">
       <option name="closed" value="true" />
@@ -482,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714227958363</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="init">
+      <created>1714290518459</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1714290518460</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
