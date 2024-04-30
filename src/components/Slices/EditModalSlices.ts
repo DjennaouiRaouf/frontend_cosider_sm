@@ -53,6 +53,7 @@ export const EditDataModal = createSlice({
          showEdit: (state,action: PayloadAction<{id:string}>) => {
              state.showEditForm.id=action.payload.id
              state.showEditForm.shown=true
+
         },
         hideEdit: (state) => {
             state.showEditForm={

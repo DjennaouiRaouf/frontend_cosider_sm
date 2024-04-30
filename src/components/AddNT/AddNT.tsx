@@ -97,7 +97,7 @@ const AddNT: React.FC<AddNTProps> = ({refresh}) => {
         const form = e.currentTarget;
         console.log(formData)
         const formDataObject:any=Object.assign({}, formData)
-
+        console.log(Transform(formDataObject))
 
         if (form.checkValidity()) {
             setValidated(false)

@@ -17,6 +17,9 @@ import Cookies from "js-cookie";
 import AddNT from "../AddNT/AddNT";
 import SearchNT from "../SearchNT/SearchNT";
 import AlertMessage from "../AlertMessage/AlertMessage";
+import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
+import NTOption from "../ActionRenderer/NTOption/NTOption";
+import UpdateNT from "../UpdateNT/UpdateNT";
 
 
 
@@ -92,7 +95,24 @@ const NT: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                 setFields(response.data.fields)
+                  const updatedCols:any[] = [
+                     {
+                    headerName:' ',
+                    cellRenderer:NTOption,
+                         minWidth: 50,
+                         cellRendererParams:{
+                                refresh:getData,
+
+                              }
+                    },...response.data.fields,
+
+
+
+                    ];
+
+                 setFields(updatedCols)
+
+
 
 
 
@@ -143,7 +163,9 @@ const NT: React.FC<any> = () => {
           <>
                 <AlertMessage/>
               <SearchNT/>
+              <UpdateNT refresh={()=>getData('')}/>
                 <AddNT refresh={()=>getData('')}/>
+
 
           </>
           <div id="wrapper">
