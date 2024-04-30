@@ -101,6 +101,7 @@ const NT: React.FC<any> = () => {
                     cellRenderer:NTOption,
                          minWidth: 50,
                          cellRendererParams:{
+
                                 refresh:getData,
 
                               }

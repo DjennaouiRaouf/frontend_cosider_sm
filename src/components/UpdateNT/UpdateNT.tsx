@@ -14,7 +14,7 @@ import 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 
 interface UpdateNTProps {
     refresh:()=>void,
@@ -55,7 +55,7 @@ const UpdateNT: React.FC<UpdateNTProps> = ({refresh}) => {
 
 
 
-
+    const [searchParams] = useSearchParams();
 
 
     const { cid } = useParams();
@@ -64,14 +64,14 @@ const UpdateNT: React.FC<UpdateNTProps> = ({refresh}) => {
         const form = e.currentTarget;
         const dqe_id:string=encodeURIComponent(String(showEditForm.id));
         const formDataObject:any=Object.assign({}, formData);
-        formDataObject['contrat']=cid;
+
         formDataObject['id']=showEditForm.id;
 
 
         if (form.checkValidity()) {
             setValidated(false)
 
-                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updatedqe/`,Transform(formDataObject),{
+                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updatent/`,Transform(formDataObject),{
                 headers: {
 
                   Authorization: `Token ${Cookies.get("token")}`,
@@ -81,6 +81,7 @@ const UpdateNT: React.FC<UpdateNTProps> = ({refresh}) => {
                 })
                 .then((response:any) => {
                     handleClose();
+
                     refresh();
 
                 })
