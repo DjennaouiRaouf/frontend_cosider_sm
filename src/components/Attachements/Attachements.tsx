@@ -34,6 +34,9 @@ const InfoRenderer: React.FC<any> = (props) => {
     case 'montant_cumule' :
         return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
+         case 'montant_precedent' :
+        return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
     case 'date' :
       return <span>{formatDate(value)}</span>
 

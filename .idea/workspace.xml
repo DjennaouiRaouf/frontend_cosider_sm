@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init" />
+    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/administrator/Desktop/Cosider_Project_GM",
+    "last_opened_file_path": "C:/Users/administrator/Desktop/frontend_cosider_sm",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -39,6 +42,11 @@
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
     "ts.external.directory.path": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -84,15 +92,8 @@
       <workItem from="1714160303721" duration="1602000" />
       <workItem from="1714202839338" duration="3345000" />
       <workItem from="1714211893898" duration="701000" />
-      <workItem from="1714289196766" duration="4603000" />
-    </task>
-    <task id="LOCAL-00007" summary="init">
-      <option name="closed" value="true" />
-      <created>1713434001090</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1713434001090</updated>
+      <workItem from="1714289196766" duration="6598000" />
+      <workItem from="1714398484520" duration="1566000" />
     </task>
     <task id="LOCAL-00008" summary="init">
       <option name="closed" value="true" />
@@ -473,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714294374656</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="init">
+      <created>1714294821135</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1714294821135</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
