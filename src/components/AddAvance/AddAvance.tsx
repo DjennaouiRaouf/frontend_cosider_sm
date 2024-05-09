@@ -15,6 +15,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
 import {useParams} from "react-router-dom";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 interface AddAvanceProps {
     refresh:()=>void,
@@ -94,11 +95,13 @@ const AddAvance: React.FC<AddAvanceProps> = ({refresh}) => {
 
     }
 
-    const { cid } = useParams();
+    const { nt,pole } = useParams();
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        formData['marche']=cid
+        formData['nt']=nt
+        formData['pole']=pole
+
         const formDataObject:any=Object.assign({}, formData)
 
         if (form.checkValidity()) {
@@ -116,9 +119,12 @@ const AddAvance: React.FC<AddAvanceProps> = ({refresh}) => {
                     refresh();
                     setFormData(defaultState);
                     handleClose();
+                    dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Avance ajoutée"}))
+
 
                 })
                 .catch((error:any) => {
+                    dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
 
                 });
 

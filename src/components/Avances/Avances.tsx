@@ -13,6 +13,7 @@ import {useDispatch} from "react-redux";
 import {Humanize} from "../Utils/Utils";
 import AddAvance from "../AddAvance/AddAvance";
 import {showAddAvance} from "../Slices/AddModalSlices";
+import AlertMessage from "../AlertMessage/AlertMessage";
 
 ;
 
@@ -21,9 +22,14 @@ const InfoRenderer: React.FC<any> = (props) => {
 
   switch (props.column.colId) {
 
-    case 'montant_qte' :
+    case 'debut' :
+      return <span>{value} %</span>
+    case 'fin' :
+      return <span>{value} %</span>
+    case 'taux_avance' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'prix_unitaire' :
+
+      case 'montant' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     default:
       return <span>{value}</span>
@@ -40,7 +46,7 @@ const Avances: React.FC<any> = () => {
    const[resume,setResume]=useState<any>({});
 
   const gridRef = useRef(null);
-  const { cid } = useParams();
+  const { nt,pole } = useParams();
 
   const defaultColDefs: ColDef = {
     sortable: true,
@@ -81,9 +87,10 @@ const Avances: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-        console.log(cid)
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}${url.replace('?',"&")}`,{
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche__nt=${ntid}&marche__code_site=${pid}${url.replace('?',"&")}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
@@ -163,6 +170,7 @@ const Avances: React.FC<any> = () => {
 
   return (
       <>
+          <AlertMessage/>
           <AddAvance refresh={()=>{getData('')}}/>
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
@@ -170,7 +178,7 @@ const Avances: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Avances du Contrat N° {cid} </p>
+                                  <p className="text-primary m-0 fw-bold">Avances du Contrat dont le NT {nt} et le Pole {pole} </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">

@@ -76,7 +76,7 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
         })
             .then((response:any) => {
                 setFields(response.data.fields);
-
+                getState();
             })
             .catch((error:any) => {
 
@@ -241,7 +241,7 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
                                                                             value={formData[field.name]||''}
                                                                             onChange={(e)=>handleInputChange(e)}
                                                                         />
-                                                                        : field.type === 'IntegerField' || field.type ==='DecimalField'  ?
+                                                                        : field.type === 'IntegerField' || field.type ==='DecimalField' || field.type==='FloatField'  ?
                                                                             <Form.Control
                                                                                 name={field.name}
                                                                                 required={field.required}

@@ -16,6 +16,7 @@ import {showAddSite} from "../Slices/AddModalSlices";
 import AddCaution from "../AddCaution/AddCaution";
 import OptionInvoice from "../ActionRenderer/OptionInvoice/OptionInvoice";
 import Recup from "../ActionRenderer/Recup/Recup";
+import AlertMessage from "../AlertMessage/AlertMessage";
 
 ;
 
@@ -41,7 +42,7 @@ const Sites: React.FC<any> = () => {
    const[resume,setResume]=useState<any>({});
 
   const gridRef = useRef(null);
-  const { cid } = useParams();
+
 
   const defaultColDefs: ColDef = {
     sortable: true,
@@ -82,8 +83,7 @@ const Sites: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-        console.log(cid)
+
        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getsites/${url.replace('?',"&")}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
@@ -92,7 +92,7 @@ const Sites: React.FC<any> = () => {
       },
     })
         .then((response:any) => {
-            console.log(response)
+
           setData(response.data);
         })
         .catch((error:any) => {
@@ -167,6 +167,7 @@ const Sites: React.FC<any> = () => {
 
   return (
       <>
+          <AlertMessage/>
           <AddSite refresh={()=>{getData('')}}/>
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
@@ -174,7 +175,7 @@ const Sites: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Nos Sites </p>
+                                  <p className="text-primary m-0 fw-bold">Nos Poles </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center">

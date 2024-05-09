@@ -15,6 +15,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
 import {useParams} from "react-router-dom";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 interface AddCautionProps {
     refresh:()=>void,
@@ -41,6 +42,12 @@ const AddSite: React.FC<AddCautionProps> = ({refresh}) => {
     ];
 
     const handleSelectChange = (e: any) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+     const handleSelectChange2 = (e: any) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -97,11 +104,10 @@ const AddSite: React.FC<AddCautionProps> = ({refresh}) => {
 
     }
 
-    const { cid } = useParams();
+
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        formData['marche']=cid
         const formDataObject:any=Object.assign({}, formData)
         console.log(Transform(formDataObject))
         if (form.checkValidity()) {
@@ -119,9 +125,13 @@ const AddSite: React.FC<AddCautionProps> = ({refresh}) => {
                     refresh();
                     setFormData(defaultState);
                     handleClose();
+                    dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Pole ajouté"}))
+
+
 
                 })
                 .catch((error:any) => {
+                    dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
 
                 });
 
@@ -169,7 +179,7 @@ const AddSite: React.FC<AddCautionProps> = ({refresh}) => {
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter un Site</Modal.Title>
+          <Modal.Title>Ajouter un Pole</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">
@@ -216,7 +226,22 @@ const AddSite: React.FC<AddCautionProps> = ({refresh}) => {
 
                                                               />
                                                           </>
+:
+                                                           field.type === 'ChoiceField' ?
 
+                                                              <Form.Control
+                                                                  as="select"
+                                                                  name={field.name}
+                                                                  required={field.required}
+                                                                  className="w-100"
+                                                                  value={formData[field.name]}
+                                                                  onChange={(e) => handleSelectChange2(e)}>
+
+                                                                  {field.choices.map((item:any, index:any) => (
+                                                                      <option key={index}
+                                                                              value={String(item.key)}>{item.value}</option>
+                                                                  ))}
+                                                                   </Form.Control>
 
                                                           :
                                                           field.type === 'BooleanField' ?

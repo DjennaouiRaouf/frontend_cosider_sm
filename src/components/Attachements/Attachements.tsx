@@ -259,7 +259,7 @@ const Attachements: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Attachements du Contrat N° {cid} du {month} </p>
+                                  <p className="text-primary m-0 fw-bold">Attachements du mois {month} pour le contrat N° {cid}  </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">

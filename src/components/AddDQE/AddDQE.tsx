@@ -43,7 +43,7 @@ const AddDQE: React.FC<AddDQEProps> = ({refresh}) => {
     const handleSelectChange = (e: any) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [e.target.name]: Boolean(e.target.value),
         });
     };
     const handleInputChange = (e:any) => {
@@ -95,15 +95,19 @@ const AddDQE: React.FC<AddDQEProps> = ({refresh}) => {
 
     }
 
-    const { cid } = useParams();
+    const { nt,pole } = useParams();
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        formData['marche']=cid
+        formData['pole']=pole
+        formData['nt']=nt
+
+
         const formDataObject:any=Object.assign({}, formData)
+        console.log(Transform(formDataObject))
         if (form.checkValidity()) {
             setValidated(false)
-            console.log(formDataObject)
+
             await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/adddqe/`,Transform(formDataObject),{
                 headers: {
                     Authorization: `Token ${Cookies.get("token")}`,

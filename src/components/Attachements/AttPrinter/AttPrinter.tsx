@@ -12,7 +12,7 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
       <div ref={ref} className={"print-only"} style={{transform:"scale(0.9)",margin:0, width: "100%"}} >
 
           <div>
-              <h4 style={{textAlign: "center"}}>Attachement des travaux du {props.extra.month} </h4>
+              <h4 style={{textAlign: "center"}}>Attachement des travaux  </h4>
               <hr/>
               <div className="row">
                   <div className="col-sm-7 col-lg-6 col-xl-6 col-xxl-5">

@@ -17,11 +17,14 @@ const NTOption: React.FC<EditNTProps> = (props) => {
 
     const EditNT = () => {
        const rowData:any =  props.data  ;
-        console.log(rowData['id'])
        if(rowData){
            dispatch(fetchFields(`/forms/ntfields/?flag=f`))
-           dispatch(fetchState(`/forms/ntfieldsstate/?id=${rowData['id']}`))
-           dispatch(showEdit({id:rowData['id']}))
+           dispatch(fetchState(`/forms/ntfieldsstate/?nt=${rowData['nt']}&code_site=${rowData['site']}`))
+           dispatch(showEdit({id:{
+               nt:rowData['nt'],
+               code_site:rowData['site']
+               }}))
+
        }
 
     }

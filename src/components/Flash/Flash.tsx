@@ -201,7 +201,7 @@ const Flash: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Flash du contrat N° {cid} du {month} </p>
+                                  <p className="text-primary m-0 fw-bold">Travaux réalisés en {month} du contrat N° {cid}   </p>
                               </div>
                               <div className="card-body">
 

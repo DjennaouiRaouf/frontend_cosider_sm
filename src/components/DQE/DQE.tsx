@@ -50,7 +50,7 @@ const DQE: React.FC<any> = () => {
    const[resume,setResume]=useState<any>({});
 
   const gridRef = useRef(null);
-  const { cid } = useParams();
+  const { nt,pole } = useParams();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const defaultColDefs: ColDef = {
     sortable: true,
@@ -91,8 +91,10 @@ const DQE: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getdqe/?marche=${contrat_id}${url.replace('?',"&")}`,{
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getdqe/?code_site=${pid}&nt=${ntid}${url.replace('?',"&")}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
@@ -220,9 +222,10 @@ const DQE: React.FC<any> = () => {
       const formData = new FormData();
       if (file) {
         formData.append('file', file);
+        /*
         if(cid){
             formData.append("id", cid);
-        }
+        }*/
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/importdqe/`, formData, {
           headers: {
             Authorization: `Token ${Cookies.get("token")}`,
@@ -287,7 +290,7 @@ const DQE: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">DQE du Contrat N° {cid} </p>
+                                  <p className="text-primary m-0 fw-bold">DQE du Contrat dont le NT N°{nt} et le pole {pole} </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">
@@ -315,30 +318,7 @@ const DQE: React.FC<any> = () => {
                                               </div>
                                           </div>
                                       </div>
-                                      <div className="col-md-6 col-xxl-3">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
-                                                      <div className="col me-2">
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Quantité </span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.qt) }</span>
-                                                          </div>
-                                                      </div>
-                                                      <div className="col-auto">
-                                                          <i
-                                                              className="fas fa-balance-scale-right fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
-                                                          />
 
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
                                   </div>
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">

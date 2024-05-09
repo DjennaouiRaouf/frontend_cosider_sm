@@ -263,7 +263,7 @@ const Routes: React.FC<any> = () => {
 
 
                          <Route
-              path="/dqe/liste_dqe/:cid"
+              path="/dqe/liste_dqe/:nt/:pole"
               element={
                   authenticated ? (
                       <>
@@ -346,7 +346,7 @@ const Routes: React.FC<any> = () => {
           />
 
                <Route
-              path="/avance/liste_avance/:cid"
+              path="/avance/liste_avance/:nt/:pole"
               element={
                   authenticated ? (
                       <>
