@@ -45,7 +45,7 @@ const Flash: React.FC<any> = () => {
   const [searchParams] = useSearchParams();
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
   const gridRef = useRef(null);
-  const { cid ,month} = useParams();
+  const { nt,pole ,month} = useParams();
 
     const[resume,setResume]=useState<any>({});
   const defaultColDefs: ColDef = {
@@ -87,7 +87,7 @@ const Flash: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
+        const contrat_id:string=encodeURIComponent(String('cid'));
 
         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/prodparams/?id=${contrat_id}`,{
             headers: {
@@ -201,7 +201,7 @@ const Flash: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Travaux réalisés en {month} du contrat N° {cid}   </p>
+                                  <p className="text-primary m-0 fw-bold">Travaux réalisés en {month} du contrat N° {"cid"}   </p>
                               </div>
                               <div className="card-body">
 

@@ -5,27 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/dbo.sYMBAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/dbo.sYMBAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/dbo.sYMBAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/NTOption/NTOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/NTOption/NTOption.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddAvance/AddAvance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddAvance/AddAvance.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddDQE/AddDQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddDQE/AddDQE.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddSite/AddSite.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddSite/AddSite.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Avances/Avances.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Avances/Avances.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Avances/AvancesParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Avances/AvancesParams.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DQE/DQEParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DQE/DQEParams.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sites/Sites.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sites/Sites.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slices/EditModalSlices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slices/EditModalSlices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Flash/FlashParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/FlashParams.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,15 +105,7 @@
       <workItem from="1714913488698" duration="798000" />
       <workItem from="1714979320116" duration="8606000" />
       <workItem from="1715158220752" duration="11021000" />
-      <workItem from="1715238728071" duration="7390000" />
-    </task>
-    <task id="LOCAL-00016" summary="init">
-      <option name="closed" value="true" />
-      <created>1713786868171</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1713786868171</updated>
+      <workItem from="1715238728071" duration="11062000" />
     </task>
     <task id="LOCAL-00017" summary="init">
       <option name="closed" value="true" />
@@ -502,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714488568809</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="init">
+      <created>1715252724505</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1715252724505</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -313,7 +313,7 @@ const Routes: React.FC<any> = () => {
                 }
             />
             <Route
-                path="/flash/liste_flash/:cid/:month"
+                path="/flash/liste_flash/:nt/:pole/:month"
                 element={
                     authenticated ? (
                         <>

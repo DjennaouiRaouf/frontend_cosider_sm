@@ -15,19 +15,29 @@ import contrat from "../Contrat/Contrat";
 
 
 const FlashParams: React.FC<any> = () => {
-    const [display, setDisplay] = useState(true);
-     const [selectedOption, setSelectedOption] = useState<string[]>([]);
-    const [options,setOptions]=useState<string[]>([]);
     const[selectedMonth,setSelectedMonth]=useState<string>("")
+     const [display, setDisplay] = useState(true);
+     const [selectedNT, setSelectedNT] = useState<string[]>([]);
+    const [selectedPole, setSelectedPole] = useState<string[]>([]);
+    const[minDate,setMinDate]=useState<string>('');
+    const[maxDate,setMaxDate]=useState<string>('');
+
+     const [nt,setNT]=useState<string[]>([]);
+    const [pole,setPole]=useState<string[]>([]);
+
     const navigate=useNavigate();
     const hide = () => setDisplay(false);
   const show = () => setDisplay(true);
   const valider = () => {
     hide();
-    const val:string=selectedOption[0]
-     navigate(`liste_flash/${encodeURIComponent(val)}/${selectedMonth}/`, )
+    const val:string=selectedNT[0]
+    const val2:string=selectedPole[0]
+    navigate(`liste_flash/${encodeURIComponent(val)}/${encodeURIComponent(val2)}`, )
 
   }
+      const handleChangeMonth = (e:any) => {
+        setSelectedMonth(e.target.value)
+    }
 
   const getContrats = async() => {
        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/contractkeys/`,{
@@ -38,7 +48,33 @@ const FlashParams: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                 setOptions(response.data)
+                 setNT(response.data.nt)
+                 setPole(response.data.pole)
+
+
+
+
+            })
+            .catch((error:any) => {
+
+            });
+
+
+  }
+  const getDateMaxMin = async() => {
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/flashm/`,{
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+        })
+            .then((response:any) => {
+                var dateObject1 = new Date(response.data.min_date);
+                 var dateObject2 = new Date(response.data.max_date);
+
+                 setMinDate(`${dateObject1.getFullYear()}-${dateObject1.getMonth()+1}`)
+                 setMaxDate(`${dateObject2.getFullYear()}-${dateObject2.getMonth()+1}`)
+
 
 
 
@@ -51,21 +87,23 @@ const FlashParams: React.FC<any> = () => {
   }
 
     const handleChange = (selected:any) => {
-    setSelectedOption(selected);
+    setSelectedNT(selected);
 
 
   };
+    const handleChange2 = (selected:any) => {
+    setSelectedPole(selected);
 
 
+  };
 
  useEffect(() => {
         getContrats();
     },[]);
 
-
-    const handleChangeMonth = (e:any) => {
-        setSelectedMonth(e.target.value)
-    }
+  useEffect(() => {
+        getDateMaxMin();
+    },[]);
 
 
   return (
@@ -76,27 +114,44 @@ const FlashParams: React.FC<any> = () => {
         keyboard={false}
       >
         <Modal.Header >
-          <Modal.Title>Saisir le numero du contrat</Modal.Title>
+          <Modal.Title>Saisir le NT et le Pole</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <div className="mb-3">
                                           <label className="form-label" htmlFor="username">
                                               <strong>
-                                                  Numero du Contrat
+                                                  NT
                                               </strong>
                                           </label>
                                                                 <>
                                                                     <Typeahead
                                                                         id={'contrat_id'}
                                                                          onChange={handleChange}
-                                                                          options={options}
-                                                                          selected={selectedOption}
-                                                                          placeholder="Choisir un contrat"
+                                                                          options={nt}
+                                                                          selected={selectedNT}
+                                                                          placeholder="Choisir un NT"
 
                                                                     />
                                                                 </>
         </div>
-            <div className="mb-3">
+              <div className="mb-3">
+                                          <label className="form-label" htmlFor="username">
+                                              <strong>
+                                                  Pole
+                                              </strong>
+                                          </label>
+                                                                <>
+                                                                    <Typeahead
+                                                                        id={'contrat_id'}
+                                                                         onChange={handleChange2}
+                                                                          options={pole}
+                                                                          selected={selectedPole}
+                                                                          placeholder="Choisir un Pole"
+
+                                                                    />
+                                                                </>
+        </div>
+		<div className="mb-3">
                 <label className="form-label" htmlFor="username">
                     <strong>
                         Mois
@@ -108,11 +163,13 @@ const FlashParams: React.FC<any> = () => {
                         className="w-100 mb-3 mt-3"
                         type="month"
                         onChange={(e)=>handleChangeMonth(e)}
-
+                        min={'2013-10'}
+                        max={'2014-05'}
 
                     />
                 </>
             </div>
+
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
@@ -124,6 +181,7 @@ const FlashParams: React.FC<any> = () => {
 
       </>
   );
+
 };
 
 
