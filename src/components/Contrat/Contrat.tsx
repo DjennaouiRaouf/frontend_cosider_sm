@@ -63,9 +63,11 @@ const Contrat: React.FC<any> = () => {
   };
 
         const gridOptions:any = {
+
     pagination: true,
     defaultColDef:defaultColDefs,
     multiSortKey:'ctrl',
+
     animateRows:true,
   components: {
       InfoRenderer: InfoRenderer,
@@ -155,7 +157,6 @@ const Contrat: React.FC<any> = () => {
 
        const handleRowClick = (event: any) => {
         setSelectedRows(event.data);
-
   };
 
      useEffect(() => {
