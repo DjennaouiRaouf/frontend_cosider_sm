@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Attachements/AttachementsParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/AttachementsParams.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Flash/FlashParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/FlashParams.tsx" afterDir="false" />
     </list>
@@ -111,15 +109,7 @@
       <workItem from="1715158220752" duration="11021000" />
       <workItem from="1715238728071" duration="13679000" />
       <workItem from="1715495301748" duration="1347000" />
-      <workItem from="1715498681387" duration="8296000" />
-    </task>
-    <task id="LOCAL-00020" summary="init">
-      <option name="closed" value="true" />
-      <created>1713792919376</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1713792919376</updated>
+      <workItem from="1715498681387" duration="11565000" />
     </task>
     <task id="LOCAL-00021" summary="init">
       <option name="closed" value="true" />
@@ -487,7 +477,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715267235197</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="init">
+      <option name="closed" value="true" />
+      <created>1715508200445</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1715508200446</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

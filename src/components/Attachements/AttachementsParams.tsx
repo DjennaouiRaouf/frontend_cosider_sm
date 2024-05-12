@@ -15,22 +15,35 @@ import contrat from "../Contrat/Contrat";
 
 
 const AttachementsParams: React.FC<any> = () => {
-    const [display, setDisplay] = useState(true);
-    const [selectedOption, setSelectedOption] = useState<string[]>([]);
-    const [options,setOptions]=useState<string[]>([]);
-    const[selectedMonth,setSelectedMonth]=useState<string>("")
+       const[selectedMonth,setSelectedMonth]=useState<string>("")
+     const [display, setDisplay] = useState(true);
+     const [selectedNT, setSelectedNT] = useState<string[]>([]);
+    const [selectedPole, setSelectedPole] = useState<string[]>([]);
+    const[minDate,setMinDate]=useState<string>('');
+    const[maxDate,setMaxDate]=useState<string>('');
+
+     const [nt,setNT]=useState<string[]>([]);
+    const [pole,setPole]=useState<string[]>([]);
+
     const navigate=useNavigate();
     const hide = () => setDisplay(false);
-    const show = () => setDisplay(true);
-    const valider = () => {
-        hide();
-        const val:string=selectedOption[0]
-        navigate(`liste_att/${encodeURIComponent(val)}/${selectedMonth}/`, )
-
+  const show = () => setDisplay(true);
+  const valider = () => {
+    hide();
+    const val:string=selectedNT[0]
+    const val2:string=selectedPole[0]
+      if(val && val2 && selectedMonth){
+        navigate(`liste_att/${encodeURIComponent(val)}/${encodeURIComponent(val2)}/${encodeURIComponent(selectedMonth)}`, )
+      }else{
+          window.location.reload();
+      }
+  }
+      const handleChangeMonth = (e:any) => {
+        setSelectedMonth(e.target.value)
     }
 
-    const getContrats = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/contractkeys/`,{
+  const getContrats = async() => {
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/contractkeys/`,{
             headers: {
                 'Content-Type': 'application/json',
 
@@ -38,7 +51,9 @@ const AttachementsParams: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                setOptions(response.data)
+                 setNT(response.data.nt)
+                 setPole(response.data.pole)
+
 
 
 
@@ -48,54 +63,110 @@ const AttachementsParams: React.FC<any> = () => {
             });
 
 
-    }
+  }
+  const getDateMaxMin = async() => {
+
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/attm/?code_site=${selectedPole[0]}&nt=${selectedNT[0]}`,{
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+        })
+            .then((response:any) => {
+                console.log(response.data)
+                if(response.data.min_date!==null && response.data.max_date!==null) {
+                      var dateObject1 = new Date(response.data.min_date);
+                      var dateObject2 = new Date(response.data.max_date);
+                      const month1 = (dateObject1.getMonth() + 1).toString().padStart(2, '0');
+                      const month2 = (dateObject2.getMonth() + 1).toString().padStart(2, '0');
+                      setMinDate(`${dateObject1.getFullYear()}-${month1}`)
+                      setMaxDate(`${dateObject2.getFullYear()}-${month2}`)
+                }
+                else {
+                    setMinDate('')
+                      setMaxDate('')
+                }
+
+
+
+            })
+            .catch((error:any) => {
+
+            });
+
+
+  }
 
     const handleChange = (selected:any) => {
-        setSelectedOption(selected);
+    setSelectedNT(selected);
 
 
-    };
+  };
+    const handleChange2 = (selected:any) => {
+    setSelectedPole(selected);
 
 
+  };
 
-    useEffect(() => {
+ useEffect(() => {
         getContrats();
     },[]);
 
+  useEffect(() => {
+     getDateMaxMin();
 
-    const handleChangeMonth = (e:any) => {
-        setSelectedMonth(e.target.value)
-    }
+    },[selectedPole,selectedNT]);
 
 
-    return (
-        <>
-            <Modal
-                show={display}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header >
-                    <Modal.Title>Saisir le numero du contrat</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="username">
-                            <strong>
-                                Numero du Contrat
-                            </strong>
-                        </label>
-                        <>
-                            <Typeahead
-                                id={'contrat_id'}
-                                onChange={handleChange}
-                                options={options}
-                                selected={selectedOption}
-                                placeholder="Choisir un contrat"
+  return (
+      <>
+      <Modal
+        show={display}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header >
+          <Modal.Title>Saisir le NT et le Pole</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="mb-3">
+                                          <label className="form-label" htmlFor="username">
+                                              <strong>
+                                                  NT
+                                              </strong>
+                                          </label>
+                                                                <>
+                                                                    <Typeahead
+                                                                        id={'contrat_id'}
+                                                                         onChange={handleChange}
+                                                                          options={nt}
+                                                                          selected={selectedNT}
+                                                                          placeholder="Choisir un NT"
 
-                            />
-                        </>
-                    </div>
+                                                                    />
+                                                                </>
+        </div>
+              <div className="mb-3">
+                                          <label className="form-label" htmlFor="username">
+                                              <strong>
+                                                  Pole
+                                              </strong>
+                                          </label>
+                                                                <>
+                                                                    <Typeahead
+                                                                        id={'contrat_id'}
+                                                                         onChange={handleChange2}
+                                                                          options={pole}
+                                                                          selected={selectedPole}
+                                                                          placeholder="Choisir un Pole"
+
+                                                                    />
+                                                                </>
+        </div>
+
+            {
+                (maxDate!=='' && minDate!='') &&
+
                     <div className="mb-3">
                         <label className="form-label" htmlFor="username">
                             <strong>
@@ -103,27 +174,33 @@ const AttachementsParams: React.FC<any> = () => {
                             </strong>
                         </label>
                         <>
-                            <Form.Control
+                             <Form.Control
                                 required
                                 className="w-100 mb-3 mt-3"
                                 type="month"
-                                onChange={(e)=>handleChangeMonth(e)}
-
+                                onChange={(e) => handleChangeMonth(e)}
+                                min={minDate}
+                                max={maxDate}
 
                             />
                         </>
                     </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
-                        Envoyer
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+
+            }
 
 
-        </>
-    );
+        </Modal.Body>
+          <Modal.Footer>
+              <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
+                  Envoyer
+              </Button>
+          </Modal.Footer>
+      </Modal>
+
+
+      </>
+  );
+
 };
 
 

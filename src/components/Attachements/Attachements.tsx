@@ -54,7 +54,7 @@ const Attachements: React.FC<any> = () => {
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
   const gridRef = useRef(null);
     const [gridApi, setGridApi] = useState<GridApi | null>(null);
-  const { cid ,month} = useParams();
+  const { nt,pole ,month} = useParams();
   const[resume,setResume]=useState<any>({});
   const defaultColDefs: ColDef = {
 
@@ -97,8 +97,10 @@ const Attachements: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getatt/?marche=${contrat_id}&mm=${month?.split('-')[1]}&aa=${month?.split('-')[0]}${url.replace('?',"&")}`,{
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+        const smonth:string=encodeURIComponent(String(month));
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getatt/?nt=${ntid}&code_site=${pid}&mm=${smonth?.split('-')[1]}&aa=${smonth?.split('-')[0]}${url.replace('?',"&")}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
@@ -188,7 +190,7 @@ const Attachements: React.FC<any> = () => {
     }
 
     const print_dec = () => {
-        navigate('print_dec', { state: { cid:String(cid),month: month?.split('-')[1],year:month?.split('-')[0],is_att:false} }) // decompte prov
+        navigate('print_dec', { state: { cid:String('cid'),month: month?.split('-')[1],year:month?.split('-')[0],is_att:false} }) // decompte prov
     }
       const componentRef = useRef<any>();
      const handlePrint = useReactToPrint({
@@ -259,7 +261,7 @@ const Attachements: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Attachements du mois {month} pour le contrat N° {cid}  </p>
+                                  <p className="text-primary m-0 fw-bold">Attachements des travaux du mois {month} dont le NT {nt} et le pole {pole}  </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">
@@ -293,10 +295,10 @@ const Attachements: React.FC<any> = () => {
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Quantité réalisée</span>
+                                                              <span>Taux réalisée</span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.qt)}</span>
+                                                              <span>{Humanize(resume.qt)}%</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">

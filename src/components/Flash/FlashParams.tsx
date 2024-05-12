@@ -170,7 +170,7 @@ const FlashParams: React.FC<any> = () => {
                     <div className="mb-3">
                         <label className="form-label" htmlFor="username">
                             <strong>
-                                Mois {minDate}
+                                Mois
                             </strong>
                         </label>
                         <>
