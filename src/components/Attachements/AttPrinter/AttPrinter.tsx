@@ -100,16 +100,7 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
                               />
                               </tbody>
                           </table>
-                          <div className="card">
-                              <div className="card-header">
-                                  <h5 className="mb-0">Total</h5>
-                              </div>
-                              <div className="card-body">
-                                  <label className="form-label" style={{width: "100%"}}>
-                                      <strong>Qauntité : </strong>{props.extra.qt}
-                                  </label>
-                              </div>
-                          </div>
+
                       </div>
                   </div>
               </div>

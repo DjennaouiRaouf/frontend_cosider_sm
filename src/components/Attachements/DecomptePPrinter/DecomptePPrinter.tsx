@@ -111,9 +111,6 @@ const DecomptePPrinter = forwardRef<HTMLDivElement, DecomptePPrinterProps>((prop
                               </div>
                               <div className="card-body">
                                   <label className="form-label" style={{width: "100%"}}>
-                                      <strong>Qauntité : </strong>{props.extra.qt}
-                                  </label>
-                                  <label className="form-label" style={{width: "100%"}}>
                                       <strong>Montant en HT : </strong>{Humanize(props.extra.mt)}DA
                                   </label>
                                   {
