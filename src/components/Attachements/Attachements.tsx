@@ -303,7 +303,7 @@ const Attachements: React.FC<any> = () => {
                                                       </div>
                                                       <div className="col-auto">
                                                           <i
-                                                              className="fas fa-balance-scale-right fa-2x text-gray-300"
+                                                              className="fas fa-percentage fa-2x text-gray-300"
                                                               style={{color: "rgb(221, 223, 235)"}}
                                                           />
                                                       </div>
