@@ -16,6 +16,7 @@ import {formatDate, Humanize} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
 import {showSearchFlash} from "../Slices/SearchModalSlices";
 import SearchFlash from "../SearchFlash/SearchFlash";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -192,7 +193,18 @@ const Flash: React.FC<any> = () => {
   };
 
   const attacher = () => {
-        console.log(selectedRows)
+
+      const input = selectedRows.map(({ code_tache, nt ,code_site,quantite_1,mmaa}) => ({ code_tache, nt ,code_site,quantite_1,mmaa}));
+
+    axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,input )
+      .then(response => {
+         dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Attachements ajoutés"}))
+      })
+      .catch(error => {
+        dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
+
+      });
+
   }
 
   return (

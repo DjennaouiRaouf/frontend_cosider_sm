@@ -244,7 +244,7 @@ const Routes: React.FC<any> = () => {
 
 
                     <Route
-              path="/invoice/liste_f/:cid"
+              path="/invoice/liste_f/:nt/:pole"
               element={
                   authenticated ? (
                       <>

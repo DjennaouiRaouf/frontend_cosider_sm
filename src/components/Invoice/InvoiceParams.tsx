@@ -15,17 +15,25 @@ import contrat from "../Contrat/Contrat";
 
 
 const InvoiceParams: React.FC<any> = () => {
-    const [display, setDisplay] = useState(true);
-     const [selectedOption, setSelectedOption] = useState<string[]>([]);
-    const [options,setOptions]=useState<string[]>([]);
+     const [display, setDisplay] = useState(true);
+     const [selectedNT, setSelectedNT] = useState<string[]>([]);
+    const [selectedPole, setSelectedPole] = useState<string[]>([]);
+
+     const [nt,setNT]=useState<string[]>([]);
+    const [pole,setPole]=useState<string[]>([]);
+
     const navigate=useNavigate();
     const hide = () => setDisplay(false);
   const show = () => setDisplay(true);
   const valider = () => {
     hide();
-    const val:string=selectedOption[0]
-     navigate(`liste_f/${encodeURIComponent(val)}`, )
-
+    const val:string=selectedNT[0]
+    const val2:string=selectedPole[0]
+      if(val && val2 ){
+        navigate(`liste_f/${encodeURIComponent(val)}/${encodeURIComponent(val2)}`, )
+      }else{
+          window.location.reload();
+      }
   }
 
   const getContrats = async() => {
@@ -37,7 +45,9 @@ const InvoiceParams: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                 setOptions(response.data)
+                 setNT(response.data.nt)
+                 setPole(response.data.pole)
+
 
 
 
@@ -50,7 +60,12 @@ const InvoiceParams: React.FC<any> = () => {
   }
 
     const handleChange = (selected:any) => {
-    setSelectedOption(selected);
+    setSelectedNT(selected);
+
+
+  };
+    const handleChange2 = (selected:any) => {
+    setSelectedPole(selected);
 
 
   };
@@ -58,6 +73,7 @@ const InvoiceParams: React.FC<any> = () => {
  useEffect(() => {
         getContrats();
     },[]);
+
 
 
   return (
@@ -68,37 +84,58 @@ const InvoiceParams: React.FC<any> = () => {
         keyboard={false}
       >
         <Modal.Header >
-          <Modal.Title>Saisir le numero du contrat</Modal.Title>
+          <Modal.Title>Saisir le NT et le Pole</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <div className="mb-3">
                                           <label className="form-label" htmlFor="username">
                                               <strong>
-                                                  Numero du Contrat
+                                                  NT
                                               </strong>
                                           </label>
                                                                 <>
                                                                     <Typeahead
                                                                         id={'contrat_id'}
                                                                          onChange={handleChange}
-                                                                          options={options}
-                                                                          selected={selectedOption}
-                                                                          placeholder="Choisir un contrat"
+                                                                          options={nt}
+                                                                          selected={selectedNT}
+                                                                          placeholder="Choisir un NT"
 
                                                                     />
                                                                 </>
         </div>
+              <div className="mb-3">
+                                          <label className="form-label" htmlFor="username">
+                                              <strong>
+                                                  Pole
+                                              </strong>
+                                          </label>
+                                                                <>
+                                                                    <Typeahead
+                                                                        id={'contrat_id'}
+                                                                         onChange={handleChange2}
+                                                                          options={pole}
+                                                                          selected={selectedPole}
+                                                                          placeholder="Choisir un Pole"
+
+                                                                    />
+                                                                </>
+        </div>
+
+
+
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
-            Envoyer
-          </Button>
-        </Modal.Footer>
+          <Modal.Footer>
+              <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
+                  Envoyer
+              </Button>
+          </Modal.Footer>
       </Modal>
 
 
       </>
   );
+
 };
 
 
