@@ -32,8 +32,11 @@ const FlashParams: React.FC<any> = () => {
     hide();
     const val:string=selectedNT[0]
     const val2:string=selectedPole[0]
-    navigate(`liste_flash/${encodeURIComponent(val)}/${encodeURIComponent(val2)}`, )
-
+      if(val && val2 && selectedMonth){
+        navigate(`liste_flash/${encodeURIComponent(val)}/${encodeURIComponent(val2)}/${encodeURIComponent(selectedMonth)}`, )
+      }else{
+          window.location.reload();
+      }
   }
       const handleChangeMonth = (e:any) => {
         setSelectedMonth(e.target.value)
@@ -62,19 +65,27 @@ const FlashParams: React.FC<any> = () => {
 
   }
   const getDateMaxMin = async() => {
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/flashm/`,{
+
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/flashm/?code_site=${selectedPole[0]}&nt=${selectedNT[0]}`,{
             headers: {
                 'Content-Type': 'application/json',
 
             },
         })
             .then((response:any) => {
-                var dateObject1 = new Date(response.data.min_date);
-                 var dateObject2 = new Date(response.data.max_date);
-
-                 setMinDate(`${dateObject1.getFullYear()}-${dateObject1.getMonth()+1}`)
-                 setMaxDate(`${dateObject2.getFullYear()}-${dateObject2.getMonth()+1}`)
-
+                console.log(response.data)
+                if(response.data.min_date!==null && response.data.max_date!==null) {
+                      var dateObject1 = new Date(response.data.min_date);
+                      var dateObject2 = new Date(response.data.max_date);
+                      const month1 = (dateObject1.getMonth() + 1).toString().padStart(2, '0');
+                      const month2 = (dateObject2.getMonth() + 1).toString().padStart(2, '0');
+                      setMinDate(`${dateObject1.getFullYear()}-${month1}`)
+                      setMaxDate(`${dateObject2.getFullYear()}-${month2}`)
+                }
+                else {
+                    setMinDate('')
+                      setMaxDate('')
+                }
 
 
 
@@ -102,8 +113,9 @@ const FlashParams: React.FC<any> = () => {
     },[]);
 
   useEffect(() => {
-        getDateMaxMin();
-    },[]);
+     getDateMaxMin();
+
+    },[selectedPole,selectedNT]);
 
 
   return (
@@ -151,31 +163,38 @@ const FlashParams: React.FC<any> = () => {
                                                                     />
                                                                 </>
         </div>
-		<div className="mb-3">
-                <label className="form-label" htmlFor="username">
-                    <strong>
-                        Mois
-                    </strong>
-                </label>
-                <>
-                    <Form.Control
-                        required
-                        className="w-100 mb-3 mt-3"
-                        type="month"
-                        onChange={(e)=>handleChangeMonth(e)}
-                        min={'2013-10'}
-                        max={'2014-05'}
 
-                    />
-                </>
-            </div>
+            {
+                (maxDate!=='' && minDate!='') &&
+
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="username">
+                            <strong>
+                                Mois {minDate}
+                            </strong>
+                        </label>
+                        <>
+                             <Form.Control
+                                required
+                                className="w-100 mb-3 mt-3"
+                                type="month"
+                                onChange={(e) => handleChangeMonth(e)}
+                                min={minDate}
+                                max={maxDate}
+
+                            />
+                        </>
+                    </div>
+
+            }
+
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
-            Envoyer
-          </Button>
-        </Modal.Footer>
+          <Modal.Footer>
+              <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
+                  Envoyer
+              </Button>
+          </Modal.Footer>
       </Modal>
 
 

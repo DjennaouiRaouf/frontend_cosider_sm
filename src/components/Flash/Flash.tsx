@@ -6,7 +6,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {ColDef} from "ag-grid-community";
+import {ColDef, GridApi} from "ag-grid-community";
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
@@ -61,6 +61,7 @@ const Flash: React.FC<any> = () => {
     pagination: true,
     defaultColDef:defaultColDefs,
     multiSortKey:'ctrl',
+            rowSelection:'multiple',
     animateRows:true,
   components: {
       InfoRenderer: InfoRenderer,
@@ -87,18 +88,11 @@ const Flash: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String('cid'));
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+        const smonth:string=encodeURIComponent(String(month));
 
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/prodparams/?id=${contrat_id}`,{
-            headers: {
-                Authorization: `Token ${Cookies.get('token')}`,
-                'Content-Type': 'application/json',
-
-            },
-        })
-            .then(async(response:any) => {
-
-                await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sch/getprod/?code_site=${response.data.cs}&nt=${response.data.nt}&prevu_realiser=R&code_type_production=01&mm=${month?.split('-')[1]}&aa=${month?.split('-')[0]}${url.replace('?',"&")}`,{
+                    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sch/getprod/?code_site=${pid}&nt=${ntid}&prevu_realiser=R&code_type_production=01&mm=${smonth?.split('-')[1]}&aa=${smonth?.split('-')[0]}${url.replace('?',"&")}`,{
                     headers: {
                         Authorization: `Token ${Cookies.get('token')}`,
                         'Content-Type': 'application/json',
@@ -114,10 +108,6 @@ const Flash: React.FC<any> = () => {
 
                     });
 
-            })
-            .catch((error:any) => {
-
-            });
 
 
 
@@ -135,11 +125,7 @@ const Flash: React.FC<any> = () => {
             .then((response:any) => {
 
                     const updatedCols:any[] = [
-                     {
-                        headerName:' ',
-                        cellRenderer:Attacher,
-                             minWidth: 250
-                     },
+
                         ...response.data.fields,
 
 
@@ -189,6 +175,24 @@ const Flash: React.FC<any> = () => {
     }
 
 
+
+    const [gridApi, setGridApi] = useState<GridApi | null>(null);
+
+     const onGridReady = (params: { api: GridApi }) => {
+    setGridApi(params.api);
+  };
+  const onSelectionChanged = () => {
+    if (gridApi) {
+      const selectedNodes: any[] = gridApi.getSelectedNodes();
+      const selectedData: any[] = selectedNodes.map((node) => node.data);
+      setSelectedRows(selectedData);
+    }
+  };
+
+  const attacher = () => {
+        console.log(selectedRows)
+  }
+
   return (
       <>
           <AlertMessage/>
@@ -201,7 +205,7 @@ const Flash: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Travaux réalisés en {month} du contrat N° {"cid"}   </p>
+                                  <p className="text-primary m-0 fw-bold">Travaux réalisés en {month} dont  le NT  {nt} et le Pole {pole}   </p>
                               </div>
                               <div className="card-body">
 
@@ -212,13 +216,13 @@ const Flash: React.FC<any> = () => {
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={addBL}>
                                                   <i className="fas fa-plus" style={{marginRight: 5}}/>
                                                   Recup
-                                              </button>
+                                              </button>*/}
                                              <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}}
-                                                      onClick={searchBL}>
-                                                  <i className="fas fa-search" style={{marginRight: 5}}/>
-                                                  Rechercher
-                                              </button>*/}
+                                                      onClick={attacher}>
+                                                  <i className="fas fa-plus" style={{marginRight: 5}}/>
+                                                  Attacher
+                                              </button>
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}}
                                                       onClick={searchFlash}>
@@ -237,6 +241,9 @@ const Flash: React.FC<any> = () => {
                                                    rowData={data} columnDefs={fields}
                                            gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
+                                                    onGridReady={onGridReady}
+
+                                             onSelectionChanged={onSelectionChanged}
 
 
                                     />

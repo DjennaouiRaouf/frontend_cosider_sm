@@ -156,7 +156,12 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
 
 
     };
-
+    const handleSelectChange2 = (e: any) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
 
   return (
       <>
@@ -212,6 +217,21 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
 
                                                                     />
                                                                 </>
+                                                                :field.type === 'ChoiceField' ?
+
+                                                              <Form.Control
+                                                                  as="select"
+                                                                  name={field.name}
+                                                                  required={field.required}
+                                                                  className="w-100"
+                                                                  value={formData[field.name]}
+                                                                  onChange={(e) => handleSelectChange2(e)}>
+
+                                                                  {field.choices.map((item:any, index:any) => (
+                                                                      <option key={index}
+                                                                              value={String(item.key)}>{item.value}</option>
+                                                                  ))}
+                                                                   </Form.Control>
 
 
                                                                 :
