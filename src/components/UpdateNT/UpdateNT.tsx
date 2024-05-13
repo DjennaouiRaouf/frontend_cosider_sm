@@ -58,14 +58,11 @@ const UpdateNT: React.FC<UpdateNTProps> = ({refresh}) => {
     const [searchParams] = useSearchParams();
 
 
-    const { cid } = useParams();
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        const dqe_id:string=encodeURIComponent(String(showEditForm.id));
         const formDataObject:any=Object.assign({}, formData);
 
-        formDataObject['id']=showEditForm.id;
 
 
         if (form.checkValidity()) {
@@ -125,7 +122,7 @@ const UpdateNT: React.FC<UpdateNTProps> = ({refresh}) => {
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Modifier le NT</Modal.Title>
+          <Modal.Title>Modifier le NT N° {showEditForm.id.nt} dont le pole {showEditForm.id.code_site}</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">

@@ -15,6 +15,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
 import {useParams} from "react-router-dom";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 interface UpdateDQEProps {
     refresh:()=>void,
@@ -62,10 +63,9 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        const dqe_id:string=encodeURIComponent(String(showEditForm.id));
         const formDataObject:any=Object.assign({}, formData);
-        formDataObject['contrat']=cid;
-        formDataObject['id']=showEditForm.id;
+
+        formDataObject['id']=showEditForm.id.id;
 
 
         if (form.checkValidity()) {
@@ -82,9 +82,11 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
                 .then((response:any) => {
                     refresh();
                     handleClose();
+                        dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: response.data}))
 
                 })
                 .catch((error:any) => {
+                    dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
 
                 });
 
@@ -124,7 +126,7 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Modifier le Contrat N° {showEditForm.id}</Modal.Title>
+          <Modal.Title>Modifier le Contrat N° {showEditForm.id.id}</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">
@@ -187,7 +189,7 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
-                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' ?
+                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField'|| field.type === 'FloatField' ?
                                                                       <Form.Control
                                                                           name={field.name}
                                                                           required={field.required}

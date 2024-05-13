@@ -16,10 +16,8 @@ import AddContrat from "../AddContrat/AddContrat";
 import {showSearchContrat} from "../Slices/SearchModalSlices";
 import SearchContrat from "../SearchContrat/SearchContrat";
 import Cookies from "js-cookie";
-import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
-import EditContrat from "../ActionRenderer/EditContrat/EditContrat";
 import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
-import UpdateDQE from "../UpdateDQE/UpdateDQE";
+
 import UpdateContrat from "../UpdateContrat/UpdateContrat";
 import AlertMessage from "../AlertMessage/AlertMessage";
 
@@ -130,7 +128,7 @@ const Contrat: React.FC<any> = () => {
                                 {
                     headerName:' ',
                     cellRenderer:ContratOption,
-                         minWidth: 50,
+                         maxWidth: 100,
                          cellRendererParams:{
                                 refresh:getData,
 

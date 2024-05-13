@@ -40,10 +40,11 @@ const NTOption: React.FC<EditNTProps> = (props) => {
             type="button"
             style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
             onClick={EditNT}
+              data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier"
 
         >
-            <i className="fas fa-edit" style={{fontSize: 16, marginRight: 9}}/>
-            Modifier
+            <i className="fas fa-edit" style={{fontSize: 16}}/>
+
         </button>
 
 

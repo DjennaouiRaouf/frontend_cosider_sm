@@ -99,7 +99,7 @@ const NT: React.FC<any> = () => {
                      {
                     headerName:' ',
                     cellRenderer:NTOption,
-                         minWidth: 50,
+                         maxWidth: 100,
                          cellRendererParams:{
 
                                 refresh:getData,

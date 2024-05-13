@@ -11,7 +11,7 @@ export interface EditDataModalState {
 
 const initialState: EditDataModalState = {
     showEditForm:{
-        id:'',
+        id:{},
         shown:false,
         state:[],
         fields:[],
@@ -57,7 +57,7 @@ export const EditDataModal = createSlice({
         },
         hideEdit: (state) => {
             state.showEditForm={
-                 id:'',
+                 id:{},
                 shown:false,
                 state:[],
                 fields:[],
