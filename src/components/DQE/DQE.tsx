@@ -222,10 +222,12 @@ const DQE: React.FC<any> = () => {
       const formData = new FormData();
       if (file) {
         formData.append('file', file);
-        /*
-        if(cid){
-            formData.append("id", cid);
-        }*/
+
+        if(nt && pole){
+            formData.append("nt", nt);
+            formData.append("cs", pole);
+
+        }
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/importdqe/`, formData, {
           headers: {
             Authorization: `Token ${Cookies.get("token")}`,
@@ -234,7 +236,7 @@ const DQE: React.FC<any> = () => {
 
         })
             .then((response: any) => {
-            dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Fichier Chargé"}))
+            dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: response.data}))
               if (fileInputRef.current) {
                 fileInputRef.current.value = '';
               }
