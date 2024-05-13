@@ -65,7 +65,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
         const dqe_id:string=encodeURIComponent(String(showEditForm.id));
         const formDataObject:any=Object.assign({}, formData);
         formDataObject['contrat']=cid;
-        formDataObject['id']=showEditForm.id;
+
 
 
         if (form.checkValidity()) {
@@ -124,7 +124,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Modifier le DQE {showEditForm.id}</Modal.Title>
+          <Modal.Title>Modifier la Tache N° {showEditForm.id.code_tache}</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">

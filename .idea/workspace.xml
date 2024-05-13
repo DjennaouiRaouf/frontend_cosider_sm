@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/ContratOption/ContratOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/ContratOption/ContratOption.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/EditContrat/EditContrat.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/NTOption/NTOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/NTOption/NTOption.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EtatCreance/EtatCreance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EtatCreance/EtatCreance.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NT/NT.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NT/NT.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slices/EditModalSlices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slices/EditModalSlices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpdateContrat/UpdateContrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateContrat/UpdateContrat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpdateNT/UpdateNT.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateNT/UpdateNT.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/DQEOption/DQEOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/DQEOption/DQEOption.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpdateDQE/UpdateDQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateDQE/UpdateDQE.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,15 +108,7 @@
       <workItem from="1715238728071" duration="13679000" />
       <workItem from="1715495301748" duration="1347000" />
       <workItem from="1715498681387" duration="17124000" />
-      <workItem from="1715580810867" duration="6240000" />
-    </task>
-    <task id="LOCAL-00026" summary="init">
-      <option name="closed" value="true" />
-      <created>1713880127390</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1713880127390</updated>
+      <workItem from="1715580810867" duration="8600000" />
     </task>
     <task id="LOCAL-00027" summary="init">
       <option name="closed" value="true" />
@@ -490,7 +476,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715521531146</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="init">
+      <option name="closed" value="true" />
+      <created>1715592566206</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1715592566207</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

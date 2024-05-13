@@ -132,7 +132,7 @@ const DQE: React.FC<any> = () => {
                      {
                     headerName:' ',
                     cellRenderer:DQEOption,
-                         minWidth: 50,
+                         maxWidth: 100,
                          cellRendererParams:{
                                 refresh:getData,
 
