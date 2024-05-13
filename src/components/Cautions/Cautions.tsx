@@ -41,7 +41,7 @@ const Cautions: React.FC<any> = () => {
    const[resume,setResume]=useState<any>({});
 
   const gridRef = useRef(null);
-  const { cid } = useParams();
+  const { nt,pole } = useParams();
 
   const defaultColDefs: ColDef = {
     sortable: true,
@@ -82,9 +82,11 @@ const Cautions: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-        console.log(cid)
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getcautions/?marche=${contrat_id}${url.replace('?',"&")}`,{
+        const ntid:string=encodeURIComponent(String(nt));
+
+        const pid:string=encodeURIComponent(String(pole));
+
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getcautions/?marche__nt=${ntid}&marche__code_site=${pid}${url.replace('?',"&")}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
@@ -119,7 +121,7 @@ const Cautions: React.FC<any> = () => {
                            {
                             headerName:'',
                             cellRenderer:Recup,
-                            width: 20,
+                            maxwidth: 100,
                               cellRendererParams:{
                                 refresh:getData,
                               }
@@ -183,7 +185,7 @@ const Cautions: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Cautions du Contrat N° {cid} </p>
+                                  <p className="text-primary m-0 fw-bold">Cautions du Contrat dont le NT N° {nt} et le Pole {pole} </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">

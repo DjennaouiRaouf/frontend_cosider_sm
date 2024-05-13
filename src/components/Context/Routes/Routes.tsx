@@ -97,7 +97,7 @@ const Routes: React.FC<any> = () => {
               }
           />
               <Route
-              path="/caution/liste_caution/:cid"
+              path="/caution/liste_caution/:nt/:pole"
               element={
                   authenticated ? (
                       <>

@@ -53,10 +53,10 @@ const Recup: React.FC<RecupProps> = (props) => {
           type="button"
           style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
           onClick={recup}
-          
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Récupérer"
+
         >
-          <i className="fa fa-print" style={{fontSize: 16, marginRight: 9}}/>
-          Recuperer
+          <i className="fas fa-hand-rock" style={{fontSize: 16}}/>
       </button>
 
 
