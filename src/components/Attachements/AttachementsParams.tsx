@@ -8,7 +8,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
 import numeral from "numeral";
-import {Button,Form, Modal} from "react-bootstrap";
+import {Alert, Button, Form, Modal} from "react-bootstrap";
 import {Typeahead} from "react-bootstrap-typeahead";
 import {useDispatch} from "react-redux";
 import contrat from "../Contrat/Contrat";
@@ -21,6 +21,7 @@ const AttachementsParams: React.FC<any> = () => {
     const [selectedPole, setSelectedPole] = useState<string[]>([]);
     const[minDate,setMinDate]=useState<string>('');
     const[maxDate,setMaxDate]=useState<string>('');
+const[flag,setFlag]=useState<boolean>(false)
 
      const [nt,setNT]=useState<string[]>([]);
     const [pole,setPole]=useState<string[]>([]);
@@ -85,6 +86,11 @@ const AttachementsParams: React.FC<any> = () => {
                 else {
                     setMinDate('')
                       setMaxDate('')
+                       setFlag(true)
+                    setTimeout(() => {
+
+                        setFlag(false)
+                    }, 5000);
                 }
 
 
@@ -120,6 +126,7 @@ const AttachementsParams: React.FC<any> = () => {
 
   return (
       <>
+
       <Modal
         show={display}
         backdrop="static"
@@ -165,7 +172,7 @@ const AttachementsParams: React.FC<any> = () => {
         </div>
 
             {
-                (maxDate!=='' && minDate!='') &&
+                (maxDate!=='' && minDate!='') ?
 
                     <div className="mb-3">
                         <label className="form-label" htmlFor="username">
@@ -185,7 +192,10 @@ const AttachementsParams: React.FC<any> = () => {
                             />
                         </>
                     </div>
-
+                :
+                    <Alert variant={"danger"} show={flag}>
+                      Aucune date d'attachement pour ce marché !
+                    </Alert>
             }
 
 
