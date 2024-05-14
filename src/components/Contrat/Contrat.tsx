@@ -220,14 +220,15 @@ const Contrat: React.FC<any> = () => {
                                   </div>
                                   <div
                                         className="ag-theme-alpine mt-4"
-                                      style={{ height: 500,width:"100%" }}
+                                                                                             style={{overflowY:"hidden",width:"100%" }}
+
 
                                   >
                                     <AgGridReact ref={gridRef}
                                            rowData={data} columnDefs={fields}
                                            gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
-
+domLayout='autoHeight'
 
                                     />
 

@@ -76,9 +76,10 @@ const AddCaution: React.FC<AddCautionProps> = ({refresh}) => {
     }
 
     const getFields = async() => {
-        const contrat_id:string=encodeURIComponent(String(cid));
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
 
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/cautionfields/?flag=f&marche=${contrat_id}`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/cautionfields/?flag=f&nt=${ntid}&cs=${pid}`,{
 
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
@@ -97,17 +98,17 @@ const AddCaution: React.FC<AddCautionProps> = ({refresh}) => {
 
     }
 
-    const { cid } = useParams();
+    const { nt,pole } = useParams();
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        formData['marche']=cid
         const formDataObject:any=Object.assign({}, formData)
+
         console.log(Transform(formDataObject))
         if (form.checkValidity()) {
             setValidated(false)
 
-            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addcautions/`,Transform(formDataObject),{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addcautions/?marche__nt=${nt}&marche__code_site=${pole}`,Transform(formDataObject),{
                 headers: {
                     Authorization: `Token ${Cookies.get("token")}`,
                     'Content-Type': 'application/json',
@@ -246,7 +247,7 @@ const AddCaution: React.FC<AddCautionProps> = ({refresh}) => {
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
-                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' ?
+                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' || field.type === 'FloatField' ?
                                                                       <Form.Control
                                                                           name={field.name}
                                                                           required={field.required}

@@ -408,7 +408,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                      style={{height: 500, width: "100%"}}
+                                      style={{overflowY:"hidden",width:"100%" }}
 
                                   >
                                       <AgGridReact ref={gridRef}
@@ -418,7 +418,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                                    gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
                                                       onSelectionChanged={onSelectionChanged}
-
+                                            domLayout='autoHeight'
 
 
                                     />
