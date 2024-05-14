@@ -272,7 +272,7 @@ const Attachements: React.FC<any> = () => {
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant</span>
+                                                              <span>Montant global du Mois</span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.mt) +"DA"}</span>
@@ -295,7 +295,7 @@ const Attachements: React.FC<any> = () => {
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Taux réalisée</span>
+                                                              <span>Avancement de </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.qt)}%</span>
