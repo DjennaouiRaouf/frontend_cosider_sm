@@ -186,7 +186,7 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
                                                           }
                                                           {
                                                               field.count &&
-                                                              <span className="badge bg-primary">{field.count}</span>
+                                                              <span className="badge" style={{marginLeft:5,background: "#df162c"}}>{field.count}</span>
                                                           }
                                                       </strong>
                                                   </label>
