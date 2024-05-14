@@ -26,7 +26,7 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
     const [fields,setFields]=useState<any[]>([]);
     const [defaultState,setDefaultState]=useState<any>({});
     const [formData, setFormData] = useState<any>({});
-    const { cid } = useParams();
+    const {nt,pole } = useParams();
     const opt:any[] = [
             {
                 value: false,
@@ -74,7 +74,6 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
 
     }
     const getFields = async() => {
-         const contrat_id:string=encodeURIComponent(String(cid));
         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/facturefields/?flag=f`,{
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
@@ -92,14 +91,14 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
-        formData['marche']=cid
-
         const formDataObject:any=Object.assign({}, formData)
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
 
         if (form.checkValidity()) {
             setValidated(false)
             
-            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addfacture/`,Transform(formDataObject),{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addfacture/?marche__nt=${ntid}&marche__code_site=${pid}`,Transform(formDataObject),{
                 headers: {
                     Authorization: `Token ${Cookies.get("token")}`,
                     'Content-Type': 'application/json',
@@ -175,7 +174,8 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
                                                                   fontWeight: "bold"
                                                               }}>
                                                                   *
-                                                            </span> :
+                                                            </span>
+                                                              :
                                                               <span style={{
                                                                   color: "rgb(255,0,0)",
                                                                   fontSize: 18,
@@ -183,6 +183,10 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
                                                               }}>
 
                                                                 </span>
+                                                          }
+                                                          {
+                                                              field.count &&
+                                                              <span className="badge bg-primary">{field.count}</span>
                                                           }
                                                       </strong>
                                                   </label>
@@ -230,14 +234,13 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
-                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' ?
+                                                                  : field.type === 'IntegerField' ?
                                                                       <Form.Control
                                                                           name={field.name}
                                                                           required={field.required}
                                                                           className="w-100"
                                                                           type="number"
                                                                           value={formData[field.name] || 0}
-                                                                          step={0.01}
                                                                           readOnly={field.readOnly}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />

@@ -70,38 +70,40 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
 
 
     return (<>
-        <button
-            className="btn btn-primary btn-sm"
-            type="button"
-            style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
-            onClick={Delete}
+        <InvoicePrinter ref={componentRef} data={props.data}/>
 
-        >
-            <i className="far fa-trash-alt" style={{fontSize: 16, marginRight: 9}}/>
-            Annuler
-        </button>
-        <div>
-            <InvoicePrinter ref={componentRef} data={props.data}/>
-            <button   className="btn btn-primary btn-sm"
+        <div className="btn-group" role="group">
+            <button
+                className="btn btn-primary btn-sm"
+                type="button"
+                style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
+                onClick={Delete}
+                data-bs-toggle="tooltip" data-bs-placement="top" title="Annuler"
+            >
+                <i className="far fa-trash-alt" style={{fontSize: 16}}/>
+
+            </button>
+            <button className="btn btn-primary btn-sm"
                     type="button"
                     style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
-                      onClick={handlePrint}> <i className="fas fa-print" style={{fontSize: 16, marginRight: 9}}/>
-                    Imprimer</button>
+                    onClick={handlePrint}
+                    data-bs-toggle="tooltip" data-bs-placement="top" title="Imprimer"
+
+            ><i className="fas fa-print" style={{fontSize: 16}}/>
+            </button>
+            <button
+                className="btn btn-primary btn-sm"
+                type="button"
+                style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
+                onClick={encaisser}
+                data-bs-toggle="tooltip" data-bs-placement="top" title="Encaisser"
+
+            >
+                <i className="fas fa-money" style={{fontSize: 16}}/>
+            </button>
+
+
         </div>
-
-
-
-
-        <button
-            className="btn btn-primary btn-sm"
-            type="button"
-            style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
-            onClick={encaisser}
-
-        >
-            <i className="fas fa-money" style={{fontSize: 16, marginRight: 9}}/>
-            Encaisser
-        </button>
 
 
     </>);

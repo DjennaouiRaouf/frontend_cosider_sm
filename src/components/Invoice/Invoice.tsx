@@ -68,7 +68,7 @@ const Invoice: React.FC<any> = () => {
    const[resume,setResume]=useState<any>({});
 const [gridApi, setGridApi] = useState<GridApi | null>(null);
   const gridRef = useRef(null);
-  const { cid } = useParams();
+  const { nt,pole } = useParams();
 
   const defaultColDefs: ColDef = {
     sortable: true,
@@ -110,8 +110,10 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
 
 
     const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getfacture/?marche=${contrat_id}${url.replace('?',"&")}`,{
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getfacture/?marche__nt=${ntid}&marche__code_site=${pid}${url.replace('?',"&")}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
@@ -144,7 +146,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                      {
                             headerName:'',
                             cellRenderer:OptionInvoice,
-                            width: 20,
+                            maxWidth: 150,
                               cellRendererParams:{
                                 refresh:getData,
                               }
@@ -248,6 +250,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
     }
 
        const getAvances = async() => {
+         /*
         const contrat_id:string=encodeURIComponent(String(cid));
         console.log(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}&remboursee=False`)
         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}&remboursee=False`,{
@@ -267,6 +270,8 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
             .catch((error:any) => {
 
             });
+
+          */
     }
 
     useEffect(() => {
@@ -322,7 +327,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Factures du Contrat N° {cid} </p>
+                                  <p className="text-primary m-0 fw-bold">Factures du Contrat dont le NT N° {nt} et le Pole {pole} </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">
