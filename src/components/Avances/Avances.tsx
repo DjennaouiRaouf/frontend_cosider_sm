@@ -27,7 +27,7 @@ const InfoRenderer: React.FC<any> = (props) => {
     case 'fin' :
       return <span>{value} %</span>
     case 'taux_avance' :
-      return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+      return <span>{value} %</span>
 
       case 'montant' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
