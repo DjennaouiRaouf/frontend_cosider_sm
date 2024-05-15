@@ -18,6 +18,8 @@ import {showSearchRev} from "../Slices/SearchModalSlices";
 import SearchFlash from "../SearchFlash/SearchFlash";
 import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 import SearchRev from "../SearchRev/SearchRev";
+import {Dropdown} from "react-bootstrap";
+import * as XLSX from "xlsx";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -45,13 +47,12 @@ const InfoRenderer: React.FC<any> = (props) => {
 const Revision: React.FC<any> = () => {
   const[fields,setFields]=useState<any[]>([]);
   const[data,setData]=useState<any[]>([]);
-  const[contrat,setContrat]=useState<string>('');
   const [searchParams] = useSearchParams();
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
   const gridRef = useRef(null);
-  const { nt,pole ,month} = useParams();
+  const { nt,pole } = useParams();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-    const[resume,setResume]=useState<any>({});
   const defaultColDefs: ColDef = {
     sortable: true,
     resizable: true,
@@ -94,9 +95,7 @@ const Revision: React.FC<any> = () => {
     const getData = async(url:string) => {
         const ntid:string=encodeURIComponent(String(nt));
         const pid:string=encodeURIComponent(String(pole));
-        const smonth:string=encodeURIComponent(String(month));
-
-                    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getrev/?code_site=${pid}&nt=${ntid}&prevu_realiser=R&code_type_production=01&mm=${smonth?.split('-')[1]}&aa=${smonth?.split('-')[0]}${url.replace('?',"&")}`,{
+                    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getrev/?code_site=${pid}&nt=${ntid}`,{
                     headers: {
                         Authorization: `Token ${Cookies.get('token')}`,
                         'Content-Type': 'application/json',
@@ -111,11 +110,6 @@ const Revision: React.FC<any> = () => {
                     .catch((error:any) => {
 
                     });
-
-
-
-
-
 
   }
 
@@ -192,12 +186,96 @@ const Revision: React.FC<any> = () => {
       setSelectedRows(selectedData);
     }
   };
+  
+  const handleUploadRev = () => {
 
+          if (fileInputRef.current) {
+            fileInputRef.current.click();
+          }
+  }
+
+  const download = () => {
+    if (data.length > 0 ) {
+                const dataset: any[] = data.map(obj => ({...obj}))
+              const currentDate = new Date();
+              const yearString = currentDate.getFullYear().toString();
+              const monthString = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+              const dayString = currentDate.getDate().toString().padStart(2, '0');
+
+              const ws = XLSX.utils.json_to_sheet(dataset);
+              const wb = XLSX.utils.book_new();
+              XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+              XLSX.writeFile(wb, `Revision_${yearString}-${monthString}-${dayString}.xlsx`);
+          }
+  }
+
+
+
+    const handleFileChange = async(event: React.ChangeEvent<HTMLInputElement>) => {
+
+    const file = event.target.files?.[0];
+      const formData = new FormData();
+      if (file) {
+        formData.append('file', file);
+
+        if(nt && pole){
+            formData.append("nt", nt);
+            formData.append("cs", pole);
+
+        }
+        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/revprix/`, formData, {
+          headers: {
+            Authorization: `Token ${Cookies.get("token")}`,
+            'Content-Type': 'multipart/form-data',
+          },
+
+        })
+            .then((response: any) => {
+            dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: response.data}))
+              if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+              }
+                 const paramsArray = Array.from(searchParams.entries());
+                // Build the query string
+                const queryString = paramsArray.reduce((acc, [key, value], index) => {
+                  if (index === 0) {
+                    return `?${key}=${encodeURIComponent(value)}`;
+                  } else {
+                    return `${acc}&${key}=${encodeURIComponent(value)}`;
+                  }
+                }, '');
+
+                getData(queryString);
+
+            })
+            .catch((error: any) => {
+                console.log(error)
+                dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
+
+              if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+              }
+
+            });
+      }
+
+  };
 
   return (
       <>
+          <input
+              type="file"
+              accept=".xlsx"
+              onChange={handleFileChange}
+              hidden={true}
+              style={{display: 'none'}}
+              ref={(input) => (fileInputRef.current = input)}
+          />
+
           <AlertMessage/>
-            <AddAttachement refresh={()=>{getData('')}}/>
+          <AddAttachement refresh={() => {
+              getData('')
+          }}/>
           <SearchRev/>
 
           <div id="wrapper">
@@ -206,44 +284,61 @@ const Revision: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Révision Des Prix du Marché dont le NT  {nt} et le Pole {pole}   </p>
+                                  <p className="text-primary m-0 fw-bold">Révision Des Prix du Marché dont le NT {nt} et
+                                      le Pole {pole}   </p>
                               </div>
                               <div className="card-body">
 
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">
                                           <div className="btn-group" role="group">
-                                              { /* <button className="btn btn-primary" type="button"
-                                                      style={{background: "#df162c", borderWidth: 0}} onClick={addBL}>
-                                                  <i className="fas fa-plus" style={{marginRight: 5}}/>
-                                                  Recup
-                                              </button>*/}
-
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}}
                                                       onClick={searchFlash}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
                                                   Rechercher
                                               </button>
+                                              <Dropdown>
+                                                  <Dropdown.Toggle className="btn btn-primary btn-sm" style={{
+                                                      height: 40, background: "#df162c", borderWidth: 0
+                                                      , borderTopLeftRadius: 0, borderBottomLeftRadius: 0
+                                                  }} id="dropdown-basic"
+                                                  >
+                                                      <i className="fas fa-share"/>
+                                                      &nbsp;Transfert
+                                                  </Dropdown.Toggle>
+
+                                                  <Dropdown.Menu>
+                                                      <Dropdown.Item onClick={handleUploadRev}>
+                                                          <i className="fas fa-upload"></i>
+                                                          &nbsp;Charger</Dropdown.Item>
+
+                                                      <Dropdown.Item onClick={download}>
+                                                          <i className="fas fa-download"></i>
+                                                          &nbsp;Télécharger</Dropdown.Item>
+
+                                                  </Dropdown.Menu>
+                                              </Dropdown>
+
                                           </div>
                                       </div>
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                                                                             style={{overflowY:"hidden",width:"100%" }}
+                                      style={{overflowY: "hidden", width: "100%"}}
 
 
                                   >
                                       <AgGridReact ref={gridRef}
                                                    rowData={data} columnDefs={fields}
-                                           gridOptions={gridOptions}
-                                           onRowClicked={handleRowClick}
-                                                    onGridReady={onGridReady}
+                                                   gridOptions={gridOptions}
+                                                   onRowClicked={handleRowClick}
+                                                   onGridReady={onGridReady}
 
-                                             onSelectionChanged={onSelectionChanged}
-domLayout='autoHeight'
+                                                   onSelectionChanged={onSelectionChanged}
+                                                   domLayout='autoHeight'
 
-                                    />
+                                      />
 
                                   </div>
                                   <div className="row">

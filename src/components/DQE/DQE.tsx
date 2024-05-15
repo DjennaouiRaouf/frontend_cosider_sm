@@ -195,7 +195,7 @@ const DQE: React.FC<any> = () => {
     }
     const download = () => {
             if (data.length > 0 ) {
-                const dataset: any[] = data.map(obj => ({...obj, annule: 0}))
+                const dataset: any[] = data.map(obj => ({...obj}))
               const currentDate = new Date();
               const yearString = currentDate.getFullYear().toString();
               const monthString = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
