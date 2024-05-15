@@ -248,6 +248,8 @@ const Routes: React.FC<any> = () => {
                 element={
                     authenticated ? (
                         <>
+
+                            <NavigationBar/>
                             <Revision/>
 
 
@@ -263,13 +265,13 @@ const Routes: React.FC<any> = () => {
                 path="/encaissement/historique_encaissement/:cid/:fid"
                 element={
                     authenticated ? (
-                        <>
+                        <div className={"container"}>
                             <NavigationBar/>
                             <Encaissements/>
 
 
 
-                        </>
+                        </div>
                     ) : (
                         <Navigate to="/"  />
                     )

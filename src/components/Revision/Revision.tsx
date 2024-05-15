@@ -28,12 +28,8 @@ const InfoRenderer: React.FC<any> = (props) => {
   switch (props.column.colId) {
 
 
-    case 'valeur_1' :
-        return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'valeur_2' :
-        return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
-    case 'valeur_3' :
-        return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+    case 'coef' :
+        return <span>{numeral(value).format('0.0000')}</span>
 
     case 'date' :
       return <span>{formatDate(value)}</span>
