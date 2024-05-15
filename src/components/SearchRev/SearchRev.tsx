@@ -78,7 +78,7 @@ const SearchRev: React.FC<any> = () => {
 
     },[]);
     const handleClose = () => {
-            dispatch(showSearchRev());
+            dispatch(hideSearchRev());
     }
     const handleChange = (ref:any, op:any) => {
         if(op.length ===1 ){
