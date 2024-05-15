@@ -74,7 +74,10 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
 
     }
     const getFields = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/facturefields/?flag=f&cs=${pole}&nt=${nt}`,{
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/facturefields/?flag=f&cs=${pid}&nt=${ntid}`,{
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
                 'Content-Type': 'application/json',

@@ -13,6 +13,7 @@ export interface SearchDataModalState {
     showSearchFlashForm:boolean;
     showSearchInvoiceForm:boolean;
     showSearchAttForm:boolean;
+    showSearchRevForm:boolean;
 
 }
 
@@ -25,6 +26,7 @@ const initialState: SearchDataModalState = {
     showSearchNTForm:false,
     showSearchFlashForm:false,
     showSearchInvoiceForm:false,
+    showSearchRevForm:false,
 };
 
 export const SearchDataModal = createSlice({
@@ -39,6 +41,17 @@ export const SearchDataModal = createSlice({
         hideSearchContrat: (state) => {
             state.showSearchContratForm=false
         },
+
+
+        showSearchRev: (state) => {
+
+            state.showSearchRevForm=true
+
+        },
+        hideSearchRev: (state) => {
+            state.showSearchRevForm=false
+        },
+
          showSearchClient: (state) => {
 
             state.showSearchClientForm=true
@@ -114,6 +127,7 @@ showSearchInvoice,hideSearchInvoice,
 showSearchCreance,hideSearchCreance,
 showSearchNT,hideSearchNT,
     showSearchAtt,hideSearchAtt,
-showSearchFlash,hideSearchFlash} = SearchDataModal.actions;
+showSearchFlash,hideSearchFlash,
+showSearchRev,hideSearchRev} = SearchDataModal.actions;
 
 export default SearchDataModal.reducer;

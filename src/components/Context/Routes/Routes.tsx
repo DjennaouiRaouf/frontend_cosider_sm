@@ -25,6 +25,8 @@ import CautionsParams from "../../Cautions/CautionsParams";
 import Cautions from "../../Cautions/Cautions";
 import WorkState from "../../TaskState/TaskState";
 import Sites from "../../Sites/Sites";
+import RevisionParams from "../../Revision/RevisionParams";
+import Revision from "../../Revision/Revision";
 
 const Routes: React.FC<any> = () => {
 
@@ -214,6 +216,39 @@ const Routes: React.FC<any> = () => {
                     authenticated ? (
                         <>
                             <EncaissementsParams/>
+
+
+
+                        </>
+                    ) : (
+                        <Navigate to="/"  />
+                    )
+                }
+            />
+
+                        <Route
+                path="/revision"
+                element={
+                    authenticated ? (
+                        <>
+                            <RevisionParams/>
+
+
+
+                        </>
+                    ) : (
+                        <Navigate to="/"  />
+                    )
+                }
+            />
+
+
+                        <Route
+                path="/revision/rev_items/:nt/:pole"
+                element={
+                    authenticated ? (
+                        <>
+                            <Revision/>
 
 
 
