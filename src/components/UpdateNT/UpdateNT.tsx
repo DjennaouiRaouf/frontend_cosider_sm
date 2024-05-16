@@ -175,7 +175,17 @@ const UpdateNT: React.FC<UpdateNTProps> = ({refresh}) => {
                                                                   ))}
 
                                                               </Form.Control>
-
+ : field.textarea === true ?
+                                                                            <Form.Control
+                                                                            name={field.name}
+                                                                            as="textarea"
+                                                                            required={field.required}
+                                                                            className="w-100"
+                                                                            style={{resize:"none",height: '150px'}}
+                                                                            type="text"
+                                                                            value={formData[field.name]|| ''}
+                                                                            onChange={(e)=>handleInputChange(e)}
+                                                                            />
 
                                                               : field.type === 'DateField' ?
                                                                   <Form.Control
