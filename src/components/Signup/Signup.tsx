@@ -22,7 +22,7 @@ const Signup: React.FC<any> = () => {
         body:'',
     });
     const getFields = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/signupform/`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/userfields/`,{
             headers: {
                 'Content-Type': 'application/json',
 
@@ -40,7 +40,7 @@ const Signup: React.FC<any> = () => {
 
     }
        const getDefaultState = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/signupformds/`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/userfieldsstate/`,{
             headers: {
                 'Content-Type': 'application/json',
             },
