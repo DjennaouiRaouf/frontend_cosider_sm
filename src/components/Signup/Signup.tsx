@@ -75,7 +75,7 @@ const Signup: React.FC<any> = () => {
                 setConfirmepassword('');
             }
 
-            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api_gc/adduser/`,formData,{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/adduser/`,formData,{
                 headers: {
                     'Content-Type': 'application/json',
                 },
