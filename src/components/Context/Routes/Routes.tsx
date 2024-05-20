@@ -30,6 +30,7 @@ import Revision from "../../Revision/Revision";
 import ContratAvenant from "../../ContratAvenant/ContratAvenant";
 import DQEAVParams from "../../DQEAvenant/DQEAVParams";
 import DQEAV from "../../DQEAvenant/DQEAV";
+import ErrorRoute from "../../ErrorRoute/ErrorRoute";
 
 const Routes: React.FC<any> = () => {
 
@@ -351,6 +352,17 @@ const Routes: React.FC<any> = () => {
                   ) : (
                       <Navigate to="/"  />
                   )
+              }
+          />
+
+             <Route
+              path="*"
+              element={
+
+                      <>
+                          <ErrorRoute />
+                      </>
+
               }
           />
 
