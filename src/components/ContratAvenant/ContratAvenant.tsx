@@ -20,7 +20,6 @@ import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
 
 import UpdateContrat from "../UpdateContrat/UpdateContrat";
 import AlertMessage from "../AlertMessage/AlertMessage";
-import AddContrat from "../AddContrat/AddContrat";
 
 
 
@@ -45,7 +44,7 @@ const InfoRenderer: React.FC<any> = (props) => {
 
 };
 
-const Contrat: React.FC<any> = () => {
+const ContratAvenant: React.FC<any> = () => {
   const[fields,setFields]=useState<any[]>([]);
   const[data,setData]=useState<any[]>([]);
   const [searchParams] = useSearchParams();
@@ -93,7 +92,7 @@ const Contrat: React.FC<any> = () => {
 
 
     const getData = async(url:string) => {
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getmarche/${url}`,{
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/mav/${url}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
@@ -117,7 +116,7 @@ const Contrat: React.FC<any> = () => {
 
 
   const getFields = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/marchefields/?flag=l`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/mavfields/?flag=l`,{
             headers: {
                 'Content-Type': 'application/json',
 
@@ -132,21 +131,31 @@ const Contrat: React.FC<any> = () => {
                          maxWidth: 100,
                          cellRendererParams:{
                                 refresh:getData,
+
                               }
                     },
+
                              ...response.data.fields
+
+
                     ];
+
                  setFields(updatedCols)
+
+
+
             })
             .catch((error:any) => {
+
             });
+
     }
 
 
 
-    const handleRowClick = (event: any) => {
+       const handleRowClick = (event: any) => {
         setSelectedRows(event.data);
-    };
+  };
 
      useEffect(() => {
     const paramsArray = Array.from(searchParams.entries());
@@ -177,7 +186,7 @@ const Contrat: React.FC<any> = () => {
   return (
       <>
           <>
-            <AddContrat refresh={()=>{getData('')}}/>
+            <AddAvenant refresh={()=>{getData('')}}/>
                <UpdateContrat refresh={()=>{getData('')}}/>
             <SearchContrat/>
               <AlertMessage/>
@@ -188,33 +197,38 @@ const Contrat: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Nos Contrats</p>
+                                  <p className="text-primary m-0 fw-bold">Nos Avenants (Contrats)</p>
                               </div>
                               <div className="card-body">
+
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">
                                           <div className="btn-group" role="group">
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={addC}>
                                                   <i className="fas fa-plus" style={{marginRight: 5}}/>
-                                                  Nouveau Contrat
+                                                  Nouvel Avenant
                                               </button>
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchC}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
                                                   Rechercher
                                               </button>
+
                                           </div>
                                       </div>
                                   </div>
                                   <div
                                         className="ag-theme-alpine mt-4"
-                                        style={{overflowY:"hidden",width:"100%" }}
+                                                                                             style={{overflowY:"hidden",width:"100%" }}
+
+
                                   >
                                     <AgGridReact ref={gridRef}
                                            rowData={data} columnDefs={fields}
                                            gridOptions={gridOptions}
-                                           onRowClicked={handleRowClick} domLayout='autoHeight'
+                                           onRowClicked={handleRowClick}
+domLayout='autoHeight'
 
                                     />
 
@@ -239,4 +253,4 @@ const Contrat: React.FC<any> = () => {
   );
 };
 
-export default Contrat;
+export default ContratAvenant;

@@ -247,7 +247,7 @@ const AddDQE: React.FC<AddDQEProps> = ({refresh}) => {
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
-                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' ?
+                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' || field.type === 'FloatField' ?
                                                                       <Form.Control
                                                                           name={field.name}
                                                                           required={field.required}
@@ -257,6 +257,7 @@ const AddDQE: React.FC<AddDQEProps> = ({refresh}) => {
                                                                           step={0.01}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />
+
                                                                      : field.textarea === true ?
                                                                             <Form.Control
                                                                             name={field.name}

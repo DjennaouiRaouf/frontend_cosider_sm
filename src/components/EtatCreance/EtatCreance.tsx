@@ -9,7 +9,7 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
 import numeral from "numeral";
 import {useDispatch} from "react-redux";
-import AddContrat from "../AddContrat/AddContrat";
+import AddAvenant from "../AddAvenant/AddAvenant";
 import {showSearchCreance} from "../Slices/SearchModalSlices";
 import Cookies from "js-cookie";
 import {useReactToPrint} from "react-to-print";
@@ -180,7 +180,7 @@ const EtatCreance: React.FC<any> = () => {
   return (
       <>
           <>
-            <AddContrat refresh={()=>{getData('')}}/>
+            <AddAvenant refresh={()=>{getData('')}}/>
             <SearchCreance/>
               <CreancePrinter ref={componentRef} data={data}/>
           </>

@@ -4,7 +4,7 @@ import {Typeahead} from "react-bootstrap-typeahead";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Store/Store";
-import {hideEdit} from "../Slices/EditModalSlices";
+import {hideAddDQE} from "../Slices/AddModalSlices";
 import Cookies from "js-cookie";
 import axios from "axios";
 import {Transform} from "../Utils/Utils";
@@ -16,20 +16,18 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef} from "ag-grid-community";
 import {useParams} from "react-router-dom";
 
-interface UpdateDQEProps {
+interface AddDQEProps {
     refresh:()=>void,
 
 }
-const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
+const AddDQEAvenant: React.FC<AddDQEProps> = ({refresh}) => {
      const [validated, setValidated] = useState(false);
-    const { showEditForm } = useSelector((state: RootState) => state.editDataModalReducer);
+    const { showAddDQEForm } = useSelector((state: RootState) => state.addDataModalReducer);
 
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState<any>(showEditForm.state);
-      useEffect(() => {
-        setFormData(showEditForm.state);
-      }, [showEditForm]);
-
+    const [fields,setFields]=useState<any[]>([]);
+    const [defaultState,setDefaultState]=useState<any>({});
+    const [formData, setFormData] = useState<any>({});
     const opt:any[] = [
             {
                 value: false,
@@ -45,7 +43,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
     const handleSelectChange = (e: any) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [e.target.name]: Boolean(e.target.value),
         });
     };
     const handleInputChange = (e:any) => {
@@ -54,41 +52,82 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
     };
 
 
+    const getState = async() => {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/dqefieldsstate/`,{
+
+            headers: {
+                Authorization: `Token ${Cookies.get("token")}`,
+                'Content-Type': 'application/json',
+
+            },
+        })
+            .then((response:any) => {
+
+                setDefaultState(response.data.state)
+                setFormData(response.data.state)
 
 
+            })
+            .catch((error:any) => {
+
+            });
+
+    }
+
+    const getFields = async() => {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/dqeavfields/?flag=f`,{
+
+            headers: {
+                Authorization: `Token ${Cookies.get("token")}`,
+                'Content-Type': 'application/json',
+
+            },
+        })
+            .then((response:any) => {
+                setFields(response.data.fields);
+                getState();
 
 
+            })
+            .catch((error:any) => {
 
+            });
+
+    }
+
+    const { nt,pole,num_av } = useParams();
  const handleSubmit = async(e: any) => {
         e.preventDefault();
         const form = e.currentTarget;
+        formData['pole']=pole
+        formData['nt']=nt
+        formData['num_avenant']=num_av
 
-        const formDataObject:any=Object.assign({}, formData);
-
-
-        console.log(showEditForm.id)
-
+        const formDataObject:any=Object.assign({}, formData)
+        console.log(Transform(formDataObject))
         if (form.checkValidity()) {
             setValidated(false)
 
-                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updatedqe/`,Transform(formDataObject),{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/adddqeav/`,Transform(formDataObject),{
                 headers: {
-
-                  Authorization: `Token ${Cookies.get("token")}`,
-                  'Content-Type': 'application/json',
+                    Authorization: `Token ${Cookies.get("token")}`,
+                    'Content-Type': 'application/json',
 
                 },
-                })
+
+            })
                 .then((response:any) => {
-                    handleClose();
                     refresh();
+                    setFormData(defaultState);
+                    handleClose();
 
                 })
                 .catch((error:any) => {
 
                 });
 
-            }
+
+        }
         else {
 
             setValidated(true)
@@ -96,9 +135,16 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
 
 
     }
+    useEffect(() => {
+
+        getFields();
+
+
+
+    },[]);
     const handleClose = () => {
 
-        dispatch(hideEdit())
+        dispatch(hideAddDQE())
 
     }
     const handleChange = (ref:any, op:any) => {
@@ -120,11 +166,11 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
 
   return (
       <>
-         <Modal show={showEditForm.shown} onHide={handleClose} size={"xl"}>
+         <Modal show={showAddDQEForm} onHide={handleClose} size={"xl"}>
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Modifier la Tache N° {showEditForm.id.code_tache}</Modal.Title>
+          <Modal.Title>Ajouter un avenant au DQE (Augmentation/Diminution) </Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">
@@ -133,14 +179,28 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
 
 
                                   <div className="row" style={{marginBottom: 25, textAlign: "left"}}>
-                                      {showEditForm.fields.map((field: any, index: any) => (
+                                      {fields.map((field: any, index: any) => (
                                           <div className="col-md-6 text-start" key={index}>
                                               <div className="mb-3">
                                                   <label className="form-label" htmlFor="username">
                                                       <strong>
                                                           {field.label + " "}
+                                                          {field.required ?
+                                                              <span style={{
+                                                                  color: "rgb(255,0,0)",
+                                                                  fontSize: 18,
+                                                                  fontWeight: "bold"
+                                                              }}>
+                                                                  *
+                                                            </span> :
+                                                              <span style={{
+                                                                  color: "rgb(255,0,0)",
+                                                                  fontSize: 18,
+                                                                  fontWeight: "bold"
+                                                              }}>
 
-
+                                                                </span>
+                                                          }
                                                       </strong>
                                                   </label>
                                                   {
@@ -151,7 +211,6 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                                                                   labelKey={"label"}
                                                                   onChange={(o) => handleChange(field.name, o)}
                                                                   id={field.name}
-                                                                  disabled={field.readOnly}
                                                                   inputProps={{required: field.required}}
                                                                   selected={formData[field.name] || [] }
                                                                   options={field.queryset}
@@ -166,7 +225,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                                                               <Form.Control
                                                                   as="select"
                                                                   name={field.name}
-                                                                  disabled={field.readOnly}
+                                                                  required={field.required}
                                                                   className="w-100"
                                                                   value={formData[field.name]}
                                                                   onChange={(e) => handleSelectChange(e)}>
@@ -185,21 +244,31 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                                                                       required={field.required}
                                                                       className="w-100"
                                                                       type="date"
-                                                                      disabled={field.readOnly}
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
-                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField'|| field.type === 'FloatField' ?
+                                                                  : field.type === 'IntegerField' || field.type === 'DecimalField' || field.type === 'FloatField' ?
                                                                       <Form.Control
                                                                           name={field.name}
                                                                           required={field.required}
                                                                           className="w-100"
                                                                           type="number"
-                                                                          disabled={field.readOnly}
                                                                           value={formData[field.name] || 0}
                                                                           step={0.01}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />
+
+                                                                     : field.textarea === true ?
+                                                                            <Form.Control
+                                                                            name={field.name}
+                                                                            as="textarea"
+                                                                            required={field.required}
+                                                                            className="w-100"
+                                                                            style={{resize:"none",height: '150px'}}
+                                                                            type="text"
+                                                                            value={formData[field.name]|| ''}
+                                                                            onChange={(e)=>handleInputChange(e)}
+                                                                            />
 
                                                                       :
                                                                       <Form.Control
@@ -207,7 +276,6 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                                                                           required={field.required}
                                                                           className="w-100"
                                                                           type="text"
-                                                                          disabled={field.readOnly}
                                                                           value={formData[field.name] || ''}
                                                                           onChange={(e) => handleInputChange(e)}
                                                                       />
@@ -234,7 +302,7 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
                   <Modal.Footer>
 
                       <Button variant="primary" style={{background: "#df162c", borderWidth: 0}} type={"submit"}>
-                          Modifier
+                          Ajouter
                       </Button>
                   </Modal.Footer>
               </Form>
@@ -243,4 +311,4 @@ const UpdateDQE: React.FC<UpdateDQEProps> = ({refresh}) => {
   );
 };
 
-export default UpdateDQE;
+export default AddDQEAvenant;

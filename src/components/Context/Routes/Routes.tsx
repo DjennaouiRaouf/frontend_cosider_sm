@@ -27,6 +27,9 @@ import WorkState from "../../TaskState/TaskState";
 import Sites from "../../Sites/Sites";
 import RevisionParams from "../../Revision/RevisionParams";
 import Revision from "../../Revision/Revision";
+import ContratAvenant from "../../ContratAvenant/ContratAvenant";
+import DQEAVParams from "../../DQEAvenant/DQEAVParams";
+import DQEAV from "../../DQEAvenant/DQEAV";
 
 const Routes: React.FC<any> = () => {
 
@@ -134,6 +137,21 @@ const Routes: React.FC<any> = () => {
                   authenticated ? (
                       <>
                           <DQEParams/>
+
+
+
+                      </>
+                  ) : (
+                      <Navigate to="/"  />
+                  )
+              }
+          />
+               <Route
+              path="/avenant_dqe"
+              element={
+                  authenticated ? (
+                      <>
+                          <DQEAVParams/>
 
 
 
@@ -261,6 +279,26 @@ const Routes: React.FC<any> = () => {
                 }
             />
 
+
+
+                        <Route
+                path="/avenant_contrat"
+                element={
+                    authenticated ? (
+                        <>
+
+                            <NavigationBar/>
+                            <ContratAvenant/>
+
+
+
+                        </>
+                    ) : (
+                        <Navigate to="/"  />
+                    )
+                }
+            />
+
             <Route
                 path="/encaissement/historique_encaissement/:cid/:fid"
                 element={
@@ -306,6 +344,24 @@ const Routes: React.FC<any> = () => {
                       <>
                           <NavigationBar/>
                           <DQE/>
+
+
+
+                      </>
+                  ) : (
+                      <Navigate to="/"  />
+                  )
+              }
+          />
+
+
+                         <Route
+              path="/avenant_dqe/liste_dqe_av/:nt/:pole/:num_av"
+              element={
+                  authenticated ? (
+                      <>
+                          <NavigationBar/>
+                          <DQEAV/>
 
 
 
