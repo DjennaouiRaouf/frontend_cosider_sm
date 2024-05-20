@@ -223,12 +223,13 @@ const DQEAV: React.FC<any> = () => {
       if (file) {
         formData.append('file', file);
 
-        if(nt && pole){
+        if(nt && pole && num_av){
             formData.append("nt", nt);
             formData.append("cs", pole);
+            formData.append("num_av", num_av);
 
         }
-        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/importdqe/`, formData, {
+        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/importdqeav/`, formData, {
           headers: {
             Authorization: `Token ${Cookies.get("token")}`,
             'Content-Type': 'multipart/form-data',

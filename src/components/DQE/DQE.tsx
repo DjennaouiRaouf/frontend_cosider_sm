@@ -194,7 +194,7 @@ const DQE: React.FC<any> = () => {
 
     }
     const download = () => {
-            if (data.length > 0 ) {
+
                 const dataset: any[] = data.map(obj => ({...obj}))
               const currentDate = new Date();
               const yearString = currentDate.getFullYear().toString();
@@ -205,7 +205,7 @@ const DQE: React.FC<any> = () => {
               const wb = XLSX.utils.book_new();
               XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
               XLSX.writeFile(wb, `DQE_${yearString}-${monthString}-${dayString}.xlsx`);
-          }
+
     }
 
      const handleAddMulitpleDQE = () => {
