@@ -19,9 +19,9 @@ const ErrorRoute: React.FC<any> = () => {
               <h2>PAGE INTROUVABLE.</h2>
               <p className="description">Nous n’avons pas trouvé cette page</p>
             </div>
-            <a href="/home" className="return-btn">
-              <i className="fa fa-home" />
-              Home
+            <a href="/contrat" className="return-btn">
+              <i className="fa fa-home"  />
+              &nbsp; Contrat
             </a>
           </section>
         </div>
