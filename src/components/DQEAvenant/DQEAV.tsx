@@ -132,17 +132,7 @@ const DQEAV: React.FC<any> = () => {
             .then((response:any) => {
 
                     const updatedCols:any[] = [
-                     {
-                    headerName:' ',
-                    cellRenderer:DQEOption,
-                         maxWidth: 100,
-                         cellRendererParams:{
-                                refresh:getData,
-
-                              }
-                    },...response.data.fields,
-
-
+                    response.data.fields,
 
                     ];
 
@@ -376,7 +366,7 @@ const DQEAV: React.FC<any> = () => {
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                       style={{overflowY:"hidden",width:"100%" }}
+                                      style={{overflowY: "hidden", width: "100%"}}
 
                                   >
                                       <AgGridReact ref={gridRef}
