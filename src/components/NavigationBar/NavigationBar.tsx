@@ -80,14 +80,14 @@ const NavigationBar: React.FC<any> = () => {
                         <Nav.Link href="/sites">Sites</Nav.Link>
                         <Nav.Link href="/nt">NT</Nav.Link>
                          <NavDropdown title="Marché" id="basic-nav-dropdown">
-                             <Nav.Link href="/contrat">Contrats</Nav.Link>
-                             <Nav.Link href="/dqe">DQE</Nav.Link>
+                             <Nav.Link href="/contrat">Historique des Contrats</Nav.Link>
+                             <Nav.Link href="/dqe">Historique des DQE</Nav.Link>
                         </NavDropdown>
 
 
                          <NavDropdown title="Avenant" id="basic-nav-dropdown">
-                             <Nav.Link href="/avenant_contrat">Contrats</Nav.Link>
-                             <Nav.Link href="/avenant_dqe">DQE</Nav.Link>
+                             <Nav.Link href="/avenant_contrat">Historique des Contrats</Nav.Link>
+                             <Nav.Link href="/avenant_dqe">Historique des DQE</Nav.Link>
                         </NavDropdown>
 
                         <Nav.Link href="/avance">Avances</Nav.Link>

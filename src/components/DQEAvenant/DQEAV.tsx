@@ -131,12 +131,7 @@ const DQEAV: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                    const updatedCols:any[] = [
-                    response.data.fields,
-
-                    ];
-
-                 setFields(updatedCols)
+                 setFields(response.data.fields)
 
 
 
@@ -366,7 +361,7 @@ const DQEAV: React.FC<any> = () => {
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                      style={{overflowY: "hidden", width: "100%"}}
+                                       style={{overflowY:"hidden",width:"100%" }}
 
                                   >
                                       <AgGridReact ref={gridRef}
