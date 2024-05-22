@@ -50,7 +50,7 @@ const SearchContratAV: React.FC<any> = () => {
     // submit
 
     const getFields = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/marchefilterfields/`,{
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/marcheavfilterfields/`,{
 
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
@@ -132,7 +132,7 @@ const SearchContratAV: React.FC<any> = () => {
                <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Rechercher un contrat </Modal.Title>
+          <Modal.Title>Rechercher un Avenant d'un contrat </Modal.Title>
         </Modal.Header>
            <Modal.Body>
               <div className="container-fluid">

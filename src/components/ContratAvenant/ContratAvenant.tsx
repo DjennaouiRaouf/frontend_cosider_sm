@@ -20,6 +20,7 @@ import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
 
 import UpdateContrat from "../UpdateContrat/UpdateContrat";
 import AlertMessage from "../AlertMessage/AlertMessage";
+import SearchContratAV from "../SearchContratAV/SearchContratAV";
 
 
 
@@ -188,7 +189,7 @@ const ContratAvenant: React.FC<any> = () => {
           <>
             <AddAvenant refresh={()=>{getData('')}}/>
                <UpdateContrat refresh={()=>{getData('')}}/>
-            <SearchContrat/>
+            <SearchContratAV/>
               <AlertMessage/>
           </>
           <div id="wrapper">
