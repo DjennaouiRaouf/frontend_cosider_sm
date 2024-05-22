@@ -338,10 +338,12 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
+                                                      <h5 className={'text-center'}>Montant Globale</h5>
+                                                       <hr/>
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant globale de la retenue de garantie en HT </span>
+                                                              <span>Retenue de Garantie en HT </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.rg_total) + "DA"}</span>
@@ -350,7 +352,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant globale de la retenue de garantie en TTC </span>
+                                                              <span>Retenue de Garantie en TTC </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.rg_total_ttc) + "DA"}</span>
@@ -371,11 +373,13 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                       <div className="col-md-6 col-xxl-3">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
+                                                  <h5 className={'text-center'}>Montant Globale</h5>
+                                                  <hr/>
                                                   <div className="row align-items-center no-gutters">
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant globale en Créance </span>
+                                                              <span> en Créance </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.creance) + "DA"}</span>
@@ -384,7 +388,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant globale en Encaissé </span>
+                                                              <span>Encaissé </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.mgenc) + "DA"}</span>
