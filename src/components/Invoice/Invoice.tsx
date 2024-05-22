@@ -341,10 +341,19 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant globale de la retenue de garantie </span>
+                                                              <span>Montant globale de la retenue de garantie en HT </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.rg_total) +"DA"}</span>
+                                                              <span>{Humanize(resume.rg_total) + "DA"}</span>
+                                                          </div>
+                                                      </div>
+                                                      <div className="col me-2">
+                                                          <div
+                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
+                                                              <span>Montant globale de la retenue de garantie en TTC </span>
+                                                          </div>
+                                                          <div className="text-dark fw-bold h5 mb-0">
+                                                              <span>{Humanize(resume.rg_total_ttc) + "DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -369,7 +378,16 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                                               <span>Montant globale en Créance </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.creance) +"DA"}</span>
+                                                              <span>{Humanize(resume.creance) + "DA"}</span>
+                                                          </div>
+                                                      </div>
+                                                      <div className="col me-2">
+                                                          <div
+                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
+                                                              <span>Montant globale en Encaissé </span>
+                                                          </div>
+                                                          <div className="text-dark fw-bold h5 mb-0">
+                                                              <span>{Humanize(resume.mgenc) + "DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -390,7 +408,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
 
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={addD}>
-                                                  <i className="fas fa-plus" style={{marginRight: 5}}/>
+                                              <i className="fas fa-plus" style={{marginRight: 5}}/>
                                                   Ajouter une facture
                                               </button>
                                               <button className="btn btn-primary btn-sm"

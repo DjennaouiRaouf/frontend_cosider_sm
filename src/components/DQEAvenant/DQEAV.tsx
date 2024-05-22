@@ -23,6 +23,7 @@ import {Dropdown} from "react-bootstrap";
 import * as XLSX from "xlsx";
 import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 import AddDQEAvenant from "../AddDQEAvenant/AddDQEAvenant";
+import SearchDQEAV from "../SearchDQEAV/SearchDQEAV";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -268,7 +269,7 @@ const DQEAV: React.FC<any> = () => {
           <AddDQEAvenant refresh={() => {
               getData('')
           }}/>
-          <SearchDQE/>
+          <SearchDQEAV/>
           <UpdateDQE refresh={() => {
               getData('')
           }}/>

@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
 import AddAttachement from "../AddAttachement/AddAttachement";
 import AlertMessage from "../AlertMessage/AlertMessage";
-import {formatDate, Humanize} from "../Utils/Utils";
+import {formatDate, Humanize, Transform} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
 import SearchAttachements from "../SearchAttachements/SearchAttachements";
 import {showSearchAtt} from "../Slices/SearchModalSlices";
@@ -247,7 +247,39 @@ const Attachements: React.FC<any> = () => {
 
     setSelectedRows([])
      }
+ const onCellValueChanged = async (params: any) => {
 
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updateatt/`, {
+          id:params.data['id'],
+          qte:params.data['qte'],
+          montant:params.data['montant'],
+
+      },{
+                headers: {
+
+                  Authorization: `Token ${Cookies.get("token")}`,
+                  'Content-Type': 'application/json',
+
+                },
+                })
+                .then((response:any) => {
+                       const paramsArray = Array.from(searchParams.entries());
+                    const queryString = paramsArray.reduce((acc, [key, value], index) => {
+                      if (index === 0) {
+                        return `?${key}=${encodeURIComponent(value)}`;
+                      } else {
+                        return `${acc}&${key}=${encodeURIComponent(value)}`;
+                      }
+                    }, '');
+
+                    getData(queryString);
+
+
+                })
+                .catch((error:any) => {
+
+                });
+ }
 
   return (
       <>
@@ -375,9 +407,9 @@ const Attachements: React.FC<any> = () => {
                                            gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
                                                     onGridReady={onGridReady}
-
-                                             onSelectionChanged={onSelectionChanged}
-domLayout='autoHeight'
+                                                   onCellValueChanged={onCellValueChanged}
+                                                   onSelectionChanged={onSelectionChanged}
+                                            domLayout='autoHeight'
 
 
                                     />
