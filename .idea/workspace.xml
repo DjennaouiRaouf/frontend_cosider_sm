@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4070f26d-ae89-4293-9cb4-f1b356685cb9.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Client/Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Client/Client.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/PC/Desktop/frontend_cosider_sm/src/components",
+    "last_opened_file_path": "C:/Users/administrator/Desktop/frontend_cosider_sm",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -116,13 +115,7 @@
       <workItem from="1716271776174" duration="9350000" />
       <workItem from="1716358705769" duration="12178000" />
       <workItem from="1716449353640" duration="1354000" />
-    </task>
-    <task id="LOCAL-00051" summary="init">
-      <created>1714290518459</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1714290518460</updated>
+      <workItem from="1716451696647" duration="3573000" />
     </task>
     <task id="LOCAL-00052" summary="init">
       <created>1714293235720</created>
@@ -489,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716383133523</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="init">
+      <created>1716451723731</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1716451723747</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

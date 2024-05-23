@@ -53,11 +53,14 @@ const Contrat: React.FC<any> = () => {
     const gridRef = useRef(null);
 
        const defaultColDefs: ColDef = {
+            flex: 1,
+
     sortable: true,
     resizable: true,
     minWidth: 200,
-    autoHeight: true, wrapText: true,
+    autoHeight: true ,wrapText: true,
     cellStyle: {textAlign: 'start', border: "none"},
+
 
   };
 
@@ -127,7 +130,7 @@ const Contrat: React.FC<any> = () => {
 
                          const updatedCols:any[] = [
                                 {
-                    headerName:' ',
+                    headerName:' ', rowDrag: true,
                     cellRenderer:ContratOption,
                          maxWidth: 100,
                          cellRendererParams:{
