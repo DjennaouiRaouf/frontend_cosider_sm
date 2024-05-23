@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4070f26d-ae89-4293-9cb4-f1b356685cb9.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchAttachements/SearchAttachements.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     "npm.start.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
     "sql.rename.search.for.storage.occurrences": "true",
-    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -112,6 +115,7 @@
       <workItem from="1716206655330" duration="3947000" />
       <workItem from="1716271776174" duration="9350000" />
       <workItem from="1716358705769" duration="12178000" />
+      <workItem from="1716449353640" duration="1354000" />
     </task>
     <task id="LOCAL-00051" summary="init">
       <created>1714290518459</created>

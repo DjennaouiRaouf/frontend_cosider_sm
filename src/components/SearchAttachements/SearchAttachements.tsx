@@ -52,7 +52,7 @@ const SearchAttachements: React.FC<any> = () => {
 
     const getFields = async() => {
          const contrat_id:string=encodeURIComponent(String(cid));
-         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/attfilterfields/?marche=${contrat_id}`,{
+         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/attfilterfields`,{
 
             headers: {
                 Authorization: `Token ${Cookies.get("token")}`,
