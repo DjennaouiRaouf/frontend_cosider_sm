@@ -194,7 +194,7 @@ const Flash: React.FC<any> = () => {
 
   const attacher = () => {
 
-      const input = selectedRows.map(({ code_tache, nt ,code_site,quantite_1,mmaa}) => ({ code_tache, nt ,code_site,quantite_1,mmaa}));
+      const input = selectedRows.map(({ code_tache, nt ,code_site,quantite_1,valeur_1,mmaa}) => ({ code_tache, nt ,code_site,quantite_1,valeur_1,mmaa}));
 
     axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,input )
       .then(response => {
