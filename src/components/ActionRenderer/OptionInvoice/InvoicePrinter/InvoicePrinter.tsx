@@ -9,22 +9,23 @@ interface InvoicePrinterProps {
 const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, ref) => {
 
   return (
-      <div ref={ref} className={"print-only"} style={{width: "100%", height: '842px', margin: 10}}>
+      <div ref={ref} className={"print-only"} style={{width: "100%", height: '842px',margin:0}}>
+        <div style={{paddingLeft:'2cm',paddingRight:'2cm'}}>
           <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
               Le: {props.data.date}
           </label>
-          <div>
+          <div className={'w-100'}>
               <h1 className="text-center" style={{textAlign: "center", fontSize: '15px', textDecoration: "underline"}}>
                   Facture N°&nbsp;{props.data.numero_facture}
               </h1>
           </div>
 
 
-          <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
+          <label className="form-label mt-3 mb-3 w-100" style={{fontSize: '12px'}}>
               <strong>Situation de Travaux N°:</strong> {props.data.num_situation}
           </label>
           <hr/>
-          <div>
+          <div className={'w-100'}>
               <label className="form-label" style={{fontSize: '12px'}}>
                   <strong>Marché:</strong> {props.data.marche} du {props.data.signature} <br/>
                   <strong>Objet:</strong> {props.data.projet} <br/>d'un montant
@@ -39,7 +40,7 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
 
           </div>
           <hr/>
-          <div className={'mt-3 mb-3'}>
+          <div className={'mt-3 mb-3 w-100'}>
               <label className="form-label" style={{fontSize: '12px'}}>
                   Selon la situation des travaux du {props.data.du} au {props.data.au} : <br/><br/>
                   Montant cumulé des traveaux réalisés au {props.data.au} en
@@ -65,7 +66,7 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
 
           {
               props.data.montant_avf_remb !== "0.00" &&
-              <div className={'mt-3 mb-3'}>
+              <div className={'mt-3 mb-3 w-100'}>
                   <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
                       <strong>Avance Forfaitaire </strong>:{Humanize(props.data.montant_avf_remb)} DA
                   </label>
@@ -73,7 +74,7 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
 
           }
           {props.data.montant_ava_remb !== "0.00" &&
-              <div className={'mt-3 mb-3'}>
+              <div className={'mt-3 mb-3 w-100'}>
                   <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
                       <strong>Avance sur Appros</strong>:{Humanize(props.data.montant_avf_remb)} DA
                   </label>
@@ -82,7 +83,7 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
 
           {props.data.tva === "0.00" &&
 
-              <div className={'mt-3 mb-3'}>
+              <div className={'mt-3 mb-3 w-100'}>
                   <label className="form-label text-center" style={{fontSize: '12px', width: '100%'}}>
                       <strong>EXONEREE DES TAXES</strong>
                   </label>
@@ -90,21 +91,21 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
           }
 
 
-          <div className={'mt-3 mb-3'}>
-              <label className="form-label" style={{fontSize: '12px'}}>
+          <div className={'mt-3 mb-3 w-100'}>
+              <label className="form-label" style={{fontSize: '12px',width:'100%'}}>
                   MONTANT DE LA FACTURE EN (HT) {Humanize(props.data.montant_factureHT)} DA <br/>
                   MONTANT NET À PAYER À L'ENTREPRISE EN (TTC) {Humanize(props.data.montant_factureTTC)} DA <br/>
 
               </label>
           </div>
 
-          <div className={'mt-3 mb-3'}>
-              <label className="form-label" style={{fontSize: '12px'}}>
+          <div className={'mt-3 mb-3 w-100'}>
+              <label className="form-label" style={{fontSize: '12px' ,width:"100"}}>
                   Arretée la présente facture à la somme de <strong>{props.data.somme}</strong>
               </label>
           </div>
 
-
+        </div>
       </div>
   )
 });
