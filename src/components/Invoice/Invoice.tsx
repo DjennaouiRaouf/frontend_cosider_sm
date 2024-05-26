@@ -65,7 +65,8 @@ const Invoice: React.FC<any> = () => {
   const [searchParams] = useSearchParams();
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
    const[resume,setResume]=useState<any>({});
-const [gridApi, setGridApi] = useState<GridApi | null>(null);
+
+   const [gridApi, setGridApi] = useState<GridApi | null>(null);
   const gridRef = useRef(null);
   const { nt,pole } = useParams();
 
@@ -132,7 +133,9 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
 
 
 
+
   const getFields = async() => {
+
         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/facturefields/?flag=l`,{
             headers: {
                 'Content-Type': 'application/json',
@@ -140,7 +143,6 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
             },
         })
             .then((response:any) => {
-
                  const updatedCols:any[] = [
                      {
                             headerName:'',
@@ -148,6 +150,7 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                             maxWidth: 150,
                               cellRendererParams:{
                                 refresh:getData,
+
                               }
                               }
 
@@ -187,11 +190,14 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
     }, '');
 
     getData(queryString);
+    getFields();
   },[searchParams]);
 
-      useEffect(() => {
-        getFields();
-    },[]);
+
+
+
+
+
 
     const dispatch=useDispatch();
     const addD = () => {

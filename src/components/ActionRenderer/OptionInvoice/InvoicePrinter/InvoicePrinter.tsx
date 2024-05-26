@@ -1,12 +1,55 @@
-import { forwardRef } from 'react';
+import {forwardRef, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../../../Store/Store";
 import "./InvoicePrinter.css"
 import {Humanize} from "../../../Utils/Utils";
+import axios from "axios";
+import Cookies from "js-cookie";
+
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
+
 interface InvoicePrinterProps {
-  data:any
+  data:any;
 }
 const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, ref) => {
+       const[extra,setExtra]=useState<any>({});
+     const { nt,pole } = useParams();
+
+        const [searchParams] = useSearchParams();
+    const getExtra = async(url:string) => {
+        const ntid:string=encodeURIComponent(String(nt));
+        const pid:string=encodeURIComponent(String(pole));
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getfacture/?marche__nt=${ntid}&marche__code_site=${pid}${url.replace('?',"&")}`,{
+      headers: {
+        Authorization: `Token ${Cookies.get('token')}`,
+        'Content-Type': 'application/json',
+
+      },
+    })
+        .then((response:any) => {
+          setExtra(response.data.extra)
+        })
+        .catch((error:any) => {
+
+        });
+
+
+  }
+
+     useEffect(() => {
+    const paramsArray:any[] = Array.from(searchParams.entries());
+    // Build the query string
+    const queryString = paramsArray.reduce((acc, [key, value], index) => {
+      if (index === 0) {
+        return `?${key}=${encodeURIComponent(value)}`;
+      } else {
+        return `${acc}&${key}=${encodeURIComponent(value)}`;
+      }
+    }, '');
+
+    getExtra(queryString);
+
+  },[]);
 
   return (
       <div ref={ref} className={"print-only"} style={{width: "100%", height: '842px',margin:0}}>
@@ -52,11 +95,11 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                   Montant cumulé des traveaux réalisés du {props.data.du} au {props.data.au} en
                   (HT) {Humanize(props.data.montant)} DA <br/>
 
-                  RG : {props.data.retenue_garantie}% <br/> Montant de retenue de garantie en
+                  RG : {extra.rg}% <br/> Montant de retenue de garantie en
                   (HT) {Humanize(props.data.montant_rg)} DA <br/>
                   Taux de rabais : {props.data.rabais}% <br/> Montant du rabais en (HT)
                   : {Humanize(props.data.montant_rb)} DA <br/>
-                  TVA : {props.data.tva}% <br/>
+                  TVA : {extra.tva}% <br/>
                   Montant de la
                   taxe {Humanize((props.data.tva / 100) * props.data.montant)} DA <br/>
 

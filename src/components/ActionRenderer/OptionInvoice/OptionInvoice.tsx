@@ -6,7 +6,7 @@ import {useSearchParams} from "react-router-dom";
 import {displayAlertMessage, Variant} from "../../Slices/AlertMessageSlices";
 import {showAddEncaissement} from "../../Slices/AddModalSlices";
 import ReactToPrint, {useReactToPrint} from 'react-to-print';
-import {useRef} from "react";
+import {useRef, useState} from "react";
 import './OptionInvoice.css'
 import InvoicePrinter from "./InvoicePrinter/InvoicePrinter";
 type DelInvoiceProps = {
@@ -25,6 +25,7 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
      const dispatch=useDispatch();
      const [searchParams] = useSearchParams();
      const componentRef = useRef<any>();
+
      const handlePrint = useReactToPrint({
         content: () => componentRef.current,
 
@@ -62,6 +63,7 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
     }
     const encaisser = () => {
         const rowData:any =  props.data;
+
         if(rowData){
             dispatch(showAddEncaissement(rowData['numero_facture']))
         }
@@ -70,7 +72,7 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
 
 
     return (<>
-        <InvoicePrinter ref={componentRef} data={props.data}/>
+        <InvoicePrinter ref={componentRef} data={props.data} />
 
         <div className="btn-group" role="group">
             <button
