@@ -65,18 +65,18 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
           </div>
 
           {
-              props.data.montant_avf_remb !== "0.00" &&
+              props.data.avf !== 0 &&
               <div className={'mt-3 mb-3 w-100'}>
                   <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
-                      <strong>Avance Forfaitaire </strong>:{Humanize(props.data.montant_avf_remb)} DA
+                      <strong>Avance Forfaitaire </strong>:{Humanize(props.data.avf)} DA
                   </label>
               </div>
 
           }
-          {props.data.montant_ava_remb !== "0.00" &&
+          {props.data.ava !== 0 &&
               <div className={'mt-3 mb-3 w-100'}>
                   <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
-                      <strong>Avance sur Appros</strong>:{Humanize(props.data.montant_avf_remb)} DA
+                      <strong>Avance sur Appros</strong>:{Humanize(props.data.ava)} DA
                   </label>
               </div>
           }
