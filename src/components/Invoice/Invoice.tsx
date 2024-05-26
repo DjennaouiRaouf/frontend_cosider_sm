@@ -3,30 +3,26 @@ import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {ColDef, GridApi} from "ag-grid-community";
+import "ag-grid-enterprise/styles/ag-grid.css";
+import "ag-grid-enterprise/styles/ag-theme-alpine.css";
+import 'ag-grid-enterprise';
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
-import AddDQE from "../AddDQE/AddDQE";
 import {Humanize} from "../Utils/Utils";
 import {showAddFacture} from "../Slices/AddModalSlices";
 import AddFacture from "../AddFacture/AddFacture";
-import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
-import DetailInvoice from "../ActionRenderer/DetailInvoice/DetailInvoice";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import OptionInvoice from "../ActionRenderer/OptionInvoice/OptionInvoice";
-import DetailFacture from "../DetailFacture/DetailFacture"
-import Encaissement from "../ActionRenderer/Encaissement/Encaissement";
+
 import AddEncaissement from "../AddEncaissement/AddEncaissement";
-import CreancePrinter from "../EtatCreance/CreancePrinter/CreancePrinter";
 import {useReactToPrint} from "react-to-print";
 import InvoiceRG from "./InvoiceRG/InvoiceRG";
-import {Button, Form, Modal} from "react-bootstrap";
+import {Button, Dropdown, Form, Modal} from "react-bootstrap";
 import SearchInvoice from "../SearchInvoice/SearchInvoice";
 import {showSearchInvoice} from "../Slices/SearchModalSlices";
+import InvoiceRGTTC from "./InvoiceRGTTC/InvoiceRGTTC";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
@@ -222,64 +218,13 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
 
       });
 
+          const componentRef2 = useRef<any>();
+     const handlePrint2 = useReactToPrint({
+        content: () => componentRef2.current,
 
-      const [checkedItems, setCheckedItems] = useState<number[]>([]);
-    const [items, setItems] = useState<any[]>([]);
-
-
-    const handleCheckboxChange = (item: any) => {
-        const isChecked = checkedItems.includes(item['id']);
-        if (isChecked) {
-            // Remove item if already checked
-            setCheckedItems(checkedItems.filter(id => id !== item['id']));
-            setItems(items.filter(item => item.id !== item['id']));
-        } else {
-            // Append item to the list if checked
-            setCheckedItems([...checkedItems, item['id']]);
-            setItems([...items, item['id']]);
-        }
-    };
+      });
 
 
-
-     const[avances,setAvances]=useState([])
-     const[show,setShow]=useState(false)
-     const handleClose = () => {
-        setShow(false)
-     }
-
-    const openModal = () => {
-        setShow(true)
-    }
-
-       const getAvances = async() => {
-         /*
-        const contrat_id:string=encodeURIComponent(String(cid));
-        console.log(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}&remboursee=False`)
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getavance/?marche=${contrat_id}&remboursee=False`,{
-            headers: {
-                Authorization: `Token ${Cookies.get('token')}`,
-                'Content-Type': 'application/json',
-
-            },
-        })
-            .then((response:any) => {
-
-                setAvances(response.data.av);
-
-
-
-            })
-            .catch((error:any) => {
-
-            });
-
-          */
-    }
-
-    useEffect(() => {
-        getAvances();
-    },[]);
     
      const Remb = () => {
 
@@ -294,35 +239,8 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
           <AddFacture refresh={()=>{getData('')}}/>
           <AddEncaissement refresh={()=>{getData('')}}/>
           <InvoiceRG ref={componentRef} facture={data} extra={resume}/>
-  {
+          <InvoiceRGTTC ref={componentRef2} facture={data} extra={resume}/>
 
-            avances.length !== 0 &&
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Selectionner l'avance</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            {avances.map(item => (
-                                <Form.Check
-                                    key={item['id']}
-                                    type="checkbox"
-                                    id={`checkbox-${item['id']}`}
-                                    label={`${item['type']} ${item['num_avance']}`}
-                                    checked={checkedItems.includes(item['id'])}
-                                    onChange={() => handleCheckboxChange(item)}
-                                />
-                            ))}
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary btn-sm" style={{ borderWidth: 0, background: "#d7142a" }}
-                                    onClick={Remb}>
-                                <i className="fa fa-send" style={{marginRight:5 }} ></i>
-                                Rebmourser
-                            </Button>
-
-                        </Modal.Footer>
-                    </Modal>
-                }
 
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
@@ -415,18 +333,31 @@ const [gridApi, setGridApi] = useState<GridApi | null>(null);
                                               <i className="fas fa-plus" style={{marginRight: 5}}/>
                                                   Ajouter une facture
                                               </button>
-                                              <button className="btn btn-primary btn-sm"
-                                                      type="button"
-                                                      style={{background: "#df162c", borderWidth: 0}}
-                                                      onClick={handlePrint}><i className="fas fa-print"
-                                                                               style={{marginRight: 5}}/>
-                                                  Facture RG
-                                              </button>
-                                               <button className="btn btn-primary" type="button" style={{ height: 40 , background: "#df162c", borderWidth: 0  }}
-                                                                onClick={openModal}>
-                                                            <i className="fa fa-send" />
-                                                            &nbsp;Rembourser
-                                                        </button>
+
+                                                  <Dropdown style={{
+                                                      background: "#df162c",borderRadius:0,
+                                                  }}>
+                                                      <Dropdown.Toggle style={{
+                                                          height: 40,
+                                                          background: "#df162c",
+                                                          borderRadius:0,
+                                                          borderWidth: 0
+                                                      }} id="dropdown-basic"
+                                                      ><i className="fas fa-print"
+                                                          style={{marginRight: 5}}/>
+                                                          &nbsp;Facture RG
+                                                      </Dropdown.Toggle>
+
+                                                      <Dropdown.Menu>
+                                                          <Dropdown.Item          onClick={handlePrint}>
+                                                              <i className="bi bi-file-earmark-pdf-fill"></i>
+                                                              &nbsp;En HT</Dropdown.Item>
+                                                          <Dropdown.Item onClick={handlePrint2}>
+                                                              <i className="bi bi-file-earmark-pdf-fill"></i>
+                                                              &nbsp;En TTC</Dropdown.Item>
+
+                                                      </Dropdown.Menu>
+                                                  </Dropdown>
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchD}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>

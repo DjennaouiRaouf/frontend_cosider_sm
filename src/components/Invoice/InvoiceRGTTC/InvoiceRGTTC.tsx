@@ -1,12 +1,13 @@
 import { forwardRef } from 'react';
 import {useSelector} from "react-redux";
 import {Humanize} from "../../Utils/Utils";
+import "./InvoiceRGTTC.css"
 
 interface InvoiceRGProps {
   facture:any
   extra:any
 }
-const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
+const InvoiceRGTTC = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
 
     const currentDate = () :string => {
       var currentDate = new Date();
@@ -19,8 +20,8 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
 
     }
   return (
-      <div ref={ref} className={"print-only"}
-           style={{width: "100%", height: '842px',  margin: 10}}>
+
+      <div ref={ref} className={"print-only"} style={{width:"100%",height:'842px', margin:10}}>
           <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
               Le: {currentDate()}
           </label>
@@ -65,12 +66,13 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
                           <tr key={index}>
                               <td>{item.numero_facture}</td>
                               <td>{item.num_situation}</td>
-                              <td>{Humanize(item.montant_rg)} DA</td>
+                              <td>{Humanize(item.montant_rg + (item.montant_rg * props.extra.tva / 100))} DA</td>
                           </tr>
                       ))}
+
                       <tr>
                           <td className={"text-start"}>Total :</td>
-                          <td className={"text-start"}>{Humanize(props.extra.rg_total)} DA</td>
+                          <td className={"text-start"}>{Humanize(props.extra.rg_total_ttc)} DA</td>
                       </tr>
                       </tbody>
                   </table>
@@ -83,5 +85,5 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
   )
 });
 
-export default InvoiceRG;
+export default InvoiceRGTTC;
 

@@ -9,7 +9,7 @@ interface InvoicePrinterProps {
 const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, ref) => {
 
   return (
-      <div ref={ref} className={"print-only"} style={{marginRight: '12px', marginLeft: '12px'}}>
+      <div ref={ref} className={"print-only"} style={{width: "100%", height: '842px', margin: 10}}>
           <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
               Le: {props.data.date}
           </label>
@@ -64,20 +64,20 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
           </div>
 
           {
-          props.data.montant_avf_remb!=="0.00" &&
-          <div className={'mt-3 mb-3'}>
-              <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
-                  <strong>Avance Forfaitaire </strong>:{Humanize(props.data.montant_avf_remb)} DA
-              </label>
-          </div>
+              props.data.montant_avf_remb !== "0.00" &&
+              <div className={'mt-3 mb-3'}>
+                  <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
+                      <strong>Avance Forfaitaire </strong>:{Humanize(props.data.montant_avf_remb)} DA
+                  </label>
+              </div>
 
           }
-          { props.data.montant_ava_remb !=="0.00" &&
-          <div className={'mt-3 mb-3'}>
-              <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
-                  <strong>Avance sur Appros</strong>:{Humanize(props.data.montant_avf_remb)} DA
-              </label>
-          </div>
+          {props.data.montant_ava_remb !== "0.00" &&
+              <div className={'mt-3 mb-3'}>
+                  <label className="form-label " style={{fontSize: '12px', width: '100%'}}>
+                      <strong>Avance sur Appros</strong>:{Humanize(props.data.montant_avf_remb)} DA
+                  </label>
+              </div>
           }
 
           {props.data.tva === "0.00" &&

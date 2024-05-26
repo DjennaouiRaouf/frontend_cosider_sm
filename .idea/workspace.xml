@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRGTTC/InvoiceRGTTC.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRGTTC/InvoiceRGTTC.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoicePrinter/InvoicePrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoicePrinter/InvoicePrinter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +40,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/administrator/Desktop/frontend_cosider_sm",
+    "last_opened_file_path": "C:/Users/PC/Desktop/frontend_cosider_sm/src/components/Invoice",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -41,7 +48,7 @@
     "npm.start.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
     "sql.rename.search.for.storage.occurrences": "true",
-    "ts.external.directory.path": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -52,11 +59,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Invoice" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Revision" />
       <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components\ActionRenderer" />
       <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components" />
-      <recent name="C:\Users\Djennaoui-Raouf\PycharmProjects\frontend_cosider_sm\src\components" />
     </key>
   </component>
   <component name="RunManager">
@@ -115,6 +122,9 @@
       <workItem from="1716358705769" duration="12178000" />
       <workItem from="1716449353640" duration="1354000" />
       <workItem from="1716451696647" duration="5561000" />
+      <workItem from="1716713491633" duration="1227000" />
+      <workItem from="1716715886432" duration="1132000" />
+      <workItem from="1716720573397" duration="6769000" />
     </task>
     <task id="LOCAL-00055" summary="init">
       <created>1714294374656</created>
