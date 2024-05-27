@@ -50,6 +50,8 @@ case 'ava' :
 case 'avf' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
+case 'ave' :
+      return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
 
     default:
