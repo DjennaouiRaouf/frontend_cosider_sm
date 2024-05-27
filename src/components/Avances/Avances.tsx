@@ -182,7 +182,7 @@ const Avances: React.FC<any> = () => {
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">
-                                      <div className="col-md-6 col-xxl-3">
+                                      <div className="col-md-6 col-xxl-3 mt-5">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
@@ -192,7 +192,7 @@ const Avances: React.FC<any> = () => {
                                                               <span>Avance sur Appros</span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.ava) +"DA"}</span>
+                                                              <span>{Humanize(resume.ava) + "DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -206,7 +206,7 @@ const Avances: React.FC<any> = () => {
                                               </div>
                                           </div>
                                       </div>
-                                      <div className="col-md-6 col-xxl-3">
+                                      <div className="col-md-6 col-xxl-3 mt-5">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
@@ -216,7 +216,31 @@ const Avances: React.FC<any> = () => {
                                                               <span>Avance sur Forfaitaire </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.avf) +"DA"}</span>
+                                                              <span>{Humanize(resume.avf) + "DA"}</span>
+                                                          </div>
+                                                      </div>
+                                                      <div className="col-auto">
+                                                          <i
+                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
+                                                              style={{color: "rgb(221, 223, 235)"}}
+                                                          />
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div className="col-md-6 col-xxl-3 mt-5">
+                                          <div className="card shadow border-start-success py-2">
+                                              <div className="card-body">
+                                                  <div className="row align-items-center no-gutters">
+                                                      <div className="col me-2">
+                                                          <div
+                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
+                                                              <span>Avance Exceptionnelle </span>
+                                                          </div>
+                                                          <div className="text-dark fw-bold h5 mb-0">
+                                                              <span>{Humanize(resume.ave) + "DA"}</span>
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
@@ -247,17 +271,17 @@ const Avances: React.FC<any> = () => {
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                                                                            style={{overflowY:"hidden",width:"100%" }}
+                                      style={{overflowY: "hidden", width: "100%"}}
 
 
                                   >
-                                    <AgGridReact ref={gridRef}
-                                           rowData={data} columnDefs={fields}
-                                           gridOptions={gridOptions}
-                                           onRowClicked={handleRowClick}
-domLayout='autoHeight'
+                                      <AgGridReact ref={gridRef}
+                                                   rowData={data} columnDefs={fields}
+                                                   gridOptions={gridOptions}
+                                                   onRowClicked={handleRowClick}
+                                                   domLayout='autoHeight'
 
-                                    />
+                                      />
 
                                   </div>
                                   <div className="row">
