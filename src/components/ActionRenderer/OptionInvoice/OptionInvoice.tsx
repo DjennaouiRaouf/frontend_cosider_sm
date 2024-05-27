@@ -68,6 +68,13 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
             dispatch(showAddEncaissement(rowData['numero_facture']))
         }
     }
+const Detail = () => {
+        const rowData:any =  props.data;
+
+        if(rowData){
+            dispatch(showAddEncaissement(rowData['numero_facture']))
+        }
+    }
 
 
 
@@ -83,6 +90,16 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
                 data-bs-toggle="tooltip" data-bs-placement="top" title="Annuler"
             >
                 <i className="far fa-trash-alt" style={{fontSize: 16}}/>
+
+            </button>
+            <button
+                className="btn btn-primary btn-sm"
+                type="button"
+                style={{background: "#df162c", borderColor: "#df162c", margin: 0}}
+                onClick={Detail}
+                data-bs-toggle="tooltip" data-bs-placement="top" title="Détail"
+            >
+                <i className="fas fa-list" style={{fontSize: 16}}/>
 
             </button>
             <button className="btn btn-primary btn-sm"

@@ -149,7 +149,7 @@ const Invoice: React.FC<any> = () => {
                      {
                             headerName:'',
                             cellRenderer:OptionInvoice,
-                            maxWidth: 150,
+                            maxWidth: 200,
                               cellRendererParams:{
                                 refresh:getData,
 
