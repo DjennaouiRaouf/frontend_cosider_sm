@@ -100,34 +100,25 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
 
         if (form.checkValidity()) {
             setValidated(false)
-            
             await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addfacture/?marche__nt=${ntid}&marche__code_site=${pid}`,Transform(formDataObject),{
                 headers: {
                     Authorization: `Token ${Cookies.get("token")}`,
                     'Content-Type': 'application/json',
-
                 },
-
             })
                 .then((response:any) => {
                     setFormData(defaultState);
                     handleClose();
                     dispatch(displayAlertMessage({variant:Variant.SUCCESS,message:'Facture ajoutée'}))
                     refresh();
-
                 })
                 .catch((error:any) => {
                     dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
                 });
-
-
         }
         else {
-
             setValidated(true)
         }
-
-
     }
     useEffect(() => {
         getFields();
