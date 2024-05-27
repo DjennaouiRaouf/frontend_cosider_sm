@@ -131,7 +131,8 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
     }
     useEffect(() => {
         getFields();
-    },[]);
+    },[showAddFactureForm,dispatch]);
+
     const handleClose = () => {
         dispatch(hideAddFacture())
     }
