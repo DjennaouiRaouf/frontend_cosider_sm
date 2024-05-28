@@ -9,10 +9,18 @@ interface AttPrinterProps {
 const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
 
   return (
-      <div ref={ref} className={"print-only"}style={{width: "29.7cm", height: '21cm',margin:0}}  >
-
+      <div ref={ref} className={"print-only"} style={{width: "29.7cm", height: '21cm', margin: 0}}>
+          <style>
+              {`
+            @media print {
+              @page {
+                size: landscape;
+              }
+            }
+          `}
+          </style>
           <div>
-              <h4 style={{textAlign: "center"}}>Attachement des travaux  </h4>
+              <h4 style={{textAlign: "center"}}>Attachement des travaux </h4>
               <hr/>
               <div className="row">
                   <div className="col-sm-7 col-lg-6 col-xl-6 col-xxl-5">
@@ -44,8 +52,8 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
               <hr/>
               <div className="row">
                   <div className="col">
-                      <div className="table-responsive" >
-                          <table className="table table table-sm" >
+                      <div className="table-responsive">
+                          <table className="table table table-sm">
                               <thead>
                               <tr>
                                   <th style={{width: 100}}>Réf.Tache</th>

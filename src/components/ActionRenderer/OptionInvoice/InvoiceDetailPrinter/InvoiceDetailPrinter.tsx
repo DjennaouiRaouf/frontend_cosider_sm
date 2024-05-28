@@ -52,8 +52,17 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
   },[]);
 
   return (
-      <div ref={ref} className="print-only " style={{width: "29.7cm", height: '21cm',margin:0}}  >
-          <div className="container-fluid" >
+      <div ref={ref} className="print-only " style={{width: "29.7cm", height: '21cm', margin: 0}}>
+          <style>
+              {`
+            @media print {
+              @page {
+                size: landscape;
+              }
+            }
+          `}
+          </style>
+          <div className="container-fluid">
               <h6>Le : date situation</h6>
               <h4 className="text-center">
                   Détail de La Facture N° ....&nbsp; Dont la Situtation N° ....&nbsp;&nbsp;
@@ -145,13 +154,16 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                      <td>Cell 1</td>
-                      <td>Cell 2</td>
-                      <td>Cell 2</td>
-                      <td>Cell 2</td>
-                      <td>Cell 2</td>
-                  </tr>
+                   {props.data.map((item: any, index: any) => (
+                       <tr key={index}>
+                           <td>{item.code_tache}</td>
+                           <td><p className="text-break" style={{width:"300px"}}>{item.libelle}</p></td>
+                           <td>{Humanize(item.prix_u)} DA</td>
+                           <td>{item.qte}</td>
+
+                           <td>{Humanize(item.montant)} DA</td>
+                       </tr>
+                   ))}
                   </tbody>
               </table>
           </div>

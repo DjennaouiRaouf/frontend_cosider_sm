@@ -9,8 +9,16 @@ interface DecomptePPrinterProps {
 const DecomptePPrinter = forwardRef<HTMLDivElement, DecomptePPrinterProps>((props, ref) => {
 
   return (
-      <div ref={ref} className={"print-only"} style={{width: "29.7cm", height: '21cm',margin:0}}  >
-
+      <div ref={ref} className={"print-only"} style={{width: "29.7cm", height: '21cm', margin: 0}}>
+          <style>
+              {`
+            @media print {
+              @page {
+                size: landscape;
+              }
+            }
+          `}
+          </style>
           <div>
 
               <h4 style={{textAlign: "center"}}>Décompte provisoir des travaux du mois {props.extra.date}</h4>
@@ -40,7 +48,7 @@ const DecomptePPrinter = forwardRef<HTMLDivElement, DecomptePPrinterProps>((prop
               <hr/>
               <div className="row">
                   <div className="col">
-                      <div className="table-responsive" >
+                      <div className="table-responsive">
                           <table className="table table table-sm">
                               <thead>
                               <tr>
@@ -132,38 +140,38 @@ const DecomptePPrinter = forwardRef<HTMLDivElement, DecomptePPrinterProps>((prop
                               </tr>
                               {
                                   props.extra.tva !== 0 &&
-                                      <tr>
-                                          <td>
-                                              <p className="text-break" style={{width: 100}}>
-                                              </p>
-                                          </td>
-                                          <td>
-                                              <p className="text-break" style={{width: 60}}>
-                                              </p>
-                                          </td>
-                                          <td>
-                                              <p className="text-break" style={{width: 200}}>
-                                              </p>
-                                          </td>
-                                          <td><p className="text-break" style={{width: 100}}>
+                                  <tr>
+                                      <td>
+                                          <p className="text-break" style={{width: 100}}>
                                           </p>
+                                      </td>
+                                      <td>
+                                          <p className="text-break" style={{width: 60}}>
+                                          </p>
+                                      </td>
+                                      <td>
+                                          <p className="text-break" style={{width: 200}}>
+                                          </p>
+                                      </td>
+                                      <td><p className="text-break" style={{width: 100}}>
+                                      </p>
 
-                                          </td>
-                                          <td><p className="text-break" style={{width: 100}}>
-                                          </p></td>
-                                          <td><p className="text-break" style={{width: 100}}>
-                                              Total en TTC ({props.extra.tva}%)
-                                          </p></td>
-                                          <td><p className="text-break" style={{width: 100}}>
-                                              {Humanize(props.extra.txmtp)}DA
-                                          </p></td>
-                                          <td><p className="text-break" style={{width: 100}}>
-                                              {Humanize(props.extra.txmt)}DA
-                                          </p></td>
-                                          <td><p className="text-break" style={{width: 100}}>
-                                              {Humanize(props.extra.txmtc)}DA
-                                          </p></td>
-                                      </tr>
+                                      </td>
+                                      <td><p className="text-break" style={{width: 100}}>
+                                      </p></td>
+                                      <td><p className="text-break" style={{width: 100}}>
+                                          Total en TTC ({props.extra.tva}%)
+                                      </p></td>
+                                      <td><p className="text-break" style={{width: 100}}>
+                                          {Humanize(props.extra.txmtp)}DA
+                                      </p></td>
+                                      <td><p className="text-break" style={{width: 100}}>
+                                          {Humanize(props.extra.txmt)}DA
+                                      </p></td>
+                                      <td><p className="text-break" style={{width: 100}}>
+                                          {Humanize(props.extra.txmtc)}DA
+                                      </p></td>
+                                  </tr>
 
                               }
                               </tbody>

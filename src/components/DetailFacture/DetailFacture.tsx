@@ -94,7 +94,7 @@ const DetailFacture: React.FC<any> = () => {
 
   return (
       <>
-          <InvoiceDetailPrinter ref={componentRef} data={[{x:2}]}  />
+          <InvoiceDetailPrinter ref={componentRef} data={showDetailInvoiceForm.data}  />
 
          <Modal show={showDetailInvoiceForm.shown} onHide={handleClose} size={"xl"}>
         <Modal.Header closeButton>

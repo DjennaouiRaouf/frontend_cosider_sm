@@ -52,7 +52,16 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
   },[]);
 
   return (
-      <div ref={ref} className={"print-only"} style={{width: '21cm',height: '29.7cm',margin:0}}>
+      <div ref={ref} className={"print-only"} style={{width: '21cm', height: '29.7cm', margin: 0}}>
+          <style>
+              {`
+            @media print {
+              @page {
+                size:portrait;
+              }
+            }
+          `}
+          </style>
           <div style={{paddingLeft: '2cm', paddingRight: '2cm'}}>
               <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
                   Le: {props.data.date}
@@ -73,17 +82,21 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                   <label className="form-label" style={{fontSize: '12px'}}>
 
                       <div className="input-group w-100  ">
-                          <label className="form-label w-80 " style={{fontSize: '12px'}}><strong>Marché :</strong></label>
+                          <label className="form-label w-80 " style={{fontSize: '12px'}}><strong>Marché
+                              :</strong></label>
                           <label className="form-label w-20"
-                                 style={{fontSize: '12px', marginLeft: 10}}>{props.data.marche} &nbsp; du &nbsp; {extra.signature}
+                                 style={{
+                                     fontSize: '12px',
+                                     marginLeft: 10
+                                 }}>{props.data.marche} &nbsp; du &nbsp; {extra.signature}
                           </label>
-
 
 
                       </div>
 
                       <div className="input-group w-100 ">
-                          <label className="form-label w-80 " style={{fontSize: '12px'}}><strong>Objet :</strong></label>
+                          <label className="form-label w-80 " style={{fontSize: '12px'}}><strong>Objet
+                              :</strong></label>
                           <label className="form-label w-10"
                                  style={{fontSize: '12px', marginLeft: 10}}>{extra.projet}
                           </label>
@@ -140,7 +153,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                                       (HT)
                                       :</label>
                                   <label className="form-label  w-10"
-                                         style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.montant_precedent)} DA</strong>
+                                         style={{
+                                             fontSize: '12px',
+                                             marginLeft: 10
+                                         }}><strong>{Humanize(props.data.montant_precedent)} DA</strong>
                                   </label>
                               </div>
                           </>
@@ -152,16 +168,23 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                               (HT)
                               :</label>
                           <label className="form-label  w-10"
-                                 style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.montant_cumule)} DA</strong>
+                                 style={{
+                                     fontSize: '12px',
+                                     marginLeft: 10
+                                 }}><strong>{Humanize(props.data.montant_cumule)} DA</strong>
                           </label>
                       </div>
 
                       <div className="input-group w-100">
-                          <label className="form-label  w-90" style={{fontSize: '12px'}}>Montant cumulé des traveaux réalisés du {props.data.du} au {props.data.au} en
-                      (HT)
+                          <label className="form-label  w-90" style={{fontSize: '12px'}}>Montant cumulé des traveaux
+                              réalisés du {props.data.du} au {props.data.au} en
+                              (HT)
                               :</label>
                           <label className="form-label  w-10"
-                                 style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.montant)} DA</strong>
+                                 style={{
+                                     fontSize: '12px',
+                                     marginLeft: 10
+                                 }}><strong>{Humanize(props.data.montant)} DA</strong>
                           </label>
                       </div>
                       {extra.rg !== 0 &&
@@ -173,7 +196,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                                       ({extra.rg}%)
                                       :</label>
                                   <label className="form-label  w-40"
-                                         style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.montant_rg)} DA </strong>
+                                         style={{
+                                             fontSize: '12px',
+                                             marginLeft: 10
+                                         }}><strong>{Humanize(props.data.montant_rg)} DA </strong>
                                   </label>
                               </div>
                           </>
@@ -186,7 +212,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                                       ({extra.rb}%)
                                       :</label>
                                   <label className="form-label  w-40"
-                                         style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.montant_rb)} DA </strong>
+                                         style={{
+                                             fontSize: '12px',
+                                             marginLeft: 10
+                                         }}><strong>{Humanize(props.data.montant_rb)} DA </strong>
                                   </label>
                               </div>
 
@@ -201,7 +230,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                                       ({extra.tva}%)
                                       :</label>
                                   <label className="form-label  w-40"
-                                         style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize((extra.tva / 100) * props.data.montant)} DA</strong>
+                                         style={{
+                                             fontSize: '12px',
+                                             marginLeft: 10
+                                         }}><strong>{Humanize((extra.tva / 100) * props.data.montant)} DA</strong>
                                   </label>
                               </div>
 
@@ -219,7 +251,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                           <label className="form-label  w-50" style={{fontSize: '12px'}}>Avance Forfaitaire
                               :</label>
                           <label className="form-label  w-40"
-                                 style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.avf)} DA</strong> </label>
+                                 style={{
+                                     fontSize: '12px',
+                                     marginLeft: 10
+                                 }}><strong>{Humanize(props.data.avf)} DA</strong> </label>
                       </div>
                   </div>
 
@@ -231,7 +266,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                           <label className="form-label  w-50" style={{fontSize: '12px'}}>Avance Exceptionnelle
                               :</label>
                           <label className="form-label  w-40"
-                                 style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.ave)} DA</strong> </label>
+                                 style={{
+                                     fontSize: '12px',
+                                     marginLeft: 10
+                                 }}><strong>{Humanize(props.data.ave)} DA</strong> </label>
                       </div>
 
 
@@ -245,7 +283,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                           <label className="form-label  w-50" style={{fontSize: '12px'}}>Avance sur Appros
                               :</label>
                           <label className="form-label  w-40"
-                                 style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.ava)} DA</strong> </label>
+                                 style={{
+                                     fontSize: '12px',
+                                     marginLeft: 10
+                                 }}><strong>{Humanize(props.data.ava)} DA</strong> </label>
                       </div>
 
                   </div>
@@ -262,11 +303,14 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
 
 
               <div className={'mt-3 mb-3 w-100'}>
-              <div className="input-group w-100">
+                  <div className="input-group w-100">
                       <label className="form-label  w-50" style={{fontSize: '12px'}}>MONTANT DE LA FACTURE EN (HT)
                           :</label>
                       <label className="form-label  w-40"
-                             style={{fontSize: '12px',marginLeft:10}}>{Humanize(props.data.montant_factureHT)} DA </label>
+                             style={{
+                                 fontSize: '12px',
+                                 marginLeft: 10
+                             }}>{Humanize(props.data.montant_factureHT)} DA </label>
                   </div>
               </div>
               <div className={'mt-3 mb-3 w-100'}>
@@ -275,7 +319,10 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                           (TTC)
                           :</label>
                       <label className="form-label  w-40"
-                             style={{fontSize: '12px',marginLeft:10}}><strong>{Humanize(props.data.montant_factureTTC)} DA </strong></label>
+                             style={{
+                                 fontSize: '12px',
+                                 marginLeft: 10
+                             }}><strong>{Humanize(props.data.montant_factureTTC)} DA </strong></label>
                   </div>
               </div>
 

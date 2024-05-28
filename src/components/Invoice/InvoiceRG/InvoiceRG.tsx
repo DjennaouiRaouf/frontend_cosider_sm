@@ -20,7 +20,16 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
     }
   return (
       <div ref={ref} className={"print-only"}
-           style={{width: '21cm',height: '29.7cm',margin:0}}>
+           style={{width: '21cm', height: '29.7cm', margin: 0}}>
+          <style>
+              {`
+            @media print {
+              @page {
+                size: portrait;
+              }
+            }
+          `}
+          </style>
           <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
               Le: {currentDate()}
           </label>
@@ -50,7 +59,7 @@ const InvoiceRG = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => {
           </div>
           <div className={'mt-3 mb-3'}>
 
-              <div className="table-responsive" style={{fontSize: '12px',width:"100%"}}>
+              <div className="table-responsive" style={{fontSize: '12px', width: "100%"}}>
                   <table className="table">
                       <thead>
                       <tr>

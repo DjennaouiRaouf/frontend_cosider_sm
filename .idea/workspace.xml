@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoiceDetailPrinter/InvoiceDetailPrinter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoiceDetailPrinter/InvoiceDetailPrinter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/DetailInvoice/DetailInvoice.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoiceDetailPrinter/InvoiceDetailPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoiceDetailPrinter/InvoiceDetailPrinter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoicePrinter/InvoicePrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/InvoicePrinter/InvoicePrinter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/OptionInvoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/OptionInvoice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/AttPrinter/AttPrinter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/DecomptePPrinter/DecomptePPrinter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DetailFacture/DetailFacture.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailFacture/DetailFacture.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRG/InvoiceRG.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Invoice/InvoiceRGTTC/InvoiceRGTTC.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRGTTC/InvoiceRGTTC.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Invoice/InvoiceRGTTC/InvoiceRGTTC.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/InvoiceRGTTC/InvoiceRGTTC.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +125,7 @@
       <workItem from="1716715886432" duration="1132000" />
       <workItem from="1716720573397" duration="11635000" />
       <workItem from="1716790485852" duration="16643000" />
-      <workItem from="1716877496926" duration="11382000" />
+      <workItem from="1716877496926" duration="12876000" />
     </task>
     <task id="LOCAL-00055" summary="init">
       <created>1714294374656</created>
@@ -244,22 +238,6 @@
       <option name="presentableId" value="LOCAL-00099" />
       <option name="project" value="LOCAL" />
       <updated>1715845898762</updated>
-    </task>
-    <task id="LOCAL-00101" summary="init">
-      <option name="closed" value="true" />
-      <created>1716206816599</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1716206816599</updated>
-    </task>
-    <task id="LOCAL-00102" summary="init">
-      <option name="closed" value="true" />
-      <created>1716207439219</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1716207439219</updated>
     </task>
     <task id="LOCAL-00103" summary="init">
       <option name="closed" value="true" />
@@ -505,7 +483,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716817569385</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="init">
+      <option name="closed" value="true" />
+      <created>1716893327901</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1716893327902</updated>
+    </task>
+    <task id="LOCAL-00135" summary="init">
+      <option name="closed" value="true" />
+      <created>1716893445081</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1716893445081</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
