@@ -87,7 +87,7 @@ const Detail = () => {
     return (<>
         <InvoicePrinter ref={componentRef} data={props.data} />
 
-        <DetailFacture/>
+        <DetailFacture data={props.data}/>
         <div className="btn-group" role="group">
             <button
                 className="btn btn-primary btn-sm"

@@ -10,6 +10,8 @@ import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import "./InvoiceDetailPrinter.css";
 interface InvoicePrinterProps {
   data:any;
+  rowData:any
+
 }
 const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, ref) => {
        const[extra,setExtra]=useState<any>({});
@@ -64,9 +66,9 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
           `}
           </style>
           <div className="container-fluid">
-              <h6>Le : date situation</h6>
+              <h6>Le : {props.rowData.date}</h6>
               <h4 className="text-center">
-                  Détail de La Facture N° ....&nbsp; Dont la Situtation N° ....&nbsp;&nbsp;
+                  Détail de La Facture N° {props.rowData.numero_facture}&nbsp; Dont la Situtation N°{props.rowData.num_situation}&nbsp;&nbsp;
               </h4>
               <hr/>
               <div className="input-group w-100">

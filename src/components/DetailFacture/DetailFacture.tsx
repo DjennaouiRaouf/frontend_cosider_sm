@@ -40,8 +40,11 @@ const InfoRenderer: React.FC<any> = (props) => {
 
 };
 
+type DetailFactureProps = {
+  data:any,
+};
 
-const DetailFacture: React.FC<any> = () => {
+const DetailFacture: React.FC<DetailFactureProps> = (props) => {
      const { showDetailInvoiceForm } = useSelector((state: RootState) => state.detailDataModalReducer);
     const [searchParams] = useSearchParams();
     const dispatch = useDispatch();
@@ -94,7 +97,7 @@ const DetailFacture: React.FC<any> = () => {
 
   return (
       <>
-          <InvoiceDetailPrinter ref={componentRef} data={showDetailInvoiceForm.data}  />
+          <InvoiceDetailPrinter ref={componentRef} data={showDetailInvoiceForm.data}  rowData={props.data}/>
 
          <Modal show={showDetailInvoiceForm.shown} onHide={handleClose} size={"xl"}>
         <Modal.Header closeButton>
