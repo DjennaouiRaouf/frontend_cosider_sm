@@ -151,7 +151,7 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
                   <tr>
                       <th>Réf Tache</th>
                       <th>Libelle</th>
-                      <th>Prix_U</th>
+                      <th>Prix Unit</th>
                       <th>Quantite</th>
                       <th>Montant</th>
                   </tr>
