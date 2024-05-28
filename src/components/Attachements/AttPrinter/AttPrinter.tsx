@@ -9,7 +9,7 @@ interface AttPrinterProps {
 const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
 
   return (
-      <div ref={ref} className={"print-only"} style={{transform:"scale(0.9)",margin:0, width: "100%"}} >
+      <div ref={ref} className={"print-only"}style={{width: "29.7cm", height: '21cm',margin:0}}  >
 
           <div>
               <h4 style={{textAlign: "center"}}>Attachement des travaux  </h4>
@@ -44,8 +44,8 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
               <hr/>
               <div className="row">
                   <div className="col">
-                      <div className="table-responsive">
-                          <table className="table table table-sm">
+                      <div className="table-responsive" >
+                          <table className="table table table-sm" >
                               <thead>
                               <tr>
                                   <th style={{width: 100}}>Réf.Tache</th>
@@ -73,7 +73,7 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
                                       </td>
                                       <td>
                                           <p className="text-break" style={{width: 300}}>
-                                              {item.libelle_tache}
+                                              {item.libelle}
                                           </p>
                                       </td>
                                       <td><p className="text-break" style={{width: 100}}>
@@ -90,14 +90,6 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
                                   </tr>
                               ))}
 
-                              <tr
-                                  style={{
-                                      border: "1px solid var(--bs-table-striped-color)",
-                                      borderTopStyle: "solid",
-                                      borderTopColor: "var(--bs-table-striped-color)",
-                                      borderBottomStyle: "solid"
-                                  }}
-                              />
                               </tbody>
                           </table>
 

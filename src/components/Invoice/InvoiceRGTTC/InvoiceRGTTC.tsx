@@ -21,7 +21,7 @@ const InvoiceRGTTC = forwardRef<HTMLDivElement, InvoiceRGProps>((props, ref) => 
     }
   return (
 
-      <div ref={ref} className={"print-only"} style={{width:"100%",height:'842px', margin:10}}>
+      <div ref={ref} className={"print-only"} style={{width: '21cm',height: '29.7cm',margin:0}}>
           <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
               Le: {currentDate()}
           </label>

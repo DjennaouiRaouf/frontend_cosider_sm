@@ -52,7 +52,7 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
   },[]);
 
   return (
-      <div ref={ref} className={"print-only"} style={{width: "100%", height: '842px',margin:0}}>
+      <div ref={ref} className={"print-only"} style={{width: '21cm',height: '29.7cm',margin:0}}>
           <div style={{paddingLeft: '2cm', paddingRight: '2cm'}}>
               <label className="form-label mt-3 mb-3" style={{fontSize: '12px'}}>
                   Le: {props.data.date}

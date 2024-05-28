@@ -12,11 +12,12 @@ import {hideDetailInvoice} from "../Slices/DetailModalSlices";
 import {AgGridReact} from "ag-grid-react";
 import {ColDef} from "ag-grid-community";
 import numeral from "numeral";
+import InvoiceDetailPrinter from "../ActionRenderer/OptionInvoice/InvoiceDetailPrinter/InvoiceDetailPrinter";
+import {useReactToPrint} from "react-to-print";
 
 
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
-
   switch (props.column.colId) {
 
 
@@ -25,6 +26,10 @@ const InfoRenderer: React.FC<any> = (props) => {
 
       case 'montant' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
+
+      case 'qte' :
+      return <span>{value}{" "}{props.data.unite}</span>
 
       case 'date' :
       return <span>{formatDate(value)}</span>
@@ -79,16 +84,21 @@ const DetailFacture: React.FC<any> = () => {
       loadingOoo: 'Chargement...',
       noRowsToShow: 'Pas de Données',
 
-      // Add more custom texts as needed
     },
   };
+        const componentRef = useRef<any>();
+     const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
 
+      });
 
   return (
       <>
+          <InvoiceDetailPrinter ref={componentRef} data={[{x:2}]}  />
+
          <Modal show={showDetailInvoiceForm.shown} onHide={handleClose} size={"xl"}>
         <Modal.Header closeButton>
-          <Modal.Title>Detail de la Facture N° </Modal.Title>
+          <Modal.Title>Detail de la Facture N° {showDetailInvoiceForm.id} </Modal.Title>
         </Modal.Header>
              <Modal.Body>
                  <div
@@ -107,7 +117,9 @@ const DetailFacture: React.FC<any> = () => {
 
              </Modal.Body>
              <Modal.Footer>
-
+            <Button variant="primary" style={{background: "#df162c", borderWidth: 0}} onClick={handlePrint}>
+                  Imprimer
+              </Button>
              </Modal.Footer>
          </Modal>
       </>

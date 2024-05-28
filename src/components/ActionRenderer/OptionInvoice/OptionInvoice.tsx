@@ -9,6 +9,8 @@ import ReactToPrint, {useReactToPrint} from 'react-to-print';
 import {useRef, useState} from "react";
 import './OptionInvoice.css'
 import InvoicePrinter from "./InvoicePrinter/InvoicePrinter";
+import {fetchData, fetchFields, showDetailInvoice} from "../../Slices/DetailModalSlices";
+import DetailFacture from "../../DetailFacture/DetailFacture";
 type DelInvoiceProps = {
  data:any;
  refresh:(params:any)=>void,
@@ -69,11 +71,15 @@ const OptionInvoice: React.FC<DelInvoiceProps> = (props) => {
         }
     }
 const Detail = () => {
-        const rowData:any =  props.data;
+         const rowData:any =  props.data;
 
-        if(rowData){
-            dispatch(showAddEncaissement(rowData['numero_facture']))
-        }
+
+       if(rowData){
+           const id:string=encodeURIComponent(rowData['numero_facture'])
+            dispatch(fetchFields('/forms/detail/?flag=l'));
+            dispatch(fetchData(`/sm/detail/?facture=${id}`));
+            dispatch(showDetailInvoice({id:rowData['numero_facture']}))
+       }
     }
 
 
@@ -81,6 +87,7 @@ const Detail = () => {
     return (<>
         <InvoicePrinter ref={componentRef} data={props.data} />
 
+        <DetailFacture/>
         <div className="btn-group" role="group">
             <button
                 className="btn btn-primary btn-sm"

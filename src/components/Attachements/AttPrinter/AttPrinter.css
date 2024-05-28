@@ -3,6 +3,7 @@
 }
 
 @media print {
+
     .print-only {
         display: block;
 
