@@ -52,6 +52,7 @@ const SearchCreance: React.FC<any> = () => {
 
     // submit
 
+
     const getFields = async() => {
         await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/ecfilterfields/`,{
 
