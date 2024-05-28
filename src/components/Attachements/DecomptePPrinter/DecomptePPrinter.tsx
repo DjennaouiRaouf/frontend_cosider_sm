@@ -13,7 +13,7 @@ const DecomptePPrinter = forwardRef<HTMLDivElement, DecomptePPrinterProps>((prop
 
           <div>
 
-              <h4 style={{textAlign: "center"}}>Décompte provisoir des travaux  </h4>
+              <h4 style={{textAlign: "center"}}>Décompte provisoir des travaux du mois {props.extra.date}</h4>
               <hr/>
               <div className="row">
                   <div className="col-sm-7 col-lg-6 col-xl-6 col-xxl-5">
@@ -32,11 +32,6 @@ const DecomptePPrinter = forwardRef<HTMLDivElement, DecomptePPrinterProps>((prop
 
                   </div>
                   <div className="col">
-                      <h6 className="mb-0" style={{width: "100%", marginTop: 7}}>
-            <span style={{backgroundColor: "rgb(255, 255, 255)"}}>
-                <strong>Du Mois :</strong>{props.extra.date}
-            </span>
-                      </h6>
                       <label className="form-label" style={{width: "100%"}}>
                           <strong>Client :</strong> {props.extra.client}
                       </label>
