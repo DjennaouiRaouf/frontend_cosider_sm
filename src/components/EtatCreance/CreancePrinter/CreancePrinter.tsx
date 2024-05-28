@@ -8,12 +8,24 @@ interface InvoicePrinterProps {
 const CreancePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, ref) => {
 
   return (
-      <div ref={ref} className={"print-only"} style={{marginRight: '12px', marginLeft: '12px'}}>
+      <div ref={ref} className={"print-only"}  style={{width: "29.7cm", height: '21cm', margin: 0}}>
+          <style>
+              {`
+            @media print {
+              @page {
+                size: landscape;
+              }
+            }
+          `}
+          </style>
+
+
           <div className="table-responsive">
               <table className="table" style={{fontSize: '12px'}}>
                   <thead>
                   <tr>
                       <th>Marché</th>
+                      <th>Pole</th>
                       <th>NT</th>
                       <th>Client</th>
                       <th>M.G.Factures</th>
@@ -28,8 +40,12 @@ const CreancePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                               <p>{item.id}</p>
                           </td>
                           <td>
+                              <p>{item.code_site}</p>
+                          </td>
+                          <td>
                               <p>{item.nt}</p>
                           </td>
+
                           <td>
                               <p>{item.client}</p>
                           </td>

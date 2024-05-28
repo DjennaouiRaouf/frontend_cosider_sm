@@ -46,6 +46,9 @@ const SearchCreance: React.FC<any> = () => {
 
     };
 
+    const handleInputRangeChange = (e:any) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
 
     // submit
 
@@ -161,66 +164,80 @@ const SearchCreance: React.FC<any> = () => {
 
                                                                     />
                                                                 </>
+                                                                : field.type= 'DateFromToRangeFilter' ?
+                                                                    <div className="input-group" id={field.name+'range'}>
+                                                                        <span className="input-group-text">Du</span>
+                                                                        <input className="form-control"
+                                                                               name={field.name+'_after'}
+                                                                               onChange={(e) => handleInputRangeChange(e)}
+                                                                               type="date"/>
+                                                                        <span className="input-group-text">Au</span>
+                                                                        <input className="form-control"
+                                                                               name={field.name+'_before'}
+
+                                                                               onChange={(e) => handleInputRangeChange(e)}
+                                                                               type="date"/>
+                                                                    </div>
 
 
-                                                                :
-                                                                field.type === 'BooleanFilter' ||  field.type === 'BooleanField' ?
+                                                                    :
+                                                                    field.type === 'BooleanFilter' || field.type === 'BooleanField' ?
 
-                                                                    <Form.Control
-                                                                        as="select"
-                                                                        name={field.name}
-
-                                                                        className="w-100"
-
-                                                                        onChange={(e)=>handleSelectChange(e)}>
-
-                                                                        {opt.map((item,index) => (
-                                                                            <option key={index} value={String(item.value)}>{item.label}</option>
-                                                                        ))}
-
-                                                                    </Form.Control>
-
-
-                                                                    : field.type === 'DateFilter' || field.type === 'DateField' ?
                                                                         <Form.Control
+                                                                            as="select"
                                                                             name={field.name}
 
                                                                             className="w-100"
-                                                                            type="date"
-                                                                            value={formData[field.name]}
-                                                                            onChange={(e)=>handleInputChange(e)}
-                                                                        />
-                                                                        : field.type === 'NumberFilter' || field.type === 'IntegerField'  ?
+
+                                                                            onChange={(e) => handleSelectChange(e)}>
+
+                                                                            {opt.map((item, index) => (
+                                                                                <option key={index}
+                                                                                        value={String(item.value)}>{item.label}</option>
+                                                                            ))}
+
+                                                                        </Form.Control>
+
+
+                                                                        : field.type === 'DateFilter' || field.type === 'DateField' ?
                                                                             <Form.Control
                                                                                 name={field.name}
 
                                                                                 className="w-100"
-                                                                                type="number"
-                                                                                value={formData[field.name] || 0}
-
-
-                                                                                onChange={(e)=>handleInputChange(e)}
-                                                                            />
-
-                                                                            :
-                                                                            <Form.Control
-                                                                                name={field.name}
-
-                                                                                className="w-100"
-                                                                                type="text"
+                                                                                type="date"
                                                                                 value={formData[field.name]}
-                                                                                onChange={(e)=>handleInputChange(e)}
+                                                                                onChange={(e) => handleInputChange(e)}
                                                                             />
+                                                                            : field.type === 'NumberFilter' || field.type === 'IntegerField' ?
+                                                                                <Form.Control
+                                                                                    name={field.name}
+
+                                                                                    className="w-100"
+                                                                                    type="number"
+                                                                                    value={formData[field.name] || 0}
 
 
+                                                                                    onChange={(e) => handleInputChange(e)}
+                                                                                />
 
-                                                        }
+                                                                                :
+                                                                                <Form.Control
+                                                                                    name={field.name}
+
+                                                                                    className="w-100"
+                                                                                    type="text"
+                                                                                    value={formData[field.name]}
+                                                                                    onChange={(e) => handleInputChange(e)}
+                                                                                />
+
+
+ }
 
                                       </div>
                                   </div>
-                                      ))}
+                                  ))}
 
-                                      </div>
+                              </div>
 
                                       </div>
                                       </div>
