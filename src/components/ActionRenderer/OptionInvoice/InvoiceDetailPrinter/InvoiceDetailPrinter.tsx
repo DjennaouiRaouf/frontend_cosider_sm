@@ -28,6 +28,7 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
     })
         .then((response:any) => {
           setExtra(response.data.extra)
+            console.log(response.data.extra)
         })
         .catch((error:any) => {
 
@@ -71,42 +72,42 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
               <div className="input-group w-100">
                   <label
                       className="form-label  w-80"
-                      style={{fontWeight: "bold"}}
+                      style={{fontWeight: "bold",marginRight:5}}
                   >
                       Marché :
                   </label>
-                  <label className="form-label  w-10">Label</label>
+                  <label className="form-label  w-10">{extra.contrat}</label>
                   <label
                       className="form-label  w-10"
-                      style={{fontWeight: "bold"}}
+                      style={{fontWeight: "bold",marginLeft:5,marginRight:5}}
                   >
                       du
                   </label>
-                  <label className="form-label  w-10">Label</label>
+                  <label className="form-label  w-10">{extra.signature}</label>
               </div>
               <div className="input-group w-100">
                   <label
                       className="form-label  w-80"
-                      style={{fontWeight: "bold"}}
+                      style={{fontWeight: "bold",marginRight:5}}
                   >
                       Objet :
                   </label>
                   <label
                       className="form-label text-start  w-40"
-                      style={{whiteSpace: "pre-wrap"}}
+                      style={{whiteSpace: "pre-wrap",marginLeft:5,marginRight:5}}
                   >
-                      dddddddddddddddddddddddddddd dddddddddddddd ddd
+                      {extra.projet}
                   </label>
                   <label
                       className="form-label  w-10"
-                      style={{fontWeight: "bold"}}
+                      style={{marginRight:5}}
                   >
                       d'un montant de
                   </label>
-                  <label className="form-label  w-10">Label</label>
+                  <label className="form-label  w-10"style={{fontWeight: "bold"}}>{Humanize(extra.montant_marche)} DA</label>
                   <label
                       className="form-label  w-10"
-                      style={{fontWeight: "bold"}}
+                      style={{marginRight:5,marginLeft:5}}
                   >
                       en HT
                   </label>
@@ -120,25 +121,25 @@ const InvoiceDetailPrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((pr
               <div className="input-group w-100">
                   <label
                       className="form-label  w-80"
-                      style={{fontWeight: "bold"}}
+                      style={{fontWeight: "bold",marginRight:5}}
                   >
                       Client:
                   </label>
-                  <label className="form-label  w-10">Label</label>
+                  <label className="form-label  w-10" style={{marginRight:5}}>{extra.client}</label>
                   <label
                       className="form-label  w-80"
-                      style={{fontWeight: "bold"}}
+                      style={{fontWeight: "bold",marginRight:5}}
                   >
                       NT:
                   </label>
-                  <label className="form-label  w-10">Label</label>
+                  <label className="form-label  w-10"style={{marginRight:5}}>{extra.nt}</label>
                   <label
                       className="form-label  w-10"
-                      style={{fontWeight: "bold"}}
+                      style={{fontWeight: "bold",marginRight:5,marginLeft:5}}
                   >
                       Pole :
                   </label>
-                  <label className="form-label  w-10">Label</label>
+                  <label className="form-label  w-10">{extra.pole}</label>
               </div>
               <hr/>
           </div>
