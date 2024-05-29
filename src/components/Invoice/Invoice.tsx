@@ -53,6 +53,10 @@ case 'avf' :
 case 'ave' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
+case 'penalite' :
+      return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
+
 
     default:
       return <span>{value}</span>
@@ -259,14 +263,14 @@ const Invoice: React.FC<any> = () => {
                                   <p className="text-primary m-0 fw-bold">Factures du Contrat dont le NT N° {nt} et le Pole {pole} </p>
                               </div>
                               <div className="card-body">
-                                  <div className="row d-xxl-flex justify-content-xxl-center mb-4">
-                                      <div className="col-md-6 col-xxl-3">
+                                  <div className="row d-xxl-flex justify-content-xxl-center mb-4 w-100">
+                                      <div className="col-md-6 col-xxl-3 w-100">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
                                                       <h5 className={'text-center'}>Montant Globale</h5>
-                                                       <hr/>
-                                                      <div className="col me-2">
+                                                      <hr/>
+                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
                                                               <span>Retenue de Garantie en HT </span>
@@ -275,7 +279,7 @@ const Invoice: React.FC<any> = () => {
                                                               <span>{Humanize(resume.rg_total) + "DA"}</span>
                                                           </div>
                                                       </div>
-                                                      <div className="col me-2">
+                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
                                                               <span>Retenue de Garantie en TTC </span>
@@ -284,25 +288,7 @@ const Invoice: React.FC<any> = () => {
                                                               <span>{Humanize(resume.rg_total_ttc) + "DA"}</span>
                                                           </div>
                                                       </div>
-                                                      <div className="col-auto">
-                                                          <i
-                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
-                                                          />
-
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-
-                                      <div className="col-md-6 col-xxl-3">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <h5 className={'text-center'}>Montant Globale</h5>
-                                                  <hr/>
-                                                  <div className="row align-items-center no-gutters">
-                                                      <div className="col me-2">
+                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
                                                               <span> en Créance </span>
@@ -311,7 +297,7 @@ const Invoice: React.FC<any> = () => {
                                                               <span>{Humanize(resume.creance) + "DA"}</span>
                                                           </div>
                                                       </div>
-                                                      <div className="col me-2">
+                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
                                                               <span>Encaissé </span>
@@ -320,6 +306,20 @@ const Invoice: React.FC<any> = () => {
                                                               <span>{Humanize(resume.mgenc) + "DA"}</span>
                                                           </div>
                                                       </div>
+                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
+                                                          <div
+                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
+                                                              <span> <i
+                                                                  className="fas fa-exclamation-triangle pulse animated infinite"
+                                                                  style={{fontSize:16, color: "#df162c",marginRight:5 }}
+                                                                />
+                                                                Pénalité </span>
+                                                          </div>
+                                                          <div className="text-dark fw-bold h5 mb-0">
+                                                              <span>{Humanize(resume.mgp) + "DA"}</span>
+                                                          </div>
+                                                      </div>
+
                                                       <div className="col-auto">
                                                           <i
                                                               className="fas fa-money-bill-wave fa-2x text-gray-300"
@@ -338,7 +338,7 @@ const Invoice: React.FC<any> = () => {
 
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={addD}>
-                                              <i className="fas fa-plus" style={{marginRight: 5}}/>
+                                                  <i className="fas fa-plus" style={{marginRight: 5}}/>
                                                   Ajouter une facture
                                               </button>
 
