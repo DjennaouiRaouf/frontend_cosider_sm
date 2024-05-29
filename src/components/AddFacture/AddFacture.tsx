@@ -229,7 +229,7 @@ const AddFacture: React.FC<AddFactureProps> = ({refresh}) => {
                                                                       value={formData[field.name] || ''}
                                                                       onChange={(e) => handleInputChange(e)}
                                                                   />
-                                                                  : field.type === 'IntegerField' ?
+                                                                  : field.type === 'IntegerField' || field.type === 'FloatField'?
                                                                       <Form.Control
                                                                           name={field.name}
                                                                           required={field.required}
