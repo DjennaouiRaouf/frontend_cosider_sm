@@ -19,7 +19,7 @@ const ScrollToTopBtn: React.FC<any> = () => {
                                       style={{
                                           "position": "fixed",
                                           "bottom": "20px",
-                                          "right": "30px",
+                                          "left": "30px",
                                           "zIndex": "99"
                                       }}><i className="fas fa-caret-up" style={{color:"white",fontSize:20}}></i>
 
