@@ -288,6 +288,17 @@ const Invoice: React.FC<any> = () => {
                                                               <span>{Humanize(resume.rg_total_ttc) + "DA"}</span>
                                                           </div>
                                                       </div>
+
+                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
+                                                          <div
+                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
+                                                              <span>Encaissé </span>
+                                                          </div>
+                                                          <div className="text-dark fw-bold h5 mb-0">
+                                                              <span>{Humanize(resume.mgenc) + "DA"}</span>
+                                                          </div>
+                                                      </div>
+
                                                       <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
@@ -306,22 +317,18 @@ const Invoice: React.FC<any> = () => {
                                                               <span>{Humanize(resume.creance) + "DA"}</span>
                                                           </div>
                                                       </div>
-                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Encaissé </span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.mgenc) + "DA"}</span>
-                                                          </div>
-                                                      </div>
+
                                                       <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
                                                               <span> <i
                                                                   className="fas fa-exclamation-triangle pulse animated infinite"
-                                                                  style={{fontSize:16, color: "#df162c",marginRight:5 }}
-                                                                />
+                                                                  style={{
+                                                                      fontSize: 16,
+                                                                      color: "#df162c",
+                                                                      marginRight: 5
+                                                                  }}
+                                                              />
                                                                 Pénalité </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
@@ -351,15 +358,15 @@ const Invoice: React.FC<any> = () => {
                                                   Ajouter une facture
                                               </button>
 
-                                                  <Dropdown style={{
-                                                      background: "#df162c",borderRadius:0,
-                                                  }}>
-                                                      <Dropdown.Toggle style={{
-                                                          height: 40,
-                                                          background: "#df162c",
-                                                          borderRadius:0,
-                                                          borderWidth: 0
-                                                      }} id="dropdown-basic"
+                                              <Dropdown style={{
+                                                  background: "#df162c", borderRadius: 0,
+                                              }}>
+                                                  <Dropdown.Toggle style={{
+                                                      height: 40,
+                                                      background: "#df162c",
+                                                      borderRadius: 0,
+                                                      borderWidth: 0
+                                                  }} id="dropdown-basic"
                                                       ><i className="fas fa-print"
                                                           style={{marginRight: 5}}/>
                                                           &nbsp;Facture RG
