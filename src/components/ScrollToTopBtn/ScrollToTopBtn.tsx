@@ -14,13 +14,15 @@ const ScrollToTopBtn: React.FC<any> = () => {
      return (
          <>
 
-             <button className="btn  btn-sm me-2 pulse-btn"
+             <button className="btn  btn-sm me-2 wave-pulse"
                                       onClick={handleScrollToTop}
                                       style={{
-                                          "position": "fixed",
-                                          "bottom": "20px",
-                                          "left": "30px",
-                                          "zIndex": "99"
+                                          border:'none',
+                                          backgroundColor:"#df162c",
+                                          position: "fixed",
+                                          bottom: "20px",
+                                          left: "30px",
+                                          zIndex: "99"
                                       }}><i className="fas fa-caret-up" style={{color:"white",fontSize:20}}></i>
 
                                               </button>
