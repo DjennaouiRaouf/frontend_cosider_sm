@@ -268,7 +268,7 @@ const Invoice: React.FC<any> = () => {
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
-                                                      <h5 className={'text-center'}>Montant Globale</h5>
+                                                      <h5 className={'text-center'}>Montant Global</h5>
                                                       <hr/>
                                                       <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
