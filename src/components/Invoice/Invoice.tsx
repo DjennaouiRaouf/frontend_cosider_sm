@@ -291,7 +291,16 @@ const Invoice: React.FC<any> = () => {
                                                       <div className="col me-2" style={{transform: 'scale(0.8)'}}>
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span> en Créance </span>
+                                                              <span>
+                                                                   <i
+                                                                       className="fas fa-exclamation-triangle pulse animated infinite"
+                                                                       style={{
+                                                                           fontSize: 16,
+                                                                           color: "#df162c",
+                                                                           marginRight: 5
+                                                                       }}
+                                                                   />
+                                                                  en Créance </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.creance) + "DA"}</span>
