@@ -93,8 +93,9 @@ const NavigationBar: React.FC<any> = () => {
                         <Nav.Link href="/avance">Avances</Nav.Link>
                         <Nav.Link href="/caution">Cautions</Nav.Link>
                         <NavDropdown title="Production" id="basic-nav-dropdown">
-                             <NavDropdown.Item href="/flash">Réalisations mensuelles</NavDropdown.Item>
+                             <NavDropdown.Item href="/flash">Réalisations Mensuelles</NavDropdown.Item>
                             <NavDropdown.Item href="/attachements">Attachements</NavDropdown.Item>
+                            <NavDropdown.Item href="/attachements">Production Stockée</NavDropdown.Item>
 
                         </NavDropdown>
 
