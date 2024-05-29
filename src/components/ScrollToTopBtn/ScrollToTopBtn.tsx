@@ -14,7 +14,7 @@ const ScrollToTopBtn: React.FC<any> = () => {
      return (
          <>
 
-             <a className="btn  btn-sm me-2 wave-pulse" role="button"
+             <button className="btn  btn-sm me-2 pulse animated infinite"
                                       onClick={handleScrollToTop}
                                       style={{
                                           "position": "fixed",
@@ -23,7 +23,7 @@ const ScrollToTopBtn: React.FC<any> = () => {
                                           "zIndex": "99"
                                       }}><i className="fas fa-caret-up" style={{color:"white",fontSize:20}}></i>
 
-                                              </a>
+                                              </button>
 
          </>
      );
