@@ -316,7 +316,7 @@ const Invoice: React.FC<any> = () => {
                                                                 Pénalité </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.mgp) + "DA"}</span>
+                                                              <span>{Humanize(resume.pen) + "DA"}</span>
                                                           </div>
                                                       </div>
 
