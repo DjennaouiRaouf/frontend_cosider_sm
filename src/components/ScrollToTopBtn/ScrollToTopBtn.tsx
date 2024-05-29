@@ -14,7 +14,7 @@ const ScrollToTopBtn: React.FC<any> = () => {
      return (
          <>
 
-             <button className="btn  btn-sm me-2 pulse animated infinite"
+             <button className="btn  btn-sm me-2 pulse-btn"
                                       onClick={handleScrollToTop}
                                       style={{
                                           "position": "fixed",

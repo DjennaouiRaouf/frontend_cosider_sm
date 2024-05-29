@@ -31,7 +31,6 @@ import ContratAvenant from "../../ContratAvenant/ContratAvenant";
 import DQEAVParams from "../../DQEAvenant/DQEAVParams";
 import DQEAV from "../../DQEAvenant/DQEAV";
 import ErrorRoute from "../../ErrorRoute/ErrorRoute";
-import ScrollToTopBtn from "../../ScrollToTopBtn/ScrollToTopBtn";
 
 const Routes: React.FC<any> = () => {
 
@@ -60,8 +59,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <EtatCreance/>
 
 
@@ -77,8 +75,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Contrat/>
 
 
@@ -110,8 +107,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Cautions/>
 
 
@@ -126,8 +122,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Sites/>
 
 
@@ -172,8 +167,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <NT/>
 
 
@@ -205,8 +199,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Attachements/>
 
 
@@ -275,8 +268,7 @@ const Routes: React.FC<any> = () => {
                     authenticated ? (
                         <>
 
-                             <NavigationBar/>
-  <ScrollToTopBtn/>
+                            <NavigationBar/>
                             <Revision/>
 
 
@@ -296,8 +288,7 @@ const Routes: React.FC<any> = () => {
                     authenticated ? (
                         <>
 
-                             <NavigationBar/>
-  <ScrollToTopBtn/>
+                            <NavigationBar/>
                             <ContratAvenant/>
 
 
@@ -314,8 +305,7 @@ const Routes: React.FC<any> = () => {
                 element={
                     authenticated ? (
                         <div className={"container"}>
-                             <NavigationBar/>
-  <ScrollToTopBtn/>
+                            <NavigationBar/>
                             <Encaissements/>
 
 
@@ -334,8 +324,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Invoice/>
 
 
@@ -354,8 +343,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-                          <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <DQE/>
 
 
@@ -384,8 +372,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <DQEAV/>
 
 
@@ -402,8 +389,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <WorkState/>
 
 
@@ -420,7 +406,7 @@ const Routes: React.FC<any> = () => {
                 element={
                     authenticated ? (
                         <>
-                           
+
                             <FlashParams/>
 
 
@@ -436,10 +422,7 @@ const Routes: React.FC<any> = () => {
                 element={
                     authenticated ? (
                         <>
-                             <NavigationBar/>
-  <ScrollToTopBtn/>
-                            
-                            
+                            <NavigationBar/>
                             <Flash/>
 
 
@@ -472,8 +455,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Avances/>
 
 
@@ -490,8 +472,7 @@ const Routes: React.FC<any> = () => {
               element={
                   authenticated ? (
                       <>
-                           <NavigationBar/>
-  <ScrollToTopBtn/>
+                          <NavigationBar/>
                           <Client/>
 
 
