@@ -198,7 +198,7 @@ const Flash: React.FC<any> = () => {
 
     axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addatt/`,input )
       .then(response => {
-         dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Attachements ajoutés"}))
+         dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "ProductionStockee ajoutés"}))
       })
       .catch(error => {
         dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))

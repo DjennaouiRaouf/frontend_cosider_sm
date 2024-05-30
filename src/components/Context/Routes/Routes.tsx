@@ -32,6 +32,8 @@ import DQEAVParams from "../../DQEAvenant/DQEAVParams";
 import DQEAV from "../../DQEAvenant/DQEAV";
 import ErrorRoute from "../../ErrorRoute/ErrorRoute";
 import ScrollToTopBtn from "../../ScrollToTopBtn/ScrollToTopBtn";
+import ProductionStockeeParams from "../../ProductionStockee/ProductionStockeeParams";
+import ProductionStockee from "../../ProductionStockee/ProductionStockee";
 
 const Routes: React.FC<any> = () => {
 
@@ -327,6 +329,41 @@ const Routes: React.FC<any> = () => {
                 }
             />
 
+              <Route
+                path="/production_stockee"
+                element={
+                    authenticated ? (
+                        <div className={"container"}>
+
+                            <ProductionStockeeParams/>
+
+
+
+                        </div>
+                    ) : (
+                        <Navigate to="/"  />
+                    )
+                }
+            />
+      <Route
+              path="/production_stockee/liste_ps/:nt/:pole"
+              element={
+                  authenticated ? (
+                      <>
+                           <NavigationBar/>
+  <ScrollToTopBtn/>
+                          <ProductionStockee/>
+
+
+
+                      </>
+                  ) : (
+                      <Navigate to="/"  />
+                  )
+              }
+          />
+
+
 
 
                     <Route
@@ -510,4 +547,4 @@ const Routes: React.FC<any> = () => {
         </Router>
     );
 }
-  export default Routes
+ export default Routes;

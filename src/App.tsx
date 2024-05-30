@@ -13,7 +13,6 @@ function App() {
           <PermissionProvider>
               <BrowserRouter>
                         <Routes />
-
               </BrowserRouter>
           </PermissionProvider>
       </AuthProvider>

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init" />
+    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/AttPrinter/AttPrinter.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/AttPrinter/AttPrinter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockee.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockeeParams.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +40,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/administrator/Desktop/Cosider_Project_GM",
+    "last_opened_file_path": "C:/Users/administrator/Desktop/frontend_cosider_sm/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -49,11 +59,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\ActionRenderer\OptionInvoice" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Invoice" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Revision" />
-      <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components\ActionRenderer" />
     </key>
   </component>
   <component name="RunManager">
@@ -118,14 +128,7 @@
       <workItem from="1716790485852" duration="16643000" />
       <workItem from="1716877496926" duration="21732000" />
       <workItem from="1716963545359" duration="17399000" />
-      <workItem from="1717054028823" duration="311000" />
-    </task>
-    <task id="LOCAL-00056" summary="init">
-      <created>1714294821135</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1714294821135</updated>
+      <workItem from="1717054028823" duration="6528000" />
     </task>
     <task id="LOCAL-00057" summary="init">
       <created>1714461683372</created>
@@ -492,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717054067324</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="init">
+      <created>1717054413045</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1717054413045</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
