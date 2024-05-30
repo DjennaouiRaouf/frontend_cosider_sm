@@ -529,8 +529,6 @@ const AppRoutes: React.FC<any> = () => {
                             <ScrollToTopBtn/>
                           <Client/>
 
-
-
                       </>
                   ) : (
                       <Navigate to="/"  />
