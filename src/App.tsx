@@ -12,7 +12,7 @@ function App() {
     <AuthProvider>
           <PermissionProvider>
               <BrowserRouter>
-                        <AppRoutes />
+                        <Routes />
               </BrowserRouter>
           </PermissionProvider>
       </AuthProvider>

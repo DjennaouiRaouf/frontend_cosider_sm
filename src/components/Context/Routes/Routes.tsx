@@ -35,7 +35,7 @@ import ScrollToTopBtn from "../../ScrollToTopBtn/ScrollToTopBtn";
 import ProductionStockeeParams from "../../ProductionStockee/ProductionStockeeParams";
 import ProductionStockee from "../../ProductionStockee/ProductionStockee";
 
-const AppRoutes: React.FC<any> = () => {
+const Routes: React.FC<any> = () => {
 
     const {authenticated} = useContext(AuthContext);
     const {permission, setPermission} = useContext(PermissionContext);
@@ -546,4 +546,4 @@ const AppRoutes: React.FC<any> = () => {
     );
 }
 
-export default AppRoutes;
+export default Routes;
