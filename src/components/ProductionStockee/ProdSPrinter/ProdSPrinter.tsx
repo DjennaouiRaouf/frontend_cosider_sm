@@ -1,12 +1,30 @@
 import { forwardRef } from 'react';
 import {useSelector} from "react-redux";
-import "./AttPrinter.css"
+import "./ProdSPrinter.css"
 import {Humanize} from "../../Utils/Utils";
+import numeral from "numeral";
 interface AttPrinterProps {
   data:any;
     extra:any;
 }
-const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
+const ProdSPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
+    const getCurrentDate = ():string => {
+          const today: Date = new Date();
+          const year: number = today.getFullYear();
+          let month: string | number = today.getMonth() + 1; // Months are zero-based
+          let day: string | number = today.getDate();
+
+          // Append leading zeros if month or day is less than 10
+          if (month < 10) {
+            month = '0' + month;
+          }
+          if (day < 10) {
+            day = '0' + day;
+          }
+
+          return `${year}-${month}-${day}`;
+
+    }
 
   return (
       <div ref={ref} className={"print-only"} style={{width: "29.7cm", height: '21cm', margin: 0}}>
@@ -20,33 +38,24 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
           `}
           </style>
           <div>
-              <h4 style={{textAlign: "center"}}>Attachement des travaux </h4>
+              <h4 style={{textAlign: "center"}}>Etat de la production stockée </h4>
               <hr/>
               <div className="row">
                   <div className="col-sm-7 col-lg-6 col-xl-6 col-xxl-5">
                       <label className="form-label" style={{width: "100%"}}>
-                          <strong>Contrat N° :</strong> {props.extra.marche}
-                      </label>
-                      <label className="form-label" style={{width: "100%"}}>
-                          <strong>Objet :</strong> {props.extra.objet}
-                      </label>
-                      <label className="form-label" style={{width: "100%"}}>
                           <strong>NT :</strong> {props.extra.nt}
                       </label>
                       <label className="form-label" style={{width: "100%"}}>
-                          <strong>Site :</strong> {props.extra.site}
+                          <strong>Pole :</strong> {props.extra.pole}
                       </label>
 
                   </div>
                   <div className="col">
                       <h6 className="mb-0" style={{width: "100%", marginTop: 7}}>
             <span style={{backgroundColor: "rgb(255, 255, 255)"}}>
-                <strong>Du Mois :</strong>{props.extra.date}
+                <strong>Le :</strong>{getCurrentDate()}
             </span>
                       </h6>
-                      <label className="form-label" style={{width: "100%"}}>
-                          <strong>Client :</strong> {props.extra.client}
-                      </label>
                   </div>
               </div>
               <hr/>
@@ -57,12 +66,10 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
                               <thead>
                               <tr>
                                   <th style={{width: 100}}>Réf.Tache</th>
-                                  <th style={{width: 60}}>UM</th>
-                                  <th style={{width: 300}}>Designation</th>
-                                  <th style={{width: 100}}>Qte préc</th>
-                                  <th style={{width: 100}}>Qte mois</th>
-                                  <th style={{width: 100}}>Qte cumulé</th>
-
+                                  <th style={{width: 300}}>Libelle</th>
+                                  <th style={{width: 100}}>Qte Produite</th>
+                                  <th style={{width: 100}}>Qte Attachée</th>
+                                  <th style={{width: 100}}>Ecart</th>
 
                               </tr>
                               </thead>
@@ -75,25 +82,22 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
                                           </p>
                                       </td>
                                       <td>
-                                          <p className="text-break" style={{width: 60}}>
-                                              {item.unite}
-                                          </p>
-                                      </td>
-                                      <td>
                                           <p className="text-break" style={{width: 300}}>
                                               {item.libelle}
                                           </p>
                                       </td>
                                       <td><p className="text-break" style={{width: 100}}>
-                                          {item.qte_precedente}
+                                          {numeral(item.qte_prod).format('0.0000')}{" "}{item.unite}
                                       </p>
 
                                       </td>
                                       <td><p className="text-break" style={{width: 100}}>
-                                          {item.qte}
+                                          {numeral(item.qte_att).format('0.0000')}{" "}{item.unite}
+
                                       </p></td>
                                       <td><p className="text-break" style={{width: 100}}>
-                                          {item.qte_cumule}
+                                              {numeral(item.ecart).format('0.0000')}{" "}{item.unite}
+
                                       </p></td>
                                   </tr>
                               ))}
@@ -131,5 +135,5 @@ const AttPrinter = forwardRef<HTMLDivElement, AttPrinterProps>((props, ref) => {
   )
 });
 
-export default AttPrinter;
+export default ProdSPrinter;
 

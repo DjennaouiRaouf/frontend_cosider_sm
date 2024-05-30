@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/AttPrinter/AttPrinter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/AttPrinter/AttPrinter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockee.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockeeParams.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProductionStockee/AttPrinter/AttPrinter.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProdSPrinter/ProdSPrinter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProductionStockee/AttPrinter/AttPrinter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProdSPrinter/ProdSPrinter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockee.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockee.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,14 +123,7 @@
       <workItem from="1716790485852" duration="16643000" />
       <workItem from="1716877496926" duration="21732000" />
       <workItem from="1716963545359" duration="17399000" />
-      <workItem from="1717054028823" duration="6528000" />
-    </task>
-    <task id="LOCAL-00057" summary="init">
-      <created>1714461683372</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1714461683372</updated>
+      <workItem from="1717054028823" duration="10018000" />
     </task>
     <task id="LOCAL-00058" summary="init">
       <created>1714481458580</created>
@@ -502,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717054413045</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="init">
+      <created>1717060934056</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1717060934056</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

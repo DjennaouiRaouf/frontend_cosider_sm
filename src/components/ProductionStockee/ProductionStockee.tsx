@@ -20,7 +20,7 @@ import {showSearchAtt} from "../Slices/SearchModalSlices";
 import {ButtonGroup, Dropdown} from "react-bootstrap";
 import CreancePrinter from "../EtatCreance/CreancePrinter/CreancePrinter";
 import {useReactToPrint} from "react-to-print";
-import AttPrinter from "./AttPrinter/AttPrinter";
+import ProdSPrinter from "./ProdSPrinter/ProdSPrinter";
 import Plot from "react-plotly.js";
 
 
@@ -29,6 +29,19 @@ const InfoRenderer: React.FC<any> = (props) => {
 
   switch (props.column.colId) {
 
+     case 'ind':
+          return (
+        <>
+          {value === true && (
+            <i className="fas fa-exclamation-triangle pulse animated infinite" style={{ fontSize: 16, color: "#df162c", marginRight: 5 }} />
+          )}
+          {value === false && (
+            <i className="far fa-check-circle pulse animated infinite" style={{ fontSize: 16, color: 'rgb(0,255,41)', marginRight: 5 }} />
+          )}
+        </>
+      );
+
+
 
     case 'ecart' :
         return <span>{numeral(value).format('0.0000')}{" "}{props.data.unite}</span>
@@ -36,6 +49,7 @@ const InfoRenderer: React.FC<any> = (props) => {
         return <span>{numeral(value).format('0.0000')}{" "}{props.data.unite}</span>
     case 'qte_prod' :
         return <span>{numeral(value).format('0.0000')}{" "}{props.data.unite}</span>
+
 
 
     case 'date' :
@@ -117,6 +131,7 @@ const ProductionStockee: React.FC<any> = () => {
           setX(response.data.extra.x);
           setY1(response.data.extra.y1);
           setY2(response.data.extra.y2);
+          setResume(response.data.extra2);
 
 
 
@@ -195,26 +210,20 @@ const ProductionStockee: React.FC<any> = () => {
 
       });
 
-      const componentRef2 = useRef<any>();
-     const handlePrint2 = useReactToPrint({
-        content: () => componentRef2.current,
-
-      });
-     
 
 
   return (
       <>
           <AlertMessage/>
           <div id="wrapper">
-                <AttPrinter ref={componentRef} data={data} extra={resume}/>
+                <ProdSPrinter ref={componentRef} data={data} extra={resume}/>
 
               <div id="content-wrapper" className="d-flex flex-column">
                   <div id="content">
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Etat de la production stockée   </p>
+                                  <p className="text-primary m-0 fw-bold"><i className="fas fa-exclamation-triangle pulse animated infinite" style={{ fontSize: 16, color: "#df162c", marginRight: 5 }} /> Etat de la production stockée du NT {nt} dont le Pole {pole}   </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">
@@ -288,10 +297,8 @@ const ProductionStockee: React.FC<any> = () => {
                                                       <Dropdown.Menu>
                                                           <Dropdown.Item onClick={handlePrint}>
                                                               <i className="bi bi-file-earmark-pdf-fill"></i>
-                                                              &nbsp;Imprimer l'attachement</Dropdown.Item>
-                                                          <Dropdown.Item onClick={handlePrint2}>
-                                                              <i className="bi bi-file-earmark-pdf-fill"></i>
-                                                              &nbsp;Imprimer le Décompte provisoire</Dropdown.Item>
+                                                              &nbsp;Etat de production</Dropdown.Item>
+
 
                                                       </Dropdown.Menu>
                                                   </Dropdown>
