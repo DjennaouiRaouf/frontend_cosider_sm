@@ -18,7 +18,7 @@ import SearchAttachements from "../SearchAttachements/SearchAttachements";
 import {showSearchAtt} from "../Slices/SearchModalSlices";
 
 import {ButtonGroup, Dropdown} from "react-bootstrap";
-import CreancePrinter from "../EtatCreance/CreancePrinter/CreancePrinter";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import {useReactToPrint} from "react-to-print";
 import AttPrinter from "./AttPrinter/AttPrinter";
 import DecomptePPrinter from "./DecomptePPrinter/DecomptePPrinter";
@@ -331,6 +331,8 @@ const Attachements: React.FC<any> = () => {
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.qt)}%</span>
+                                                              <ProgressBar animated now={resume.qt}  />
+
                                                           </div>
                                                       </div>
                                                       <div className="col-auto">
