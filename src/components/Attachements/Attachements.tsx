@@ -22,6 +22,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import {useReactToPrint} from "react-to-print";
 import AttPrinter from "./AttPrinter/AttPrinter";
 import DecomptePPrinter from "./DecomptePPrinter/DecomptePPrinter";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
@@ -244,6 +245,7 @@ const Attachements: React.FC<any> = () => {
 
         })
         .catch((error:any) => {
+            dispatch(displayAlertMessage({variant:Variant.DANGER,message:"Attachement(s) déja Facturé(s)"}))
 
         });
 
