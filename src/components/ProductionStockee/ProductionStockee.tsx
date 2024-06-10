@@ -69,7 +69,7 @@ const ProductionStockee: React.FC<any> = () => {
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
   const gridRef = useRef(null);
     const [gridApi, setGridApi] = useState<GridApi | null>(null);
-  const { nt,pole ,month} = useParams();
+  const { nt,pole } = useParams();
   const[resume,setResume]=useState<any>({});
   const[x,setX]=useState<any[]>([]);
   const[y1,setY1]=useState<any[]>([]);
@@ -118,7 +118,6 @@ const ProductionStockee: React.FC<any> = () => {
     const getData = async(url:string) => {
         const ntid:string=encodeURIComponent(String(nt));
         const pid:string=encodeURIComponent(String(pole));
-        const smonth:string=encodeURIComponent(String(month));
        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/ps/?nt=${ntid}&code_site=${pid}`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
@@ -131,7 +130,6 @@ const ProductionStockee: React.FC<any> = () => {
           setX(response.data.extra.x);
           setY1(response.data.extra.y1);
           setY2(response.data.extra.y2);
-          setResume(response.data.extra2);
 
 
 

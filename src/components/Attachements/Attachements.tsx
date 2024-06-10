@@ -214,8 +214,10 @@ const Attachements: React.FC<any> = () => {
 
     });
     const pkList:any={}
-    pkList['id']=pks
-    await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/sm/delatt/`,{
+    pkList['id']=pks;
+    console.log(pkList)
+
+         await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/sm/delatt/`,{
       headers: {
         Authorization: `Token ${Cookies.get('token')}`,
         'Content-Type': 'application/json',
