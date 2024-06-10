@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/dbo.sYMBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/dbo.sYMBAA.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ede665c-de97-4864-a495-bb4a2dc43b18/storage_v2/_src_/database/CA_CH.5h_PAw/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockee.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductionStockee/ProductionStockee.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +120,7 @@
       <workItem from="1716963545359" duration="17399000" />
       <workItem from="1717054028823" duration="12579000" />
       <workItem from="1718013115754" duration="1425000" />
-      <workItem from="1718016893058" duration="3153000" />
+      <workItem from="1718016893058" duration="3240000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>
@@ -223,14 +212,6 @@
       <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
       <updated>1716471361135</updated>
-    </task>
-    <task id="LOCAL-00126" summary="init">
-      <option name="closed" value="true" />
-      <created>1716800345196</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1716800345197</updated>
     </task>
     <task id="LOCAL-00127" summary="init">
       <option name="closed" value="true" />
@@ -505,7 +486,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717065406686</updated>
     </task>
-    <option name="localTasksCounter" value="162" />
+    <task id="LOCAL-00162" summary="init">
+      <option name="closed" value="true" />
+      <created>1718023036784</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1718023036797</updated>
+    </task>
+    <option name="localTasksCounter" value="163" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
