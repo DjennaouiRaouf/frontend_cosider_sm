@@ -6,7 +6,7 @@ import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
 import { ColDef } from "ag-grid-enterprise";
 import "ag-grid-enterprise";
 import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise/styles/ag-theme-alpine.css";
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";

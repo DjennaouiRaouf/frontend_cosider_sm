@@ -3,7 +3,7 @@ import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
-import { ColDef } from "ag-grid-enterprise";
+import { ColDef } from "ag-grid-community";
 import "ag-grid-enterprise";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
@@ -11,15 +11,11 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
-import AddAttachement from "../AddAttachement/AddAttachement";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {formatDate, Humanize, Transform} from "../Utils/Utils";
-import Attacher from "../ActionRenderer/Attacher/Attacher";
-import SearchAttachements from "../SearchAttachements/SearchAttachements";
-
-import {ButtonGroup, Dropdown} from "react-bootstrap";
 import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
-import {hideSearchDQE} from "../Slices/SearchModalSlices";
+
+
 
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
@@ -37,7 +33,8 @@ const InfoRenderer: React.FC<any> = (props) => {
 
     case 'date' :
       return <span>{formatDate(value)}</span>
-
+     case 'facture' :
+      return <span></span>
       default:
         return <span>{value}</span>
   }
@@ -52,8 +49,10 @@ const Encaissements: React.FC<any> = () => {
     const [selectedRows, setSelectedRows] = useState<any[]>([]);
     const gridRef = useRef(null);
     const {nt, pole} = useParams();
-    const [resume, setResume] = useState<any>({});
+
+
     const defaultColDefs: ColDef = {
+         flex: 1,
         sortable: true,
         resizable: true,
         minWidth: 200,
@@ -304,12 +303,12 @@ const Encaissements: React.FC<any> = () => {
                                                    domLayout='autoHeight'
                                                    rowData={data} columnDefs={fields}
                                                    gridOptions={gridOptions}
-                                                   onRowClicked={handleRowClick}
                                                    groupDisplayType={"groupRows"}
                                                    rowSelection={'multiple'}
                                                  suppressAggFuncInHeader={true}
                                                  suppressContextMenu={true}
-                                                   groupAggFiltering={true}
+                                                   animateRows={true}
+
                                     />
 
                                   </div>
