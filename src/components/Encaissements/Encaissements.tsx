@@ -309,6 +309,7 @@ const Encaissements: React.FC<any> = () => {
                                                    rowSelection={'multiple'}
                                                  suppressAggFuncInHeader={true}
                                                  suppressContextMenu={true}
+                                                   groupAggFiltering={true}
                                     />
 
                                   </div>
