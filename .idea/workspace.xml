@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Attachements/Attachements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Avances/Avances.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Avances/Avances.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ContratAvenant/ContratAvenant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContratAvenant/ContratAvenant.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Encaissements/EncaissementsParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Encaissements/EncaissementsParams.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NT/NT.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NT/NT.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,28 +36,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/PC/Desktop/frontend_cosider_sm",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
-    "sql.rename.search.for.storage.occurrences": "true",
-    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Cosider_Project_GM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier&quot;,
+    &quot;sql.rename.search.for.storage.occurrences&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components" />
@@ -124,6 +132,10 @@
       <workItem from="1717054028823" duration="12579000" />
       <workItem from="1718013115754" duration="1425000" />
       <workItem from="1718016893058" duration="3831000" />
+      <workItem from="1718024509054" duration="2459000" />
+      <workItem from="1718087055705" duration="4158000" />
+      <workItem from="1718092452591" duration="18849000" />
+      <workItem from="1718172960614" duration="10400000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>
@@ -215,14 +227,6 @@
       <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
       <updated>1716471361135</updated>
-    </task>
-    <task id="LOCAL-00128" summary="init">
-      <option name="closed" value="true" />
-      <created>1716804049698</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1716804049699</updated>
     </task>
     <task id="LOCAL-00129" summary="init">
       <option name="closed" value="true" />
@@ -497,7 +501,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718023111822</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="init">
+      <option name="closed" value="true" />
+      <created>1718024761872</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1718024761873</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

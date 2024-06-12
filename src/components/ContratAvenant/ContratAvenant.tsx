@@ -2,11 +2,11 @@ import * as React from "react";
 import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {ColDef} from "ag-grid-community";
+import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
+import { ColDef } from "ag-grid-enterprise";
+import "ag-grid-enterprise";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
 import numeral from "numeral";
 import {Button,Form, Modal} from "react-bootstrap";
 import {Typeahead} from "react-bootstrap-typeahead";
@@ -130,6 +130,7 @@ const ContratAvenant: React.FC<any> = () => {
                     headerName:' ',
                     cellRenderer:ContratOption,
                          maxWidth: 100,
+                                    pinned:'left',
                          cellRendererParams:{
                                 refresh:getData,
 
@@ -229,6 +230,9 @@ const ContratAvenant: React.FC<any> = () => {
                                            rowData={data} columnDefs={fields}
                                            gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
+                                                 groupDisplayType={"groupRows"}
+                                                 suppressContextMenu={true}
+
 domLayout='autoHeight'
 
                                     />

@@ -2,14 +2,12 @@ import * as React from "react";
 import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {ColDef} from "ag-grid-community";
-import numeral from "numeral";
-import {Button,Form, Modal} from "react-bootstrap";
-import {Typeahead} from "react-bootstrap-typeahead";
+import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
+import { ColDef } from "ag-grid-enterprise";
+import "ag-grid-enterprise";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
+
 import {useDispatch} from "react-redux";
 import {showAddNT} from "../Slices/AddModalSlices";
 import {showSearchNT} from "../Slices/SearchModalSlices";
@@ -17,7 +15,6 @@ import Cookies from "js-cookie";
 import AddNT from "../AddNT/AddNT";
 import SearchNT from "../SearchNT/SearchNT";
 import AlertMessage from "../AlertMessage/AlertMessage";
-import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
 import NTOption from "../ActionRenderer/NTOption/NTOption";
 import UpdateNT from "../UpdateNT/UpdateNT";
 
@@ -98,6 +95,7 @@ const NT: React.FC<any> = () => {
                   const updatedCols:any[] = [
                      {
                     headerName:' ',
+                         pinned:true,
                     cellRenderer:NTOption,
                          maxWidth: 100,
                          cellRendererParams:{
@@ -205,7 +203,10 @@ const NT: React.FC<any> = () => {
                                            rowData={data} columnDefs={fields}
                                            gridOptions={gridOptions}
                                            onRowClicked={handleRowClick}
+                                                 groupDisplayType={"groupRows"}
                                                  domLayout='autoHeight'
+                                                 suppressContextMenu={true}
+
                                     />
 
                                   </div>

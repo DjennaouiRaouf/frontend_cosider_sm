@@ -241,6 +241,7 @@ const Attachements: React.FC<any> = () => {
 
     getData(queryString);
 
+       dispatch(displayAlertMessage({variant:Variant.DANGER,message:"Attachement(s) Annulé(s)"}))
 
 
         })

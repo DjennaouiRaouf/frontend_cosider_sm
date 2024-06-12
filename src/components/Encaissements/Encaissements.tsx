@@ -2,21 +2,24 @@ import * as React from "react";
 import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {ColDef} from "ag-grid-community";
+import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
+import { ColDef } from "ag-grid-enterprise";
+import "ag-grid-enterprise";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
+
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
 import AddAttachement from "../AddAttachement/AddAttachement";
 import AlertMessage from "../AlertMessage/AlertMessage";
-import {formatDate, Humanize} from "../Utils/Utils";
+import {formatDate, Humanize, Transform} from "../Utils/Utils";
 import Attacher from "../ActionRenderer/Attacher/Attacher";
 import SearchAttachements from "../SearchAttachements/SearchAttachements";
 
 import {ButtonGroup, Dropdown} from "react-bootstrap";
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
+import {hideSearchDQE} from "../Slices/SearchModalSlices";
 
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
@@ -26,6 +29,11 @@ const InfoRenderer: React.FC<any> = (props) => {
 
     case 'montant_encaisse' :
         return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
+
+    case 'restant' :
+        return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
 
     case 'date' :
       return <span>{formatDate(value)}</span>
@@ -37,134 +45,214 @@ const InfoRenderer: React.FC<any> = (props) => {
 };
 
 const Encaissements: React.FC<any> = () => {
-  const[fields,setFields]=useState<any[]>([]);
-  const[data,setData]=useState<any[]>([]);
-  const[contrat,setContrat]=useState<string>('');
-  const [searchParams] = useSearchParams();
-  const [selectedRows, setSelectedRows] = useState<any[]>([]);
-  const gridRef = useRef(null);
-  const { cid ,fid} = useParams();
-  const[resume,setResume]=useState<any>({});
-  const defaultColDefs: ColDef = {
-    sortable: true,
-    resizable: true,
-    minWidth: 200,
-    autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    const [fields, setFields] = useState<any[]>([]);
+    const [data, setData] = useState<any[]>([]);
+    const [contrat, setContrat] = useState<string>('');
+    const [searchParams] = useSearchParams();
+    const [selectedRows, setSelectedRows] = useState<any[]>([]);
+    const gridRef = useRef(null);
+    const {nt, pole} = useParams();
+    const [resume, setResume] = useState<any>({});
+    const defaultColDefs: ColDef = {
+        sortable: true,
+        resizable: true,
+        minWidth: 200,
+        autoHeight: true, wrapText: true,
+        cellStyle: {textAlign: 'start', border: "none"},
 
-  };
+    };
 
-        const gridOptions:any = {
-    pagination: true,
-    defaultColDef:defaultColDefs,
-    multiSortKey:'ctrl',
-    animateRows:true,
-  components: {
-      InfoRenderer: InfoRenderer,
-    },
-
-
-    localeText: {
-      // Default pagination text
-      page: 'Page',
-      to: 'à',
-      of: 'sur',
-      nextPage: 'Suivant',
-      lastPage: 'Dernier',
-      firstPage: 'Premier',
-      previousPage: 'Precedent',
+    const gridOptions: any = {
+        pagination: true,
+        defaultColDef: defaultColDefs,
+        multiSortKey: 'ctrl',
+        animateRows: true,
+        components: {
+            InfoRenderer: InfoRenderer,
+        },
 
 
-      loadingOoo: 'Chargement...',
-      noRowsToShow: 'Pas de Données',
+        localeText: {
+            // Default pagination text
+            page: 'Page',
+            to: 'à',
+            of: 'sur',
+            nextPage: 'Suivant',
+            lastPage: 'Dernier',
+            firstPage: 'Premier',
+            previousPage: 'Precedent',
 
-      // Add more custom texts as needed
-    },
-  };
+
+            loadingOoo: 'Chargement...',
+            noRowsToShow: 'Pas de Données',
+
+            // Add more custom texts as needed
+        },
+
+    };
 
 
-    const getData = async(url:string) => {
-        const contrat_id:string=encodeURIComponent(String(cid));
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/encaissements/?facture__marche=${contrat_id}&facture=${fid}${url.replace('?',"&")}`,{
-      headers: {
-        Authorization: `Token ${Cookies.get('token')}`,
-        'Content-Type': 'application/json',
+    const getData = async (url: string) => {
+        const ntid: string = encodeURIComponent(String(nt));
+        const pid: string = encodeURIComponent(String(pole));
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/encaissements/?facture__marche__nt=${ntid}&facture__marche__code_site=${pid}${url.replace('?', "&")}`, {
+            headers: {
+                Authorization: `Token ${Cookies.get('token')}`,
+                'Content-Type': 'application/json',
 
-      },
-    })
-        .then((response:any) => {
-          setData(response.data.enc);
-          setResume(response.data.extra)
+            },
         })
-        .catch((error:any) => {
+            .then((response: any) => {
+                setData(response.data);
+            })
+            .catch((error: any) => {
+                setData([])
+            });
 
-        });
+
+    }
 
 
-  }
-
-
-    const navigate=useNavigate();
-  const getFields = async() => {
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/encaissmentfields/?flag=l`,{
+    const navigate = useNavigate();
+    const getFields = async () => {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/forms/encaissmentfields/?flag=l`, {
             headers: {
                 'Content-Type': 'application/json',
 
             },
         })
-            .then((response:any) => {
+            .then((response: any) => {
 
-                    const updatedCols:any[] = [...response.data.fields,
+                const updatedCols: any[] = [...response.data.fields,
 
 
+                ];
 
-                    ];
-
-                 setFields(updatedCols)
-
+                setFields(updatedCols)
 
 
             })
-            .catch((error:any) => {
+            .catch((error: any) => {
 
             });
 
     }
 
 
-
-       const handleRowClick = (event: any) => {
-        setSelectedRows(event.data);
-
-  };
+    const handleRowClick = (event: any) => {
+        console.log(event)
+    };
 
 
-     useEffect(() => {
-    const paramsArray = Array.from(searchParams.entries());
-    // Build the query string
-    const queryString = paramsArray.reduce((acc, [key, value], index) => {
-      if (index === 0) {
-        return `?${key}=${encodeURIComponent(value)}`;
-      } else {
-        return `${acc}&${key}=${encodeURIComponent(value)}`;
-      }
-    }, '');
+    const dispatch = useDispatch();
 
-    getData(queryString);
-  },[searchParams]);
+    const DelEnc = async() => {
+        console.log(selectedRows)
+        const pks: any[] = []
+        const myDictionary: { [key: string]: any } = {};
+        selectedRows.forEach(obj => {
+            pks.push(obj['id'])
+        });
+        const pkList: any = {}
+        pkList['id'] = pks;
+                await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/sm/delencaissements/`, {
+            headers: {
+                Authorization: `Token ${Cookies.get('token')}`,
+                'Content-Type': 'application/json',
 
-      useEffect(() => {
+            },
+            data: pkList,
+
+        })
+            .then((response: any) => {
+
+                const paramsArray = Array.from(searchParams.entries());
+                // Build the query string
+                const queryString = paramsArray.reduce((acc, [key, value], index) => {
+                    if (index === 0) {
+                        return `?${key}=${encodeURIComponent(value)}`;
+                    } else {
+                        return `${acc}&${key}=${encodeURIComponent(value)}`;
+                    }
+                }, '');
+
+                getData(queryString);
+
+                dispatch(displayAlertMessage({variant: Variant.DANGER, message: "Encaissement(s) Annulé(s)"}))
+
+
+            })
+            .catch((error: any) => {
+                dispatch(displayAlertMessage({variant: Variant.DANGER, message: "Encaissement(s) déja Facturé(s)"}))
+
+            });
+
+    }
+
+    const[numf,setNumF]=useState<string>('')
+
+    const NumFChange = (e:any) => {
+      setNumF(e.target.value);
+    }
+
+    const onSearchClickBtn=()=>{
+        const url_tmp:string[]=[];
+    if(numf){
+        const formDataObject={'facture':numf}
+        Object.entries(formDataObject).forEach(([key, value], index) => {
+          const val:string=String(value);
+
+          if(index === 0){
+
+            url_tmp.push(`${key}=${encodeURIComponent(val)}`);
+          }
+          if(index >= 1){
+            url_tmp.push(`&${key}=${encodeURIComponent(val)}`);
+          }
+
+        });
+
+        const queryParamsString = new URLSearchParams(searchParams).toString(); // Convert query parameters to string
+        const newLocation = {
+          pathname: '', // New route path
+          search: queryParamsString, // Append existing query parameters
+        };
+
+            navigate(newLocation);
+            navigate(`?${url_tmp.join('')}`);
+
+        }
+    else {
+        const queryParamsString = new URLSearchParams(searchParams).toString(); // Convert query parameters to string
+        const newLocation = {
+          pathname: '', // New route path
+          search: queryParamsString, // Append existing query parameters
+        };
+            navigate(newLocation);
+            navigate(``);
+    }
+
+    }
+
+
+    useEffect(() => {
+        const paramsArray = Array.from(searchParams.entries());
+        // Build the query string
+        const queryString = paramsArray.reduce((acc, [key, value], index) => {
+            if (index === 0) {
+                return `?${key}=${encodeURIComponent(value)}`;
+            } else {
+                return `${acc}&${key}=${encodeURIComponent(value)}`;
+            }
+        }, '');
+
+        getData(queryString);
+        console.log(queryString)
+    }, [searchParams]);
+
+    useEffect(() => {
         getFields();
-    },[]);
-
-    const dispatch=useDispatch();
-    const addBL = () => {
-
-
-    }
-      const searchBL = () => {
-
-    }
+    }, []);
 
 
   return (
@@ -178,75 +266,49 @@ const Encaissements: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Encaissements de la facture N° {fid} du contrat N° {cid} </p>
+                                  <p className="text-primary m-0 fw-bold">Encaissements Par Facture Dont Le NT N° {nt} Le Pole N° {pole} </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">
                                       <div className="col-md-6 col-xxl-3">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
-                                                      <div className="col me-2">
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant payé</span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume?.mp) +"DA"}</span>
-                                                          </div>
-                                                      </div>
-                                                      <div className="col-auto">
-                                                          <i
-                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
-                                                          />
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+
                                       </div>
                                       <div className="col-md-6 col-xxl-3">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
-                                                      <div className="col me-2">
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Montant en créance</span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume?.creance)+" DA"}</span>
-                                                          </div>
-                                                      </div>
-                                                      <div className="col-auto">
-                                                          <i
-                                                                className="fas fa-money-bill-wave fa-2x text-gray-300"
-                                                                style={{color: "rgb(221, 223, 235)"}}
-                                                          />
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+
                                       </div>
                                   </div>
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">
                                           <div className="btn-group" role="group">
+                                              <button className="btn btn-primary" type="button"
+                                                      style={{background: "#df162c", borderWidth: 0}} onClick={DelEnc}>
+                                                  <i className="fas fa-trash" style={{marginRight: 5}}/>
+                                                  Annuler Encaissement(s)
+                                              </button>
 
+                                          </div>
+                                      </div>
+                                      <div className="col d-xxl-flex justify-content-xxl-end">
+                                          <div className="input-group"><input value={numf} placeholder={'Numero de Faccture'} className="form-control " type="text" onChange={(e)=>NumFChange(e)}/>
+                                              <button className="btn btn-primary" type="button" onClick={onSearchClickBtn} style={{background: "#df162c", borderWidth: 0}}><i
+                                                  className="fas fa-search"></i></button>
                                           </div>
                                       </div>
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                      style={{ height: 500,width:"100%" }}
+                                      style={{overflowY: "hidden", width: "100%"}}
 
                                   >
-                                    <AgGridReact ref={gridRef}
-                                           rowData={data} columnDefs={fields}
-                                           gridOptions={gridOptions}
-                                           onRowClicked={handleRowClick}
-
-
+                                      <AgGridReact ref={gridRef}
+                                                   domLayout='autoHeight'
+                                                   rowData={data} columnDefs={fields}
+                                                   gridOptions={gridOptions}
+                                                   onRowClicked={handleRowClick}
+                                                   groupDisplayType={"groupRows"}
+                                                   rowSelection={'multiple'}
+                                                 suppressAggFuncInHeader={true}
+                                                 suppressContextMenu={true}
                                     />
 
                                   </div>
@@ -270,7 +332,9 @@ const Encaissements: React.FC<any> = () => {
   );
 };
 
-
 export default Encaissements;
+
+
+
 
 

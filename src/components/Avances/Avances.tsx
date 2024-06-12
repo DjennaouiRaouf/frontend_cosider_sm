@@ -2,11 +2,11 @@ import * as React from "react";
 import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {ColDef} from "ag-grid-community";
+import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
+import { ColDef } from "ag-grid-enterprise";
+import "ag-grid-enterprise";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
 import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
@@ -282,6 +282,8 @@ const Avances: React.FC<any> = () => {
                                                    gridOptions={gridOptions}
                                                    onRowClicked={handleRowClick}
                                                    domLayout='autoHeight'
+                                                   groupDisplayType={"groupRows"}
+suppressContextMenu={true}
 
                                       />
 

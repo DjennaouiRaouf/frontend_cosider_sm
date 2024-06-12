@@ -312,17 +312,17 @@ const Routes: React.FC<any> = () => {
             />
 
             <Route
-                path="/encaissement/historique_encaissement/:cid/:fid"
+                path="/encaissement/enc/:nt/:pole"
                 element={
                     authenticated ? (
-                        <div className={"container"}>
+                        <>
                              <NavigationBar/>
                                 <ScrollToTopBtn/>
                             <Encaissements/>
 
 
 
-                        </div>
+                        </>
                     ) : (
                         <Navigate to="/"  />
                     )
