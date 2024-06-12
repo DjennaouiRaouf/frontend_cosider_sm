@@ -3,7 +3,10 @@ import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
-import { ColDef } from "ag-grid-community";
+import {
+  ColDef,
+
+} from "ag-grid-community";
 import "ag-grid-enterprise";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
@@ -33,8 +36,7 @@ const InfoRenderer: React.FC<any> = (props) => {
 
     case 'date' :
       return <span>{formatDate(value)}</span>
-     case 'facture' :
-      return <span></span>
+
       default:
         return <span>{value}</span>
   }
@@ -303,7 +305,6 @@ const Encaissements: React.FC<any> = () => {
                                                    domLayout='autoHeight'
                                                    rowData={data} columnDefs={fields}
                                                    gridOptions={gridOptions}
-                                                   groupDisplayType={"groupRows"}
                                                    rowSelection={'multiple'}
                                                  suppressAggFuncInHeader={true}
                                                  suppressContextMenu={true}
