@@ -24,6 +24,8 @@ import AttPrinter from "./AttPrinter/AttPrinter";
 import DecomptePPrinter from "./DecomptePPrinter/DecomptePPrinter";
 import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
+
+
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
 
@@ -63,7 +65,7 @@ const Attachements: React.FC<any> = () => {
     resizable: true,
     minWidth: 200,
     autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    cellStyle: {textAlign: 'start', border: "none"}, suppressMenu: true,
 
   };
 

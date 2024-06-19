@@ -39,6 +39,8 @@ const InfoRenderer: React.FC<any> = (props) => {
       return <span>{value+" %"}</span>
     case 'rabais':
       return <span>{value+" %"}</span>
+      case 'id' :
+        return <span></span> 
     default:
       return <span>{value}</span>
   }
@@ -57,7 +59,7 @@ const ContratAvenant: React.FC<any> = () => {
     resizable: true,
     minWidth: 200,
     autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    cellStyle: {textAlign: 'start', border: "none"}, suppressMenu: true,
 
   };
 

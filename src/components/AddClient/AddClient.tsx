@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import {Transform} from "../Utils/Utils";
 
+import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 interface AddClientProps {
         refresh:()=>void,
 
@@ -108,12 +109,16 @@ const AddClient: React.FC<AddClientProps> = ({refresh}) => {
 
             })
                 .then((response:any) => {
-
+                    dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Client Ajouté"}))
                     setFormData(defaultState);
                     handleClose();
                     refresh();
+                  
+
                 })
                 .catch((error:any) => {
+                    dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Imossible d'ajouter ce client "}))
+
                 });
 
 

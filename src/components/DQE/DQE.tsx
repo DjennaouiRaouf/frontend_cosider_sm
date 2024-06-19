@@ -57,7 +57,7 @@ const DQE: React.FC<any> = () => {
     resizable: true,
     minWidth: 200,
     autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    cellStyle: {textAlign: 'start', border: "none"}, suppressMenu: true,
 
   };
 

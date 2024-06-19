@@ -81,7 +81,7 @@ const Invoice: React.FC<any> = () => {
     resizable: true,
     minWidth: 200,
     autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    cellStyle: {textAlign: 'start', border: "none"}, suppressMenu: true,
 
   };
 
@@ -260,7 +260,11 @@ const Invoice: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Factures du Contrat dont le NT N° {nt} et le Pole {pole} </p>
+                                  <p className="text-primary m-0 fw-bold w-100">Factures du Contrat dont le NT
+                                      N° {nt} et le Pole {pole} </p>
+                                  <p className="text-primary m-0 fw-bold w-100">D'un Montant de {Humanize(resume.mht)+' DA'} en HT
+                                     </p>
+
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4 w-100">

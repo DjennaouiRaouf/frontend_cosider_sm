@@ -36,7 +36,9 @@ const InfoRenderer: React.FC<any> = (props) => {
 
     case 'date' :
       return <span>{formatDate(value)}</span>
-
+    
+    case 'facture' :
+      return <span></span>
       default:
         return <span>{value}</span>
   }
@@ -60,6 +62,7 @@ const Encaissements: React.FC<any> = () => {
         minWidth: 200,
         autoHeight: true, wrapText: true,
         cellStyle: {textAlign: 'start', border: "none"},
+        suppressMenu: true,
 
     };
 
@@ -71,7 +74,7 @@ const Encaissements: React.FC<any> = () => {
         components: {
             InfoRenderer: InfoRenderer,
         },
-
+     
 
         localeText: {
             // Default pagination text
@@ -92,6 +95,11 @@ const Encaissements: React.FC<any> = () => {
 
     };
 
+    const [gridApi, setGridApi] = useState<any>(null);
+
+    const onGridReady = (params:any) => {
+      setGridApi(params.api);
+    };
 
     const getData = async (url: string) => {
         const ntid: string = encodeURIComponent(String(nt));
@@ -140,8 +148,10 @@ const Encaissements: React.FC<any> = () => {
     }
 
 
-    const handleRowClick = (event: any) => {
-        console.log(event)
+    const handleRowClick = () => {
+        const selected = gridApi.getSelectedRows();
+        setSelectedRows(selected)
+       
     };
 
 
@@ -156,7 +166,8 @@ const Encaissements: React.FC<any> = () => {
         });
         const pkList: any = {}
         pkList['id'] = pks;
-                await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/sm/delencaissements/`, {
+      
+                await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/sm/delenc/`, {
             headers: {
                 Authorization: `Token ${Cookies.get('token')}`,
                 'Content-Type': 'application/json',
@@ -179,12 +190,12 @@ const Encaissements: React.FC<any> = () => {
 
                 getData(queryString);
 
-                dispatch(displayAlertMessage({variant: Variant.DANGER, message: "Encaissement(s) Annulé(s)"}))
+                dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Encaissement(s) Annulé(s)"}))
 
 
             })
             .catch((error: any) => {
-                dispatch(displayAlertMessage({variant: Variant.DANGER, message: "Encaissement(s) déja Facturé(s)"}))
+                dispatch(displayAlertMessage({variant: Variant.DANGER, message: "Impossible d'annuler cet ncaissement"}))
 
             });
 
@@ -254,7 +265,12 @@ const Encaissements: React.FC<any> = () => {
     useEffect(() => {
         getFields();
     }, []);
+    const groupRowRendererParams:any = {
+        checkbox: true,
+        
+    };
 
+   
 
   return (
       <>
@@ -302,13 +318,24 @@ const Encaissements: React.FC<any> = () => {
 
                                   >
                                       <AgGridReact ref={gridRef}
+                                                   onGridReady={onGridReady}
+                                                   suppressRowClickSelection={true}
                                                    domLayout='autoHeight'
                                                    rowData={data} columnDefs={fields}
                                                    gridOptions={gridOptions}
-                                                   rowSelection={'multiple'}
                                                  suppressAggFuncInHeader={true}
+                                                   groupLockGroupColumns={1}
+
+                                                   
+                                                   
                                                  suppressContextMenu={true}
                                                    animateRows={true}
+                                                   groupSelectsChildren={true}
+                                                   onRowSelected={handleRowClick } 
+                                                   rowSelection={'multiple'}
+                                                   groupDisplayType={"groupRows"}
+                                                   groupRowRendererParams={groupRowRendererParams}
+                                                  
 
                                     />
 

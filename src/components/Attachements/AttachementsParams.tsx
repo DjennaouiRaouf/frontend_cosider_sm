@@ -103,6 +103,48 @@ const[flag,setFlag]=useState<boolean>(false)
 
   }
 
+const getPoles = async() => {
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/poles/`,{
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+        })
+            .then((response:any) => {
+
+
+                 setPole(response.data.pole)
+
+
+
+
+            })
+            .catch((error:any) => {
+                setPole([])
+            });
+
+
+  }
+
+  const getNT = async(pole:string) => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/nts/?code_site=${pole}`,{
+         headers: {
+             'Content-Type': 'application/json',
+
+         },
+     })
+         .then((response:any) => {
+
+              setNT(response.data.nt)
+
+
+         })
+         .catch((error:any) => {
+            setNT([])
+         });
+
+
+}
     const handleChange = (selected:any) => {
     setSelectedNT(selected);
 
@@ -110,18 +152,19 @@ const[flag,setFlag]=useState<boolean>(false)
   };
     const handleChange2 = (selected:any) => {
     setSelectedPole(selected);
-
+    getNT(selected)
 
   };
 
  useEffect(() => {
-        getContrats();
+        getPoles();
     },[]);
 
   useEffect(() => {
      getDateMaxMin();
 
     },[selectedPole,selectedNT]);
+
 
 
   return (
@@ -133,73 +176,74 @@ const[flag,setFlag]=useState<boolean>(false)
         keyboard={false}
       >
         <Modal.Header >
-          <Modal.Title>Saisir le NT et le Pole</Modal.Title>
+          <Modal.Title>Saisir le Pole et le NT</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-        <div className="mb-3">
-                                          <label className="form-label" htmlFor="username">
-                                              <strong>
-                                                  NT
-                                              </strong>
-                                          </label>
-                                                                <>
-                                                                    <Typeahead
-                                                                        id={'contrat_id'}
-                                                                         onChange={handleChange}
-                                                                          options={nt}
-                                                                          selected={selectedNT}
-                                                                          placeholder="Choisir un NT"
-
-                                                                    />
-                                                                </>
-        </div>
+          <Modal.Body>
               <div className="mb-3">
-                                          <label className="form-label" htmlFor="username">
-                                              <strong>
-                                                  Pole
-                                              </strong>
-                                          </label>
-                                                                <>
-                                                                    <Typeahead
-                                                                        id={'contrat_id'}
-                                                                         onChange={handleChange2}
-                                                                          options={pole}
-                                                                          selected={selectedPole}
-                                                                          placeholder="Choisir un Pole"
+                  <label className="form-label" htmlFor="username">
+                      <strong>
+                          Pole
+                      </strong>
+                  </label>
+                  <>
+                      <Typeahead
+                          id={'contrat_id'}
+                          onChange={handleChange2}
+                          options={pole}
+                          selected={selectedPole}
+                          placeholder="Choisir un Pole"
 
-                                                                    />
-                                                                </>
-        </div>
+                      />
+                  </>
+              </div>
 
-            {
-                (maxDate!=='' && minDate!='') ?
+              <div className="mb-3">
+                  <label className="form-label" htmlFor="username">
+                      <strong>
+                          NT
+                      </strong>
+                  </label>
+                  <>
+                      <Typeahead
+                          id={'contrat_id'}
+                          onChange={handleChange}
+                          options={nt}
+                          selected={selectedNT}
+                          placeholder="Choisir un NT"
 
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="username">
-                            <strong>
-                                Mois
-                            </strong>
-                        </label>
-                        <>
-                             <Form.Control
-                                required
-                                className="w-100 mb-3 mt-3"
-                                type="month"
-                                onChange={(e) => handleChangeMonth(e)}
-                                min={minDate}
-                                max={maxDate}
+                      />
+                  </>
+              </div>
 
-                            />
-                        </>
-                    </div>
-                :
-                    <Alert variant={"danger"} show={flag}>
-                      Aucune date d'attachement pour ce marché !
-                    </Alert>
-            }
+              {
+                  (maxDate !== '' && minDate != '') ?
+
+                      <div className="mb-3">
+                          <label className="form-label" htmlFor="username">
+                              <strong>
+                                  Mois
+                              </strong>
+                          </label>
+                          <>
+                              <Form.Control
+                                  required
+                                  className="w-100 mb-3 mt-3"
+                                  type="month"
+                                  onChange={(e) => handleChangeMonth(e)}
+                                  min={minDate}
+                                  max={maxDate}
+
+                              />
+                          </>
+                      </div>
+                      :
+                      <Alert variant={"danger"} show={flag}>
+                          Aucune date d'attachement pour ce marché !
+                      </Alert>
+              }
 
 
-        </Modal.Body>
+          </Modal.Body>
           <Modal.Footer>
               <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
                   Envoyer

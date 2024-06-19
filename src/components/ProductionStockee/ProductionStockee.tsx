@@ -81,7 +81,7 @@ const ProductionStockee: React.FC<any> = () => {
     resizable: true,
     minWidth: 200,
     autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    cellStyle: {textAlign: 'start', border: "none"}, suppressMenu: true,
 
   };
 
@@ -221,7 +221,7 @@ const ProductionStockee: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold"><i className="fas fa-exclamation-triangle pulse animated infinite" style={{ fontSize: 16, color: "#df162c", marginRight: 5 }} /> Etat de la production stockée du NT {nt} dont le Pole {pole}   </p>
+                                  <p className="text-primary m-0 fw-bold "><i className="fas fa-exclamation-triangle pulse animated infinite" style={{ fontSize: 16, color: "#df162c", marginRight: 5 }} /> Etat de la production stockée du NT {nt} dont le Pole {pole}   </p>
                               </div>
                               <div className="card-body">
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4">

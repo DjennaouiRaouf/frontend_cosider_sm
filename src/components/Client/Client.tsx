@@ -16,6 +16,7 @@ import Cookies from "js-cookie";
 import {showSearchClient} from "../Slices/SearchModalSlices";
 import AddClient from "../AddClient/AddClient";
 import SearchClient from "../SearchClient/SearchClient";
+import AlertMessage from "../AlertMessage/AlertMessage";
 
 
 
@@ -52,7 +53,7 @@ const Client: React.FC<any> = () => {
     resizable: true,
     minWidth: 200,
     autoHeight: true, wrapText: true,
-    cellStyle: {textAlign: 'start', border: "none"},
+    cellStyle: {textAlign: 'start', border: "none"},suppressMenu: true,
 
   };
 
@@ -165,9 +166,12 @@ const Client: React.FC<any> = () => {
 
   return (
       <>
+      <AlertMessage/>
           <>
+
               <AddClient refresh={()=>{getData('')}}/>
               <SearchClient/>
+              
           </>
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">

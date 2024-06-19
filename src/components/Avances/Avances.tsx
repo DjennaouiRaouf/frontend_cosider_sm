@@ -31,6 +31,8 @@ const InfoRenderer: React.FC<any> = (props) => {
     case 'taux_remb' :
       return <span>{value} %</span>
 
+      case 'type' :
+        return <span></span>  
       case 'montant' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     default:
@@ -183,8 +185,8 @@ const Avances: React.FC<any> = () => {
                                   <p className="text-primary m-0 fw-bold">Avances du Contrat dont le NT {nt} et le Pole {pole} </p>
                               </div>
                               <div className="card-body">
-                                  <div className="row d-xxl-flex justify-content-xxl-center mb-4">
-                                      <div className="col-md-6 col-xxl-3 mt-5">
+                                  <div className="row d-xxl-flex justify-content-xxl-center mb-4 w-100">
+                                      <div className="col-md-6 col-xxl-3 mt-5 w-100">
                                           <div className="card shadow border-start-success py-2">
                                               <div className="card-body">
                                                   <div className="row align-items-center no-gutters">
@@ -197,45 +199,15 @@ const Avances: React.FC<any> = () => {
                                                               <span>{Humanize(resume.ava) + "DA"}</span>
                                                           </div>
                                                       </div>
-                                                      <div className="col-auto">
-                                                          <i
-                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
-                                                          />
-
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div className="col-md-6 col-xxl-3 mt-5">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Avance sur Forfaitaire </span>
+                                                              <span>Avance  Forfaitaire </span>
                                                           </div>
                                                           <div className="text-dark fw-bold h5 mb-0">
                                                               <span>{Humanize(resume.avf) + "DA"}</span>
                                                           </div>
                                                       </div>
-                                                      <div className="col-auto">
-                                                          <i
-                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
-                                                          />
-
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div className="col-md-6 col-xxl-3 mt-5">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
                                                       <div className="col me-2">
                                                           <div
                                                               className="text-uppercase text-success fw-bold text-xs mb-1">

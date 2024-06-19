@@ -36,8 +36,8 @@ const InvoiceParams: React.FC<any> = () => {
       }
   }
 
-  const getContrats = async() => {
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/contractkeys/`,{
+  const getPoles = async() => {
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/poles/`,{
             headers: {
                 'Content-Type': 'application/json',
 
@@ -45,7 +45,7 @@ const InvoiceParams: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                 setNT(response.data.nt)
+                
                  setPole(response.data.pole)
 
 
@@ -53,11 +53,34 @@ const InvoiceParams: React.FC<any> = () => {
 
             })
             .catch((error:any) => {
-
+                setPole([])
             });
 
 
   }
+
+  const getNT = async(pole:string) => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/nts/?code_site=${pole}`,{
+         headers: {
+             'Content-Type': 'application/json',
+
+         },
+     })
+         .then((response:any) => {
+
+              setNT(response.data.nt)
+              
+
+
+
+         })
+         .catch((error:any) => {
+            setNT([])
+         });
+
+
+}
+
 
     const handleChange = (selected:any) => {
     setSelectedNT(selected);
@@ -66,12 +89,13 @@ const InvoiceParams: React.FC<any> = () => {
   };
     const handleChange2 = (selected:any) => {
     setSelectedPole(selected);
+    getNT(selected) 
 
 
   };
 
  useEffect(() => {
-        getContrats();
+        getPoles();
     },[]);
 
 
@@ -84,9 +108,26 @@ const InvoiceParams: React.FC<any> = () => {
         keyboard={false}
       >
         <Modal.Header >
-          <Modal.Title>Saisir le NT et le Pole</Modal.Title>
+          <Modal.Title>Saisir le Pole et le NT</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        <div className="mb-3">
+                                          <label className="form-label" htmlFor="username">
+                                              <strong>
+                                                  Pole
+                                              </strong>
+                                          </label>
+                                                                <>
+                                                                    <Typeahead
+                                                                        id={'contrat_id'}
+                                                                         onChange={handleChange2}
+                                                                          options={pole}
+                                                                          selected={selectedPole}
+                                                                          placeholder="Choisir un Pole"
+
+                                                                    />
+                                                                </>
+        </div>
         <div className="mb-3">
                                           <label className="form-label" htmlFor="username">
                                               <strong>
@@ -104,23 +145,7 @@ const InvoiceParams: React.FC<any> = () => {
                                                                     />
                                                                 </>
         </div>
-              <div className="mb-3">
-                                          <label className="form-label" htmlFor="username">
-                                              <strong>
-                                                  Pole
-                                              </strong>
-                                          </label>
-                                                                <>
-                                                                    <Typeahead
-                                                                        id={'contrat_id'}
-                                                                         onChange={handleChange2}
-                                                                          options={pole}
-                                                                          selected={selectedPole}
-                                                                          placeholder="Choisir un Pole"
-
-                                                                    />
-                                                                </>
-        </div>
+             
 
 
 
