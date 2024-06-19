@@ -233,14 +233,16 @@ const ProductionStockee: React.FC<any> = () => {
                                                                     x: x,
                                                                     y: y1,
                                                                     name: 'Quantités Produites',
-                                                                    type: 'bar'
+                                                                    type: 'bar',
+
 
                                                                 },
                                                                   {
                                                                       x: x,
                                                                       y: y2,
                                                                       name: 'Quantités Attachés',
-                                                                      type: 'bar'
+                                                                      type: 'bar',
+
 
                                                                   },
 
@@ -256,6 +258,7 @@ const ProductionStockee: React.FC<any> = () => {
 
                                                                   xaxis: {title: 'Code de la Tache'},
                                                                   yaxis: {title: 'Quantité'},
+                                                                         barmode: 'stack',
 
 
 
