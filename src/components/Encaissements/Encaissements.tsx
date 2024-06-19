@@ -267,7 +267,8 @@ const Encaissements: React.FC<any> = () => {
     }, []);
     const groupRowRendererParams:any = {
         checkbox: true,
-        
+
+
     };
 
    
@@ -335,7 +336,7 @@ const Encaissements: React.FC<any> = () => {
                                                    rowSelection={'multiple'}
                                                    groupDisplayType={"groupRows"}
                                                    groupRowRendererParams={groupRowRendererParams}
-                                                  
+
 
                                     />
 

@@ -15,8 +15,7 @@ import {showAddDQE} from "../Slices/AddModalSlices";
 import SearchDQE from "../SearchDQE/SearchDQE";
 import {showSearchDQE} from "../Slices/SearchModalSlices";
 import {Humanize} from "../Utils/Utils";
-import Attacher from "../ActionRenderer/Attacher/Attacher";
-import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
+
 import UpdateDQE from "../UpdateDQE/UpdateDQE";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {Dropdown} from "react-bootstrap";
@@ -129,15 +128,7 @@ const DQE: React.FC<any> = () => {
             .then((response:any) => {
 
                     const updatedCols:any[] = [
-                     {
-                    headerName:' ',
-                    cellRenderer:DQEOption,
-                         maxWidth: 100,
-                         cellRendererParams:{
-                                refresh:getData,
-
-                              }
-                    },...response.data.fields,
+                     ...response.data.fields,
 
 
 
@@ -283,9 +274,7 @@ const DQE: React.FC<any> = () => {
               getData('')
           }}/>
           <SearchDQE/>
-          <UpdateDQE refresh={() => {
-              getData('')
-          }}/>
+
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
                   <div id="content">

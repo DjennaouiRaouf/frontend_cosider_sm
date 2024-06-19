@@ -6,8 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flash/Flash.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/DQEOption/DQEOption.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddAvenant/AddAvenant.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contrat/Contrat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ContratAvenant/ContratAvenant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContratAvenant/ContratAvenant.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DQE/DQE.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DQEAvenant/DQEAV.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DQEAvenant/DQEAV.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DQEAvenant/DQEAVParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DQEAvenant/DQEAVParams.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Encaissements/Encaissements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Encaissements/EncaissementsParams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Encaissements/EncaissementsParams.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EtatCreance/EtatCreance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EtatCreance/EtatCreance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpdateContrat/UpdateContrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddAvenantContrat/AddAvenantContrat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpdateDQE/UpdateDQE.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,34 +39,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Cosider_Project_GM&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier&quot;,
-    &quot;sql.rename.search.for.storage.occurrences&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/PC/Desktop/frontend_cosider_sm/src/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
+    "sql.rename.search.for.storage.occurrences": "true",
+    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlserver&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\ActionRenderer\OptionInvoice" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Invoice" />
-      <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Revision" />
     </key>
   </component>
@@ -129,7 +139,7 @@
       <workItem from="1718087055705" duration="4158000" />
       <workItem from="1718092452591" duration="18849000" />
       <workItem from="1718172960614" duration="23086000" />
-      <workItem from="1718778189455" duration="4957000" />
+      <workItem from="1718778189455" duration="12589000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>
@@ -221,14 +231,6 @@
       <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
       <updated>1716471361135</updated>
-    </task>
-    <task id="LOCAL-00135" summary="init">
-      <option name="closed" value="true" />
-      <created>1716893445081</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1716893445081</updated>
     </task>
     <task id="LOCAL-00136" summary="init">
       <option name="closed" value="true" />
@@ -503,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718782877649</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="init">
+      <option name="closed" value="true" />
+      <created>1718783721947</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1718783721947</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

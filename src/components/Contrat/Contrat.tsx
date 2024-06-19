@@ -12,13 +12,12 @@ import {Button,Form, Modal} from "react-bootstrap";
 import {Typeahead} from "react-bootstrap-typeahead";
 import {useDispatch} from "react-redux";
 import {showAddContrat} from "../Slices/AddModalSlices";
-import AddAvenant from "../AddAvenant/AddAvenant";
+
 import {showSearchContrat} from "../Slices/SearchModalSlices";
 import SearchContrat from "../SearchContrat/SearchContrat";
 import Cookies from "js-cookie";
 import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
 
-import UpdateContrat from "../UpdateContrat/UpdateContrat";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import AddContrat from "../AddContrat/AddContrat";
 
@@ -130,14 +129,7 @@ const Contrat: React.FC<any> = () => {
             .then((response:any) => {
 
                          const updatedCols:any[] = [
-                                {
-                    headerName:' ', rowDrag: true,
-                    cellRenderer:ContratOption,
-                         maxWidth: 100,
-                         cellRendererParams:{
-                                refresh:getData,
-                              }
-                    },
+
                              ...response.data.fields
                     ];
                  setFields(updatedCols)
@@ -182,7 +174,7 @@ const Contrat: React.FC<any> = () => {
       <>
           <>
             <AddContrat refresh={()=>{getData('')}}/>
-               <UpdateContrat refresh={()=>{getData('')}}/>
+
             <SearchContrat/>
               <AlertMessage/>
           </>

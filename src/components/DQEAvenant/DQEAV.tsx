@@ -15,8 +15,7 @@ import {showAddDQE} from "../Slices/AddModalSlices";
 import SearchDQE from "../SearchDQE/SearchDQE";
 import {showSearchDQE} from "../Slices/SearchModalSlices";
 import {Humanize} from "../Utils/Utils";
-import Attacher from "../ActionRenderer/Attacher/Attacher";
-import DQEOption from "../ActionRenderer/DQEOption/DQEOption";
+
 import UpdateDQE from "../UpdateDQE/UpdateDQE";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {Dropdown} from "react-bootstrap";
@@ -270,9 +269,6 @@ const DQEAV: React.FC<any> = () => {
               getData('')
           }}/>
           <SearchDQEAV/>
-          <UpdateDQE refresh={() => {
-              getData('')
-          }}/>
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
                   <div id="content">

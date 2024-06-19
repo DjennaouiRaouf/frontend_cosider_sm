@@ -36,8 +36,9 @@ const EncaissementsParams: React.FC<any> = () => {
       }
   }
 
-  const getContrats = async() => {
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/contractkeys/`,{
+
+  const getPoles = async() => {
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/poles/`,{
             headers: {
                 'Content-Type': 'application/json',
 
@@ -45,7 +46,7 @@ const EncaissementsParams: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                 setNT(response.data.nt)
+
                  setPole(response.data.pole)
 
 
@@ -53,11 +54,34 @@ const EncaissementsParams: React.FC<any> = () => {
 
             })
             .catch((error:any) => {
-
+                setPole([])
             });
 
 
   }
+
+  const getNT = async(pole:string) => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/nts/?code_site=${pole}`,{
+         headers: {
+             'Content-Type': 'application/json',
+
+         },
+     })
+         .then((response:any) => {
+
+              setNT(response.data.nt)
+
+
+
+
+         })
+         .catch((error:any) => {
+            setNT([])
+         });
+
+
+}
+
 
     const handleChange = (selected:any) => {
     setSelectedNT(selected);
@@ -66,12 +90,13 @@ const EncaissementsParams: React.FC<any> = () => {
   };
     const handleChange2 = (selected:any) => {
     setSelectedPole(selected);
+    getNT(selected)
 
 
   };
 
  useEffect(() => {
-        getContrats();
+        getPoles();
     },[]);
 
 
@@ -84,47 +109,46 @@ const EncaissementsParams: React.FC<any> = () => {
         keyboard={false}
       >
         <Modal.Header >
-          <Modal.Title>Saisir le NT et le Pole</Modal.Title>
+          <Modal.Title>Saisir le Pole et le NT</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-        <div className="mb-3">
-                                          <label className="form-label" htmlFor="username">
-                                              <strong>
-                                                  NT
-                                              </strong>
-                                          </label>
-                                                                <>
-                                                                    <Typeahead
-                                                                        id={'contrat_id'}
-                                                                         onChange={handleChange}
-                                                                          options={nt}
-                                                                          selected={selectedNT}
-                                                                          placeholder="Choisir un NT"
-
-                                                                    />
-                                                                </>
-        </div>
+          <Modal.Body>
               <div className="mb-3">
-                                          <label className="form-label" htmlFor="username">
-                                              <strong>
-                                                  Pole
-                                              </strong>
-                                          </label>
-                                                                <>
-                                                                    <Typeahead
-                                                                        id={'contrat_id'}
-                                                                         onChange={handleChange2}
-                                                                          options={pole}
-                                                                          selected={selectedPole}
-                                                                          placeholder="Choisir un Pole"
+                  <label className="form-label" htmlFor="username">
+                      <strong>
+                          Pole
+                      </strong>
+                  </label>
+                  <>
+                      <Typeahead
+                          id={'contrat_id'}
+                          onChange={handleChange2}
+                          options={pole}
+                          selected={selectedPole}
+                          placeholder="Choisir un Pole"
 
-                                                                    />
-                                                                </>
-        </div>
+                      />
+                  </>
+              </div>
+              <div className="mb-3">
+                  <label className="form-label" htmlFor="username">
+                      <strong>
+                          NT
+                      </strong>
+                  </label>
+                  <>
+                      <Typeahead
+                          id={'contrat_id'}
+                          onChange={handleChange}
+                          options={nt}
+                          selected={selectedNT}
+                          placeholder="Choisir un NT"
+
+                      />
+                  </>
+              </div>
 
 
-
-        </Modal.Body>
+          </Modal.Body>
           <Modal.Footer>
               <Button variant="secondary" style={{background: "#df162c", borderWidth: 0}} onClick={valider}>
                   Envoyer

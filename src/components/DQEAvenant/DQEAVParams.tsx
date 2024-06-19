@@ -18,10 +18,11 @@ const DQEAVParams: React.FC<any> = () => {
     const [display, setDisplay] = useState(true);
      const [selectedNT, setSelectedNT] = useState<string[]>([]);
     const [selectedPole, setSelectedPole] = useState<string[]>([]);
-    const [numAv, setNumAv] = useState<number>(0);
+    const [selectedNumAv, setSelectedNumAv] = useState<string[]>([]);
 
      const [nt,setNT]=useState<string[]>([]);
     const [pole,setPole]=useState<string[]>([]);
+    const [numAv,setNumAv]=useState<string[]>([]);
 
     const navigate=useNavigate();
     const hide = () => setDisplay(false);
@@ -30,14 +31,14 @@ const DQEAVParams: React.FC<any> = () => {
     hide();
     const val:string=selectedNT[0];
     const val2:string=selectedPole[0];
-      const val3:number=numAv;
+      const val3:string=selectedNumAv[0];
 
     navigate(`liste_dqe_av/${encodeURIComponent(val)}/${encodeURIComponent(val2)}/${encodeURIComponent(val3)}`, )
 
   }
 
-  const getContrats = async() => {
-       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/contractkeys/`,{
+  const getPoles = async() => {
+       await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/poles/`,{
             headers: {
                 'Content-Type': 'application/json',
 
@@ -45,7 +46,7 @@ const DQEAVParams: React.FC<any> = () => {
         })
             .then((response:any) => {
 
-                 setNT(response.data.nt)
+
                  setPole(response.data.pole)
 
 
@@ -53,11 +54,50 @@ const DQEAVParams: React.FC<any> = () => {
 
             })
             .catch((error:any) => {
-
+                setPole([])
             });
 
 
   }
+
+  const getNT = async(pole:string) => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/nts/?code_site=${pole}`,{
+         headers: {
+             'Content-Type': 'application/json',
+
+         },
+     })
+         .then((response:any) => {
+
+              setNT(response.data.nt)
+
+
+         })
+         .catch((error:any) => {
+            setNT([])
+         });
+
+
+}
+  const getNumAv = async() => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/num_av/?code_site=${selectedPole}&nt=${selectedNT}`,{
+         headers: {
+             'Content-Type': 'application/json',
+
+         },
+     })
+         .then((response:any) => {
+
+              setNumAv(response.data.num_av)
+
+
+         })
+         .catch((error:any) => {
+            setNumAv([])
+         });
+
+
+}
 
     const handleChange = (selected:any) => {
     setSelectedNT(selected);
@@ -66,19 +106,26 @@ const DQEAVParams: React.FC<any> = () => {
   };
     const handleChange2 = (selected:any) => {
     setSelectedPole(selected);
-
+    getNT(selected)
 
   };
 
-        const handleInputChange = (e:any) => {
-        setNumAv(e.target.value);
-
-    };
-
+    const handleChange3 = (selected:any) => {
+    setSelectedNumAv(selected);
+  };
 
  useEffect(() => {
-        getContrats();
+        getPoles();
     },[]);
+
+ useEffect(() => {
+        getNumAv();
+    },[selectedPole,selectedNT]);
+
+
+
+
+
 
 
   return (
@@ -92,23 +139,6 @@ const DQEAVParams: React.FC<any> = () => {
           <Modal.Title>Saisir le NT et le Pole</Modal.Title>
         </Modal.Header>
           <Modal.Body>
-              <div className="mb-3">
-                  <label className="form-label" htmlFor="username">
-                      <strong>
-                          NT
-                      </strong>
-                  </label>
-                  <>
-                      <Typeahead
-                          id={'contrat_id'}
-                          onChange={handleChange}
-                          options={nt}
-                          selected={selectedNT}
-                          placeholder="Choisir un NT"
-
-                      />
-                  </>
-              </div>
               <div className="mb-3">
                   <label className="form-label" htmlFor="username">
                       <strong>
@@ -130,19 +160,36 @@ const DQEAVParams: React.FC<any> = () => {
               <div className="mb-3">
                   <label className="form-label" htmlFor="username">
                       <strong>
+                          NT
+                      </strong>
+                  </label>
+                  <>
+                      <Typeahead
+                          id={'contrat_id'}
+                          onChange={handleChange}
+                          options={nt}
+                          selected={selectedNT}
+                          placeholder="Choisir un NT"
+
+                      />
+                  </>
+              </div>
+
+              <div className="mb-3">
+                  <label className="form-label" htmlFor="username">
+                      <strong>
                           Avenant N°
                       </strong>
                   </label>
                   <>
-                                                                                           <Form.Control
-                                                                          name={'numav'}
-                                                                          required={true}
-                                                                          className="w-100"
-                                                                          type="number"
-                                                                          value={numAv}
-                                                                          step={1}
-                                                                          onChange={(e) => handleInputChange(e)}
-                                                                      />
+                      <Typeahead
+                          id={'contrat_id'}
+                          onChange={handleChange3}
+                          options={numAv}
+                          selected={selectedNumAv}
+                          placeholder="numero d'avenant"
+
+                      />
 
                   </>
               </div>

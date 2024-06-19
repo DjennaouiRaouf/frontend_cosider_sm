@@ -8,19 +8,15 @@ import "ag-grid-enterprise";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import numeral from "numeral";
-import {Button,Form, Modal} from "react-bootstrap";
-import {Typeahead} from "react-bootstrap-typeahead";
+
 import {useDispatch} from "react-redux";
 import {showAddContrat} from "../Slices/AddModalSlices";
-import AddAvenant from "../AddAvenant/AddAvenant";
 import {showSearchContrat} from "../Slices/SearchModalSlices";
-import SearchContrat from "../SearchContrat/SearchContrat";
 import Cookies from "js-cookie";
-import ContratOption from "../ActionRenderer/ContratOption/ContratOption";
-
-import UpdateContrat from "../UpdateContrat/UpdateContrat";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import SearchContratAV from "../SearchContratAV/SearchContratAV";
+import ContratAvenantOption from "../ActionRenderer/ContratAvenantOption/ContratAvenantOption";
+import AddAvenantContrat from "../AddAvenantContrat/AddAvenantContrat";
 
 
 
@@ -130,7 +126,7 @@ const ContratAvenant: React.FC<any> = () => {
                          const updatedCols:any[] = [
                                 {
                     headerName:' ',
-                    cellRenderer:ContratOption,
+                    cellRenderer:ContratAvenantOption,
                          maxWidth: 100,
                                     pinned:'left',
                          cellRendererParams:{
@@ -190,8 +186,7 @@ const ContratAvenant: React.FC<any> = () => {
   return (
       <>
           <>
-            <AddAvenant refresh={()=>{getData('')}}/>
-               <UpdateContrat refresh={()=>{getData('')}}/>
+            <AddAvenantContrat refresh={()=>{getData('')}}/>
             <SearchContratAV/>
               <AlertMessage/>
           </>

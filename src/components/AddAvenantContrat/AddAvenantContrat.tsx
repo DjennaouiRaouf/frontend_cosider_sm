@@ -17,11 +17,11 @@ import {ColDef} from "ag-grid-community";
 import {useParams} from "react-router-dom";
 import {displayAlertMessage, Variant} from "../Slices/AlertMessageSlices";
 
-interface UpdateDQEProps {
+interface AddAvenantContratProps {
     refresh:()=>void,
 
 }
-const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
+const AddAvenantContrat: React.FC<AddAvenantContratProps> = (props) => {
      const [validated, setValidated] = useState(false);
     const { showEditForm } = useSelector((state: RootState) => state.editDataModalReducer);
 
@@ -59,49 +59,47 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
 
 
 
-    const { cid } = useParams();
- const handleSubmit = async(e: any) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        const formDataObject:any=Object.assign({}, formData);
 
-        formDataObject['id']=showEditForm.id.id;
+ const handleSubmit = async(e: any) => {
+ e.preventDefault();
+        const form = e.currentTarget;
+        console.log(formData)
 
 
         if (form.checkValidity()) {
             setValidated(false)
 
-                await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/updatemarche/`,Transform(formDataObject),{
+            await axios.post(`${process.env.REACT_APP_API_BASE_URL}/sm/addmav/`, Transform(formData), {
                 headers: {
-
-                  Authorization: `Token ${Cookies.get("token")}`,
-                  'Content-Type': 'application/json',
+                    Authorization: `Token ${Cookies.get("token")}`,
+                    'Content-Type': 'application/json',
 
                 },
-                })
-                .then((response:any) => {
-                    refresh();
+
+            })
+                .then((response: any) => {
+
+                    setFormData( showEditForm.state);
                     handleClose();
-                        dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: response.data}))
+                    props.refresh();
+
+                    dispatch(displayAlertMessage({variant: Variant.SUCCESS, message: "Avenant ajouté"}))
+
 
                 })
-                .catch((error:any) => {
-                    dispatch(displayAlertMessage({variant:Variant.DANGER,message:JSON.stringify(error.response.data,null,2)}))
+                .catch((error: any) => {
+
+                    dispatch(displayAlertMessage({
+                        variant: Variant.DANGER,
+                        message: JSON.stringify(error.response.data, null, 2)
+                    }))
 
                 });
-
-            }
-        else {
-
-            setValidated(true)
         }
-
 
     }
     const handleClose = () => {
-        console.log(formData)
         dispatch(hideEdit())
-
     }
     const handleChange = (ref:any, op:any) => {
         if(op.length > 0 ){
@@ -126,7 +124,7 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
               <Form
                       noValidate validated={validated} onSubmit={handleSubmit} >
         <Modal.Header closeButton>
-          <Modal.Title>Modifier le Contrat N° {showEditForm.id.id}</Modal.Title>
+          <Modal.Title>Ajouter un Avenant au Contrat N° {showEditForm.id.id}</Modal.Title>
         </Modal.Header>
                   <Modal.Body>
                       <div className="container-fluid">
@@ -234,7 +232,7 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
                   <Modal.Footer>
 
                       <Button variant="primary" style={{background: "#df162c", borderWidth: 0}} type={"submit"}>
-                          Modifier
+                          Ajouter
                       </Button>
                   </Modal.Footer>
               </Form>
@@ -243,4 +241,4 @@ const UpdateContrat: React.FC<UpdateDQEProps> = ({refresh}) => {
   );
 };
 
-export default UpdateContrat;
+export default AddAvenantContrat;
