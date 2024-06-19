@@ -34,6 +34,26 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
 
     ];
 
+   const getNT = async(pole:string) => {
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/nts/?code_site=${pole}`,{
+         headers: {
+             'Content-Type': 'application/json',
+
+         },
+     })
+         .then((response:any) => {
+           console.log(fields)
+
+         })
+         .catch((error:any) => {
+                     });
+
+
+}
+
+
+
+
     const handleSelectChange = (e: any) => {
         setFormData({
             ...formData,
@@ -76,6 +96,7 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
         })
             .then((response:any) => {
                 setFields(response.data.fields);
+
                 getState();
             })
             .catch((error:any) => {
@@ -136,6 +157,7 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
 
 
 
+
     },[]);
     const handleClose = () => {
         dispatch(hideAddContrat())
@@ -152,6 +174,9 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
                 ...formData,
                 [ref]: [],
             })
+        }
+        if(ref==='code_site'){
+            getNT(op)
         }
 
 
@@ -217,6 +242,8 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
 
                                                                     />
                                                                 </>
+                                                                
+
                                                                 :field.type === 'ChoiceField' ?
 
                                                               <Form.Control
