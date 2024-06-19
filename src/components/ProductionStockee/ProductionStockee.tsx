@@ -232,15 +232,15 @@ const ProductionStockee: React.FC<any> = () => {
                                                                 {
                                                                     x: x,
                                                                     y: y1,
-                                                                    name: 'Quantités Attachés',
-                                                                    type: 'scatter'
+                                                                    name: 'Quantités Produites',
+                                                                    type: 'bar'
 
                                                                 },
                                                                   {
                                                                       x: x,
                                                                       y: y2,
-                                                                      name: 'Quantités Produites ',
-                                                                      type: 'scatter'
+                                                                      name: 'Quantités Attachés',
+                                                                      type: 'bar'
 
                                                                   },
 

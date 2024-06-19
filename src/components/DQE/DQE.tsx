@@ -321,12 +321,6 @@ const DQE: React.FC<any> = () => {
                                                   Ajouter un dqe
                                               </button>
                                               <button className="btn btn-primary" type="button"
-                                                      style={{background: "#df162c", borderWidth: 0}} onClick={graph}>
-                                                  <i className="fas fa-bar-chart" style={{marginRight: 5}}/>
-
-                                                  Avancement
-                                              </button>
-                                              <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchD}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
                                                   Rechercher
