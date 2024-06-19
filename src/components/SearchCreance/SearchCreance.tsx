@@ -165,20 +165,6 @@ const SearchCreance: React.FC<any> = () => {
 
                                                                     />
                                                                 </>
-                                                                : field.type= 'DateFromToRangeFilter' ?
-                                                                    <div className="input-group" id={field.name+'range'}>
-                                                                        <span className="input-group-text">Du</span>
-                                                                        <input className="form-control"
-                                                                               name={field.name+'_after'}
-                                                                               onChange={(e) => handleInputRangeChange(e)}
-                                                                               type="date"/>
-                                                                        <span className="input-group-text">Au</span>
-                                                                        <input className="form-control"
-                                                                               name={field.name+'_before'}
-
-                                                                               onChange={(e) => handleInputRangeChange(e)}
-                                                                               type="date"/>
-                                                                    </div>
 
 
                                                                     :
@@ -221,6 +207,9 @@ const SearchCreance: React.FC<any> = () => {
                                                                                     onChange={(e) => handleInputChange(e)}
                                                                                 />
 
+
+
+
                                                                                 :
                                                                                 <Form.Control
                                                                                     name={field.name}
@@ -262,3 +251,22 @@ const SearchCreance: React.FC<any> = () => {
 export default SearchCreance;
 
 
+/*
+*    : field.type= 'DateFromToRangeFilter' ?
+                                                                                    <>
+                                                                                    <div className="input-group" id={field.name+'range'}>
+                                                                                            <span className="input-group-text">Du</span>
+                                                                                            <input className="form-control"
+                                                                                                   name={field.name+'_after'}
+                                                                                                   onChange={(e) => handleInputRangeChange(e)}
+                                                                                                   type="date"/>
+                                                                                            <span className="input-group-text">Au</span>
+                                                                                            <input className="form-control"
+                                                                                                   name={field.name+'_before'}
+
+                                                                                                   onChange={(e) => handleInputRangeChange(e)}
+                                                                                                   type="date"/>
+                                                                                        </div>
+                                                                                    </>
+*
+* */

@@ -29,6 +29,9 @@ const InfoRenderer: React.FC<any> = (props) => {
     case 'mgc' :
       return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
 
+          case 'mht' :
+      return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+
       case 'rg':
       return <span>{value+" %"}</span>
     case 'tva':
