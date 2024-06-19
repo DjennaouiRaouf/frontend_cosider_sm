@@ -176,9 +176,7 @@ const ContratAvenant: React.FC<any> = () => {
     },[]);
 
     const dispatch=useDispatch();
-    const addC = () => {
-      dispatch(showAddContrat())
-    }
+
       const searchC = () => {
       dispatch(showSearchContrat())
     }
@@ -196,18 +194,14 @@ const ContratAvenant: React.FC<any> = () => {
                       <div className="container-fluid">
                           <div className="card shadow">
                               <div className="card-header py-3">
-                                  <p className="text-primary m-0 fw-bold">Nos Avenants (Contrats)</p>
+                                  <p className="text-primary m-0 fw-bold">Nos Avenants</p>
                               </div>
                               <div className="card-body">
 
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">
                                           <div className="btn-group" role="group">
-                                              <button className="btn btn-primary" type="button"
-                                                      style={{background: "#df162c", borderWidth: 0}} onClick={addC}>
-                                                  <i className="fas fa-plus" style={{marginRight: 5}}/>
-                                                  Nouvel Avenant
-                                              </button>
+
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchC}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
