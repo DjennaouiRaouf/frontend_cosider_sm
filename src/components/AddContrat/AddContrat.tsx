@@ -17,6 +17,8 @@ type AddContratProps = {
 const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
      const [validated, setValidated] = useState(false);
     const { showAddContratForm } = useSelector((state: RootState) => state.addDataModalReducer);
+    const [selectedNT, setSelectedNT] = useState<string[]>([]);
+     const [nt,setNT]=useState<string[]>([]);
 
     const dispatch = useDispatch();
     const [fields,setFields]=useState<any[]>([]);
@@ -42,7 +44,7 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
          },
      })
          .then((response:any) => {
-           console.log(fields)
+           setNT(response.data.nt)
 
          })
          .catch((error:any) => {
@@ -169,14 +171,19 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
                 ...formData,
                 [ref]: op,
             })
+             if(ref==='code_site'){
+                getNT(op[0].value)
+            }
+
         }else {
             setFormData({
                 ...formData,
                 [ref]: [],
             })
-        }
-        if(ref==='code_site'){
-            console.log(op)
+             if(ref==='code_site'){
+                getNT('')
+                 setSelectedNT([])
+            }
         }
 
 
@@ -187,6 +194,24 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
             [e.target.name]: e.target.value,
         });
     };
+     const handleChange2 = (selected:any) => {
+         if(selected.length ===1 )
+         {
+             setSelectedNT(selected);
+
+             setFormData({
+                ...formData,
+                nt: selected[0],
+            });
+         }else {
+            setFormData({
+                ...formData,
+                nt:'',
+            })
+             setSelectedNT([])
+        }
+
+  };
 
   return (
       <>
@@ -242,7 +267,17 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
 
                                                                     />
                                                                 </>
-                                                                
+                                                                : field.name === "nt"?
+                                                                <>
+                                                                  <Typeahead
+                                                                      id={'contrat_id'}
+                                                                      onChange={handleChange2}
+                                                                      options={nt}
+                                                                      selected={selectedNT}
+                                                                      placeholder="Choisir un NT"
+
+                                                                  />
+                                                                </>
 
                                                                 :field.type === 'ChoiceField' ?
 
