@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/components/Invoice/Invoice.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddContrat/AddContrat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/OptionInvoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ActionRenderer/OptionInvoice/OptionInvoice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Invoice/Invoice.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,6 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/PycharmProjects/frontend_cosider_sm",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -129,7 +139,7 @@
       <workItem from="1718092452591" duration="18849000" />
       <workItem from="1718172960614" duration="23086000" />
       <workItem from="1718778189455" duration="20474000" />
-      <workItem from="1718870148615" duration="2446000" />
+      <workItem from="1718870148615" duration="8041000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>
@@ -221,14 +231,6 @@
       <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
       <updated>1716471361135</updated>
-    </task>
-    <task id="LOCAL-00147" summary="init">
-      <option name="closed" value="true" />
-      <created>1716982744737</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1716982744738</updated>
     </task>
     <task id="LOCAL-00148" summary="init">
       <option name="closed" value="true" />
@@ -503,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718870662824</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="init">
+      <option name="closed" value="true" />
+      <created>1718872780451</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1718872780451</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -23,7 +23,7 @@ import {Button, Dropdown, Form, Modal} from "react-bootstrap";
 import SearchInvoice from "../SearchInvoice/SearchInvoice";
 import {showSearchInvoice} from "../Slices/SearchModalSlices";
 import InvoiceRGTTC from "./InvoiceRGTTC/InvoiceRGTTC";
-
+import "./Invoice.css";
 
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
@@ -238,11 +238,25 @@ const Invoice: React.FC<any> = () => {
 
 
     
-     const Remb = () => {
+     const containerRef = useRef<HTMLDivElement>(null);
 
+    const left = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollTo({
+                left: containerRef.current.scrollLeft - 100, // Adjust scroll distance as needed
+                behavior: 'smooth' // Optional: Smooth scrolling animation
+            });
+        }
+    };
 
-     }
-
+    const right = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollTo({
+                left: containerRef.current.scrollLeft + 100, // Adjust scroll distance as needed
+                behavior: 'smooth' // Optional: Smooth scrolling animation
+            });
+        }
+    };
 
   return (
       <>
@@ -266,91 +280,282 @@ const Invoice: React.FC<any> = () => {
                                      </p>
 
                               </div>
-                              <div className="card-body">
+                              <div className="card-body" style={{overflowY:'auto'}}>
                                   <div className="row d-xxl-flex justify-content-xxl-center mb-4 w-100">
-                                      <div className="col-md-6 col-xxl-3 w-100">
-                                          <div className="card shadow border-start-success py-2">
-                                              <div className="card-body">
-                                                  <div className="row align-items-center no-gutters">
-                                                      <h5 className={'text-center'}>Montant Global</h5>
-                                                      <hr/>
-                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Retenue de Garantie en HT </span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.rg_total) + "DA"}</span>
+
+
+                                      <div className="card">
+                                          <div className="card-header d-md-flex justify-content-md-center">
+                                              <div className="btn-group" role="group">
+                                                  <button
+                                                      className="btn btn-primary"
+                                                      type="button"
+                                                      style={{
+                                                          color: "var(--bs-btn-disabled-color)",
+                                                          background: "transparent",
+                                                          borderStyle: "none"
+                                                      }}
+                                                      onClick={left}
+                                                  >
+                                                      <i
+                                                          className="fas fa-arrow-circle-left"
+                                                          style={{
+                                                              fontSize: 43,
+                                                              background: "transparent",
+                                                              color: "rgb(147,147,147)"
+                                                          }}
+                                                      />
+                                                  </button>
+                                                  <button
+                                                      className="btn btn-primary"
+                                                      type="button"
+                                                      style={{
+                                                          color: "var(--bs-btn-disabled-color)",
+                                                          background: "transparent",
+                                                          borderStyle: "none"
+                                                      }}
+                                                      onClick={right}
+                                                  >
+                                                      <i
+                                                          className="fas fa-arrow-circle-right"
+                                                          style={{
+                                                              fontSize: 43,
+                                                              background: "transparent",
+                                                              color: "rgb(147,147,147)"
+                                                          }}
+                                                      />
+                                                  </button>
+                                              </div>
+                                          </div>
+                                          <div className="container-fluid card-row-container" ref={containerRef}>
+                                              <div className="col-md-6 col-xl-3 mb-4 me-3">
+                                                  <div
+                                                      className="card shadow border-start-primary py-2"
+                                                      style={{height: "100%"}}
+                                                  >
+                                                      <div className="card-body"
+                                                           style={{paddingBottom: 0, paddingTop: 0}}>
+                                                          <div className="row align-items-center no-gutters">
+                                                              <div className="col me-2">
+                                                                  <div
+                                                                      className="text-uppercase text-primary fw-bold text-xs mb-1">
+                                                                        <span style={{fontSize: 12, color: "var(--bs-primary)"}}>
+                                                                          <strong>
+                                                                            <span style={{color: "rgb(25, 135, 84)"}}>
+                                                                              Retenue de Garantie
+                                                                            </span>
+                                                                          </strong>
+                                                                        </span>
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                                                                          >
+                                                                        <span style={{fontSize: 14}}>
+                                                                          <span style={{color: "rgb(25, 135, 84)"}}>
+                                                                            En&nbsp; HT&nbsp;
+                                                                          </span>
+                                                                        </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.rg_total) + "DA"}</span>
+
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                                                                    <span style={{fontSize: 14}}>
+                                                                      <span style={{color: "rgb(25, 135, 84)"}}>
+                                                                        En TTC&nbsp;
+                                                                      </span>
+                                                                    </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.rg_total_ttc) + "DA"}</span>
+
+                                                                  </div>
+                                                              </div>
                                                           </div>
                                                       </div>
-                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Retenue de Garantie en TTC </span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.rg_total_ttc) + "DA"}</span>
+                                                  </div>
+                                              </div>
+                                              <div className="col-md-6 col-xl-3 mb-4 me-3">
+                                                  <div
+                                                      className="card shadow border-start-primary py-2"
+                                                      style={{height: "100%"}}
+                                                  >
+                                                      <div className="card-body"
+                                                           style={{paddingBottom: 0, paddingTop: 0}}>
+                                                          <div className="row align-items-center no-gutters">
+                                                              <div className="col me-2">
+                                                                  <div
+                                                                      className="text-uppercase text-primary fw-bold text-xs mb-1">
+                <span style={{fontSize: 12, color: "var(--bs-primary)"}}>
+                  <strong>
+                    <span style={{color: "rgb(25, 135, 84)"}}>
+                      RembourSeMENT
+                    </span>
+                  </strong>
+                </span>
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                <span style={{fontSize: 14}}>
+                  <span style={{color: "rgb(25, 135, 84)"}}>
+                    Avance Forfaitaire&nbsp;
+                  </span>
+                </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.avf) + "DA"}</span>
+
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                <span style={{fontSize: 14}}>
+                  <span style={{color: "rgb(25, 135, 84)"}}>
+                    Avance Sur Appros&nbsp;
+                  </span>
+                </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.ava) + "DA"}</span>
+
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                <span style={{fontSize: 14}}>
+                  <span style={{color: "rgb(25, 135, 84)"}}>
+                    Avance Exceptionnelle&nbsp;
+                  </span>
+                </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.ave) + "DA"}</span>
+
+                                                                  </div>
+                                                              </div>
                                                           </div>
                                                       </div>
+                                                  </div>
+                                              </div>
+                                              <div className="col-md-6 col-xl-3 mb-4 me-3">
+                                                  <div
+                                                      className="card shadow border-start-primary py-2"
+                                                      style={{height: "100%"}}
+                                                  >
+                                                      <div className="card-body"
+                                                           style={{paddingBottom: 0, paddingTop: 0}}>
+                                                          <div className="row align-items-center no-gutters">
+                                                              <div className="col me-2">
+                                                                  <div
+                                                                      className="text-uppercase text-primary fw-bold text-xs mb-1">
+                <span style={{fontSize: 12, color: "var(--bs-primary)"}}>
+                  <strong>
+                    <span style={{color: "rgb(25, 135, 84)"}}>
+                      Facturation
+                    </span>
+                  </strong>
+                </span>
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                <span style={{fontSize: 14}}>
+                  <i
+                      className="fas fa-check"
+                      style={{color: "rgb(25,135,84)"}}
+                  />
+                  <span style={{color: "rgb(25, 135, 84)"}}>
+                    &nbsp;Facturé
+                  </span>
+                </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.mgf) + "DA"}</span>
 
-                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>Encaissé </span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.mgenc) + "DA"}</span>
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                <span style={{fontSize: 14}}>
+                  <i
+                      className="fas fa-check-double"
+                      style={{color: "rgb(25,135,84)"}}
+                  />
+                  <span style={{color: "rgb(25, 135, 84)"}}>
+                    &nbsp;Encaissé
+                  </span>
+                </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.mgenc) + "DA"}</span>
+
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                <span style={{fontSize: 14}}>
+                  <i
+                      className="fas fa-exclamation-triangle"
+                      style={{color: "rgb(255,0,0)"}}
+                  />
+                  <span style={{color: "rgb(25, 135, 84)"}}>
+                    &nbsp;En Créance
+                  </span>
+                </span>
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.creance) + "DA"}</span>
+
+                                                                  </div>
+                                                              </div>
                                                           </div>
                                                       </div>
+                                                  </div>
+                                              </div>
+                                              <div className="col-md-6 col-xl-3 mb-4 me-3">
+                                                  <div
+                                                      className="card shadow border-start-primary py-2"
+                                                      style={{height: "100%"}}
+                                                  >
+                                                      <div className="card-body"
+                                                           style={{paddingBottom: 0, paddingTop: 0}}>
+                                                          <div className="row align-items-center no-gutters">
+                                                              <div className="col me-2">
+                                                                  <div
+                                                                      className="text-uppercase text-primary fw-bold text-xs mb-1">
+                <span style={{fontSize: 12, color: "var(--bs-primary)"}}>
+                  <i
+                      className="fas fa-exclamation-triangle"
+                      style={{color: "rgb(255,0,0)"}}
+                  />
+                  <strong>
+                    <span style={{color: "rgb(25, 135, 84)"}}>
+                      &nbsp;Pénalité
+                    </span>
+                  </strong>
+                </span>
+                                                                  </div>
+                                                                  <div
+                                                                      className="text-dark fw-bold h5 mb-0"
+                                                                      style={{marginTop: "-6px"}}
+                                                                  >
+                                                                      <span
+                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.pen) + "DA"}</span>
 
-                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span>
-                                                                   <i
-                                                                       className="fas fa-exclamation-triangle pulse animated infinite"
-                                                                       style={{
-                                                                           fontSize: 16,
-                                                                           color: "#df162c",
-                                                                           marginRight: 5
-                                                                       }}
-                                                                   />
-                                                                  en Créance </span>
+                                                                  </div>
+                                                              </div>
                                                           </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.creance) + "DA"}</span>
-                                                          </div>
-                                                      </div>
-
-                                                      <div className="col me-2" style={{transform: 'scale(0.8)'}}>
-                                                          <div
-                                                              className="text-uppercase text-success fw-bold text-xs mb-1">
-                                                              <span> <i
-                                                                  className="fas fa-exclamation-triangle pulse animated infinite"
-                                                                  style={{
-                                                                      fontSize: 16,
-                                                                      color: "#df162c",
-                                                                      marginRight: 5
-                                                                  }}
-                                                              />
-                                                                Pénalité </span>
-                                                          </div>
-                                                          <div className="text-dark fw-bold h5 mb-0">
-                                                              <span>{Humanize(resume.pen) + "DA"}</span>
-                                                          </div>
-                                                      </div>
-
-                                                      <div className="col-auto">
-                                                          <i
-                                                              className="fas fa-money-bill-wave fa-2x text-gray-300"
-                                                              style={{color: "rgb(221, 223, 235)"}}
-                                                          />
-
                                                       </div>
                                                   </div>
                                               </div>
                                           </div>
                                       </div>
+
+
                                   </div>
                                   <div className="row d-xxl-flex justify-content-xxl-center">
                                       <div className="col d-xxl-flex justify-content-xxl-end">
@@ -371,21 +576,21 @@ const Invoice: React.FC<any> = () => {
                                                       borderRadius: 0,
                                                       borderWidth: 0
                                                   }} id="dropdown-basic"
-                                                      ><i className="fas fa-print"
-                                                          style={{marginRight: 5}}/>
-                                                          &nbsp;Facture RG
-                                                      </Dropdown.Toggle>
+                                                  ><i className="fas fa-print"
+                                                      style={{marginRight: 5}}/>
+                                                      &nbsp;Facture RG
+                                                  </Dropdown.Toggle>
 
-                                                      <Dropdown.Menu>
-                                                          <Dropdown.Item          onClick={handlePrint}>
-                                                              <i className="bi bi-file-earmark-pdf-fill"></i>
-                                                              &nbsp;En HT</Dropdown.Item>
-                                                          <Dropdown.Item onClick={handlePrint2}>
-                                                              <i className="bi bi-file-earmark-pdf-fill"></i>
-                                                              &nbsp;En TTC</Dropdown.Item>
+                                                  <Dropdown.Menu>
+                                                      <Dropdown.Item onClick={handlePrint}>
+                                                          <i className="bi bi-file-earmark-pdf-fill"></i>
+                                                          &nbsp;En HT</Dropdown.Item>
+                                                      <Dropdown.Item onClick={handlePrint2}>
+                                                          <i className="bi bi-file-earmark-pdf-fill"></i>
+                                                          &nbsp;En TTC</Dropdown.Item>
 
-                                                      </Dropdown.Menu>
-                                                  </Dropdown>
+                                                  </Dropdown.Menu>
+                                              </Dropdown>
                                               <button className="btn btn-primary" type="button"
                                                       style={{background: "#df162c", borderWidth: 0}} onClick={searchD}>
                                                   <i className="fas fa-search" style={{marginRight: 5}}/>
@@ -397,20 +602,20 @@ const Invoice: React.FC<any> = () => {
                                   </div>
                                   <div
                                       className="ag-theme-alpine mt-4"
-                                      style={{overflowY:"hidden",width:"100%" }}
+                                      style={{overflowY: "hidden", width: "100%"}}
 
                                   >
                                       <AgGridReact ref={gridRef}
                                                    rowData={data} columnDefs={fields}
-                                                     onGridReady={onGridReady}
-
+                                                   onGridReady={onGridReady}
+  suppressContextMenu={true}
                                                    gridOptions={gridOptions}
-                                           onRowClicked={handleRowClick}
-                                                      onSelectionChanged={onSelectionChanged}
-                                            domLayout='autoHeight'
+                                                   onRowClicked={handleRowClick}
+                                                   onSelectionChanged={onSelectionChanged}
+                                                   domLayout='autoHeight'
 
 
-                                    />
+                                      />
 
                                   </div>
                                   <div className="row">
