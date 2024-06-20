@@ -16,7 +16,7 @@ import SearchDQE from "../SearchDQE/SearchDQE";
 import {showSearchDQE} from "../Slices/SearchModalSlices";
 import {Humanize} from "../Utils/Utils";
 
-import UpdateDQE from "../UpdateDQE/UpdateDQE";
+
 import AlertMessage from "../AlertMessage/AlertMessage";
 import {Dropdown} from "react-bootstrap";
 import * as XLSX from "xlsx";
