@@ -31,6 +31,9 @@ const InfoRenderer: React.FC<any> = (props) => {
         return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
     case 'valeur_3' :
         return <span>{numeral(value).format('0,0.00').replaceAll(',',' ').replace('.',',')+' DA'}</span>
+    case 'coefficient_revison' :
+        return <span>{numeral(value).format('0.0000')}</span>
+
 
     case 'date' :
       return <span>{formatDate(value)}</span>
