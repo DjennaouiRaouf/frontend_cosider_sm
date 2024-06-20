@@ -292,6 +292,7 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                   </div>
               }
 
+
               {extra.tva === 0 &&
 
                   <div className={'mt-3 mb-3 w-100'}>
@@ -335,6 +336,57 @@ const InvoicePrinter = forwardRef<HTMLDivElement, InvoicePrinterProps>((props, r
                       <label className="form-label  w-50"
                              style={{fontSize: '12px'}}><strong>{props.data.somme}</strong> </label>
                   </div>
+              </div>
+
+              <div className={'mt-3 mb-3 w-100'}>
+
+                  <div className="card" style={{width: "100%", fontSize: 11}}>
+                      <div
+                          className="card-body text-capitalize fs-6"
+                          style={{width: 449, marginRight: "-25px", height: 35}}
+                      >
+                          <h6
+                              className="card-title"
+                              style={{textDecoration: "underline", fontSize: 12}}
+                          >
+                              Pour Mémoire
+                          </h6>
+                          <h6
+                              className="card-title"
+                              style={{fontSize: 12}}
+                          >
+                              Remboursement cumulé des avances jusqu'à présent
+                          </h6>
+                      </div>
+                      <div className="card-body" style={{height: 129}}>
+                          <div>
+                              <table>
+                                  <tbody>
+                                  <tr>
+                                  <td style={{width: "374.7px"}}>
+                                          <p>Avance Forfaitaire</p>
+                                      </td>
+                                      <td>{Humanize(props.data.caf)+' DA'}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <p>Avance sur Approvisionnement</p>
+                                      </td>
+                                      <td>{Humanize(props.data.caa)+' DA'}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          <p>Avance Exceptionnelle</p>
+                                      </td>
+                                      <td>{Humanize(props.data.cae)+' DA'}</td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+
               </div>
 
           </div>
