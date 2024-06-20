@@ -176,7 +176,7 @@ const AddContrat: React.FC<AddContratProps> = ({refresh}) => {
             })
         }
         if(ref==='code_site'){
-            getNT(op)
+            console.log(op)
         }
 
 
