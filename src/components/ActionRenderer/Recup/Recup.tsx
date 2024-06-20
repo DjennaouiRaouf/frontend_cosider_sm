@@ -13,11 +13,11 @@ const Recup: React.FC<RecupProps> = (props) => {
     const [searchParams] = useSearchParams();
     const recup = async() => {
        const rowData:any =  props.data  ;
-      rowData["est_recupere"]=true
+        console.log(rowData)
 
-
-
-      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/recupcaution/`,rowData,{
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/sm/recupcaution/`,{
+          id:rowData['id']
+      },{
         headers: {
 
           Authorization: `Token ${Cookies.get("token")}`,
