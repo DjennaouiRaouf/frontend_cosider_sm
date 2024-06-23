@@ -258,6 +258,15 @@ const Invoice: React.FC<any> = () => {
         }
     };
 
+    const [show, setShow] = useState<boolean>(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const encaissRG = () => {
+            handleShow();
+    }
+
   return (
       <>
           <AlertMessage/>
@@ -266,6 +275,30 @@ const Invoice: React.FC<any> = () => {
           <AddEncaissement refresh={()=>{getData('')}}/>
           <InvoiceRG ref={componentRef} facture={data} extra={resume}/>
           <InvoiceRGTTC ref={componentRef2} facture={data} extra={resume}/>
+
+          <>
+
+              <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Modal title</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  I will not close if you click outside me. Do not even try to press
+                  escape key.
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary">Understood</Button>
+                </Modal.Footer>
+              </Modal>
+          </>
 
 
           <div id="wrapper">
@@ -362,16 +395,15 @@ const Invoice: React.FC<any> = () => {
                                                                   </div>
                                                                   <div
                                                                       className="text-dark fw-bold h5 mb-0"
-                                                                      style={{marginTop: "-6px"}}
-                                                                  >
-                                                                    <span style={{fontSize: 14}}>
-                                                                      <span style={{color: "rgb(25, 135, 84)"}}>
-                                                                        En TTC&nbsp;
-                                                                      </span>
-                                                                    </span>
-                                                                      <span
-                                                                          style={{fontSize: 14}}>&nbsp; {Humanize(resume.rg_total_ttc) + "DA"}</span>
+                                                                      style={{marginTop: "-6px"}}>
 
+                                                                        <span style={{fontSize: 14}}>
+                                                                          <span style={{color: "rgb(25, 135, 84)"}}>
+                                                                            En TTC&nbsp;
+                                                                          </span>
+                                                                        </span>
+                                                                          <span
+                                                                              style={{fontSize: 14}}>&nbsp; {Humanize(resume.rg_total_ttc) + "DA"}</span>
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -588,6 +620,9 @@ const Invoice: React.FC<any> = () => {
                                                       <Dropdown.Item onClick={handlePrint2}>
                                                           <i className="bi bi-file-earmark-pdf-fill"></i>
                                                           &nbsp;En TTC</Dropdown.Item>
+                                                      <Dropdown.Item onClick={encaissRG}>
+                                                          <i className="bi bi-file-earmark-pdf-fill"></i>
+                                                          &nbsp;Ecaissement de la RG</Dropdown.Item>
 
                                                   </Dropdown.Menu>
                                               </Dropdown>
