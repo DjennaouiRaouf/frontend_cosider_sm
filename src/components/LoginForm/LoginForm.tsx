@@ -25,7 +25,7 @@ const LoginForm: React.FC<any> = () => {
   const navigate=useNavigate();
 
   const getImages = async () => {
-    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/sm/getimg/`,{
+    await axios.get(`${process.env.REACT_APP_API_BASE_URL}/images/imglogin/`,{
       headers:{
         "Content-Type":"application/json",
       }
@@ -105,6 +105,7 @@ const [toast,setToast]=useState<any>({
           position: "absolute",
           left: 0,
           right: 0,
+
           top: "50%",
           transform: "translateY(-50%)",
           msTransform: "translateY(-50%)",
@@ -119,13 +120,15 @@ const [toast,setToast]=useState<any>({
                         style={{borderWidth: "1px", borderRadius: "8px"}}>
                 {pics.map((item, index) => (
                     <Carousel.Item key={index} style={{borderWidth: "1px", borderRadius: "8px"}}>
-                      <img
-                          src={item.src}
-                          alt={""}
-                          height={500}
-                          className="d-block w-100"
-                          style={{borderWidth: "1px", borderRadius: "8px"}}
-                      />
+
+                        <div
+                            style={{
+                                background: `url(${item.src}) center / cover no-repeat`,
+                                height: 350,
+                                width: 610,
+                                borderRadius:5
+                            }}
+                        />
 
                     </Carousel.Item>
                 ))}
@@ -133,7 +136,7 @@ const [toast,setToast]=useState<any>({
 
             </div>
 
-            <div className="col-md-10 col-lg-5 mx-auto">
+              <div className="col-md-10 col-lg-5 mx-auto">
 
               <Form className="bg-body-tertiary p-4 p-md-5 border rounded-3"
                     noValidate validated={validated}
