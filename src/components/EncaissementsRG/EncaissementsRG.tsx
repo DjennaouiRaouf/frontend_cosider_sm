@@ -303,7 +303,6 @@ const EncaissementsRG: React.FC<any> = () => {
                                                   <i className="fas fa-trash" style={{marginRight: 5}}/>
                                                   Annuler Encaissement(s)
                                               </button>
-
                                           </div>
                                       </div>
                                   </div>
