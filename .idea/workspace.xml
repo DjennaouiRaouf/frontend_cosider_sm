@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +37,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/frontend_cosider_sm/src/components&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/frontend_cosider_sm&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -146,6 +144,7 @@
       <workItem from="1719126366003" duration="1963000" />
       <workItem from="1719130693470" duration="8385000" />
       <workItem from="1719209653914" duration="9303000" />
+      <workItem from="1719231379542" duration="127000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>
@@ -286,14 +285,6 @@
       <option name="presentableId" value="LOCAL-00161" />
       <option name="project" value="LOCAL" />
       <updated>1717065406686</updated>
-    </task>
-    <task id="LOCAL-00167" summary="init">
-      <option name="closed" value="true" />
-      <created>1718195258051</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1718195258051</updated>
     </task>
     <task id="LOCAL-00168" summary="init">
       <option name="closed" value="true" />
@@ -519,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719219100240</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="init">
+      <option name="closed" value="true" />
+      <created>1719231471847</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1719231471847</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
