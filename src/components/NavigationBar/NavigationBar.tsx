@@ -106,6 +106,8 @@ const NavigationBar: React.FC<any> = () => {
               <NavDropdown.Item href="/invoice">Factures</NavDropdown.Item>
               <NavDropdown.Item href="/encaissement">Encaissements
               </NavDropdown.Item>
+              <NavDropdown.Item href="/encaissementrg">Encaissements RG
+              </NavDropdown.Item>
                             <NavDropdown.Item href="/etat_creance">Etat des Creances
               </NavDropdown.Item>
                         </NavDropdown>

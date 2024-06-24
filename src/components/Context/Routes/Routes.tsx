@@ -34,6 +34,8 @@ import ErrorRoute from "../../ErrorRoute/ErrorRoute";
 import ScrollToTopBtn from "../../ScrollToTopBtn/ScrollToTopBtn";
 import ProductionStockeeParams from "../../ProductionStockee/ProductionStockeeParams";
 import ProductionStockee from "../../ProductionStockee/ProductionStockee";
+import EncaissementsRGParams from "../../EncaissementsRG/EncaissementsRGParams";
+import EncaissementsRG from "../../EncaissementsRG/EncaissementsRG";
 
 const Routes: React.FC<any> = () => {
 
@@ -254,6 +256,23 @@ const Routes: React.FC<any> = () => {
                 }
             />
 
+            <Route
+                path="/encaissementrg"
+                element={
+                    authenticated ? (
+                        <>
+                            <EncaissementsRGParams/>
+
+
+
+                        </>
+                    ) : (
+                        <Navigate to="/"  />
+                    )
+                }
+            />
+
+
                         <Route
                 path="/revision"
                 element={
@@ -328,6 +347,25 @@ const Routes: React.FC<any> = () => {
                     )
                 }
             />
+
+            <Route
+                path="/encaissementrg/enc/:nt/:pole"
+                element={
+                    authenticated ? (
+                        <>
+                             <NavigationBar/>
+                                <ScrollToTopBtn/>
+                            <EncaissementsRG/>
+
+
+
+                        </>
+                    ) : (
+                        <Navigate to="/"  />
+                    )
+                }
+            />
+
 
               <Route
                 path="/production_stockee"

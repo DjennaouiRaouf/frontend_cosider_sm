@@ -12,6 +12,7 @@ export interface AddDataModalState {
     showAddFactureForm:boolean;
     showAddAvanceForm:boolean;
     showAddEncaissementForm:any;
+    showAddEncaissementRGForm:any;
     showAddSiteForm:boolean;
     showAddCautionForm:boolean;
 }
@@ -34,6 +35,11 @@ const initialState: AddDataModalState = {
         shown:false,
         facture:null,
     },
+     showAddEncaissementRGForm:{
+        shown:false,
+
+    },
+
 
 };
 
@@ -143,6 +149,16 @@ export const AddDataModal = createSlice({
             state.showAddEncaissementForm={}
         },
 
+        showAddEncaissementRG: (state) => {
+
+            state.showAddEncaissementRGForm.shown=true;
+
+        },
+
+        hideAddEncaissementRG: (state) => {
+            state.showAddEncaissementRGForm={}
+        },
+
 
     }
 });
@@ -155,6 +171,7 @@ showAddAttachement,hideAddAttachement,
 showAddNT,hideAddNT,
 showAddFacture,hideAddFacture,
     showAddEncaissement,hideAddEncaissement,
+        showAddEncaissementRG,hideAddEncaissementRG,
 showAddSite,hideAddSite,
 showAddCaution,hideAddCaution} = AddDataModal.actions;
 

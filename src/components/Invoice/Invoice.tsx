@@ -11,7 +11,7 @@ import numeral from "numeral";
 import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
 import {Humanize} from "../Utils/Utils";
-import {showAddFacture} from "../Slices/AddModalSlices";
+import {showAddEncaissement, showAddEncaissementRG, showAddFacture} from "../Slices/AddModalSlices";
 import AddFacture from "../AddFacture/AddFacture";
 import AlertMessage from "../AlertMessage/AlertMessage";
 import OptionInvoice from "../ActionRenderer/OptionInvoice/OptionInvoice";
@@ -24,6 +24,7 @@ import SearchInvoice from "../SearchInvoice/SearchInvoice";
 import {showSearchInvoice} from "../Slices/SearchModalSlices";
 import InvoiceRGTTC from "./InvoiceRGTTC/InvoiceRGTTC";
 import "./Invoice.css";
+import AddEncaissementRG from "../AddEncaissementRG/AddEncaissementRG";
 
 const InfoRenderer: React.FC<any> = (props) => {
   const { value } = props;
@@ -258,13 +259,12 @@ const Invoice: React.FC<any> = () => {
         }
     };
 
-    const [show, setShow] = useState<boolean>(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     const encaissRG = () => {
-            handleShow();
+
+            dispatch(showAddEncaissementRG())
+
+
     }
 
   return (
@@ -275,31 +275,7 @@ const Invoice: React.FC<any> = () => {
           <AddEncaissement refresh={()=>{getData('')}}/>
           <InvoiceRG ref={componentRef} facture={data} extra={resume}/>
           <InvoiceRGTTC ref={componentRef2} facture={data} extra={resume}/>
-
-          <>
-
-              <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title>Modal title</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  I will not close if you click outside me. Do not even try to press
-                  escape key.
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary">Understood</Button>
-                </Modal.Footer>
-              </Modal>
-          </>
-
+          <AddEncaissementRG refresh={()=>{getData('')}}/>
 
           <div id="wrapper">
               <div id="content-wrapper" className="d-flex flex-column">
