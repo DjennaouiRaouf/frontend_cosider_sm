@@ -173,14 +173,17 @@ const Signup: React.FC<any> = () => {
                                       <div className="row">
                                           <div className="col-md-12 text-start">
                                               <div className="mb-5">
-                                                  <h1 className="text-center">{'Creer un compte'}</h1>
+                                                  <h1 className={"text-center"}>
+                                                      <i className="fas fa-user-plus" style={{fontSize: 78}}/>
+                                                      Créer un nouveau compte
+                                                  </h1>
                                               </div>
                                           </div>
                                       </div>
                                   </div>
                               </div>
 
-                              {fields.map((field,index) => (
+                              {fields.map((field, index) => (
                                   <div className="col-md-6 text-start" key={index}>
                                       <div className="mb-3">
 
