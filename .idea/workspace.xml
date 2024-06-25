@@ -58,11 +58,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\frontend_cosider_sm" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\administrator\Desktop\frontend_cosider_sm\src\components" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\ActionRenderer\OptionInvoice" />
       <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Invoice" />
-      <recent name="C:\Users\PC\Desktop\frontend_cosider_sm\src\components\Revision" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\PycharmProjects\frontend_cosider_sm\public" />
@@ -145,6 +145,7 @@
       <workItem from="1719130693470" duration="8385000" />
       <workItem from="1719209653914" duration="9303000" />
       <workItem from="1719231379542" duration="127000" />
+      <workItem from="1719236033822" duration="640000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>
@@ -285,14 +286,6 @@
       <option name="presentableId" value="LOCAL-00161" />
       <option name="project" value="LOCAL" />
       <updated>1717065406686</updated>
-    </task>
-    <task id="LOCAL-00168" summary="init">
-      <option name="closed" value="true" />
-      <created>1718195980742</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1718195980742</updated>
     </task>
     <task id="LOCAL-00169" summary="init">
       <option name="closed" value="true" />
@@ -518,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719231471847</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="init">
+      <option name="closed" value="true" />
+      <created>1719236124705</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1719236124706</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
