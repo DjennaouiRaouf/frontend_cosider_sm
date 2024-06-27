@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4b7d1c-63fd-4ae3-a1de-9c0d11fea68d" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4070f26d-ae89-4293-9cb4-f1b356685cb9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4070f26d-ae89-4293-9cb4-f1b356685cb9.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Signup/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Signup/Signup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Context/Routes/Routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/PC/Desktop/Cosider_Project_GM",
+    "last_opened_file_path": "D:/PycharmProjects/frontend_cosider_sm",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,7 +52,7 @@
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\administrator\\Desktop\\frontend_cosider_sm\\node_modules\\prettier",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "sql.rename.search.for.storage.occurrences": "true",
-    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\frontend_cosider_sm\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\PycharmProjects\\frontend_cosider_sm\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -153,6 +154,7 @@
       <workItem from="1719309115417" duration="399000" />
       <workItem from="1719314372782" duration="57000" />
       <workItem from="1719317709803" duration="2288000" />
+      <workItem from="1719473913821" duration="2811000" />
     </task>
     <task id="LOCAL-00062" summary="init">
       <created>1714487720240</created>

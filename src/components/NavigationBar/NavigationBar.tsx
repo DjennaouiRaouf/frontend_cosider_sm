@@ -132,13 +132,13 @@ const NavigationBar: React.FC<any> = () => {
                                 </a>
                                 <div  className="dropdown-menu shadow dropdown-menu-end animated--grow-in"
                                       data-bs-popper="none">
-                                    <a className="dropdown-item" href="/profile">
+                                    <a className="dropdown-item" href="/profile" style={{cursor: 'pointer'}}>
                                         <i className="fas fa-user fa-sm fa-fw me-2 text-gray-400" />
                                         &nbsp;Profil
                                     </a>
 
-                                    <div className="dropdown-divider" />
-                                    <a className="dropdown-item" onClick={logout}>
+
+                                    <a className="dropdown-item"  onClick={logout} style={{cursor: 'pointer'}}>
                                         <i className="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400" />
                                         &nbsp;Déconnexion
                                     </a>

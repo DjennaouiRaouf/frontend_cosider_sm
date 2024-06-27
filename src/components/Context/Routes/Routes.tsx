@@ -36,6 +36,7 @@ import ProductionStockeeParams from "../../ProductionStockee/ProductionStockeePa
 import ProductionStockee from "../../ProductionStockee/ProductionStockee";
 import EncaissementsRGParams from "../../EncaissementsRG/EncaissementsRGParams";
 import EncaissementsRG from "../../EncaissementsRG/EncaissementsRG";
+import Profile from "../../Profile/Profile";
 
 const Routes: React.FC<any> = () => {
 
@@ -580,7 +581,26 @@ const Routes: React.FC<any> = () => {
               }
           />
 
+             <Route
+              path="/profile"
+              element={
+                  authenticated ? (
+                      <>
+                          <NavigationBar/>
+                          <Profile/>
+
+
+
+                      </>
+                  ) : (
+                      <Navigate to="/"  />
+                  )
+              }
+          />
+
         </Router>
+
+
     );
 }
 
